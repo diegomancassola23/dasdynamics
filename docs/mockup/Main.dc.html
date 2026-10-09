@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Diego Mancassola — Home</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F4F5F1;color:#12161C;font-family:'IBM Plex Sans',system-ui,sans-serif}
+a{color:#1D4ED8;text-decoration:none}a:hover{color:#1E3A8A;text-decoration:underline}
+*{box-sizing:border-box}
+</style>
+</helmet>
+<div style="background: #F4F5F1; color: #12161C; font-family: 'IBM Plex Sans', system-ui, sans-serif; min-height: 100vh">
+
+<header style="border-bottom: 1px solid #DADDD5; background: #F4F5F1">
+<nav aria-label="Main" style="max-width: 1200px; margin: 0 auto; padding: 18px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px 32px">
+<a href="Main.dc.html" style="display: flex; align-items: center; gap: 12px; color: #12161C; text-decoration: none">
+<span style="width: 40px; height: 40px; background: #12161C; color: #F4F5F1; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 16px; letter-spacing: 0.5px">DM</span>
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 18px">Diego Mancassola</span>
+</a>
+<div style="display: flex; flex-wrap: wrap; gap: 4px 24px; flex-grow: 1; font-size: 15px; font-weight: 500">
+<a href="#writing" style="color: #12161C; padding: 12px 0">Writing</a>
+<a href="Archive.dc.html" style="color: #12161C; padding: 12px 0">Archive 2014–2024</a>
+<a href="#tracks" style="color: #12161C; padding: 12px 0">Topics</a>
+<a href="#about" style="color: #12161C; padding: 12px 0">About</a>
+</div>
+<div style="display: flex; align-items: center; gap: 16px">
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5260"><strong style="color: #12161C">EN</strong> / IT</span>
+<a href="#subscribe" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 18px; background: {{accent}}; color: #FFFFFF; font-weight: 600; font-size: 14px; text-decoration: none">Subscribe
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></a>
+</div>
+</nav>
+</header>
+
+<main>
+<section style="max-width: 1200px; margin: 0 auto; padding: 88px 24px 72px; display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-end">
+<div style="flex: 999 1 560px; min-width: 0">
+<p style="margin: 0 0 24px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; color: #4A5260">Dynamics 365 Finance &amp; Operations · Architecture · AI</p>
+<h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(40px, 6vw, 76px); line-height: 1.02; letter-spacing: -1.5px">Architecture, integrations and AI for Dynamics 365 F&amp;O.</h1>
+<p style="margin: 28px 0 0; max-width: 640px; font-size: 20px; line-height: 1.55; color: #343B47">Twelve years of field notes: from X++ snippets on AX 2009 to API Management, MCP servers and Copilot inside D365FO.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px">
+<a href="#latest" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 24px; background: #12161C; color: #F4F5F1; font-weight: 600; text-decoration: none">Read the latest</a>
+<a href="Archive.dc.html" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 24px; border: 1.5px solid #12161C; color: #12161C; font-weight: 600; text-decoration: none">Browse the archive</a>
+</div>
+</div>
+<dl style="flex: 1 1 260px; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; border-top: 2px solid #12161C">
+<div style="padding: 18px 0; border-bottom: 1px solid #DADDD5"><dt style="font-size: 13px; color: #4A5260">Published</dt><dd style="margin: 4px 0 0; font-family: 'Space Grotesk', sans-serif; font-size: 36px; font-weight: 700">73</dd></div>
+<div style="padding: 18px 0; border-bottom: 1px solid #DADDD5"><dt style="font-size: 13px; color: #4A5260">Writing since</dt><dd style="margin: 4px 0 0; font-family: 'Space Grotesk', sans-serif; font-size: 36px; font-weight: 700">2014</dd></div>
+<div style="grid-column: span 2; padding: 18px 0; border-bottom: 1px solid #DADDD5"><dt style="font-size: 13px; color: #4A5260">Versions covered</dt><dd style="margin: 6px 0 0; font-family: 'IBM Plex Mono', monospace; font-size: 14px">AX 2009 · AX 2012 · AX7 · D365FO</dd></div>
+</dl>
+</section>
+
+<section id="latest" aria-labelledby="latest-h" style="max-width: 1200px; margin: 0 auto; padding: 0 24px 80px">
+<h2 id="latest-h" style="margin: 0 0 20px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: #4A5260">Latest</h2>
+<div style="display: flex; flex-wrap: wrap; gap: 24px">
+<article style="flex: 999 1 600px; min-width: 0; background: #FFFFFF; border: 1px solid #DADDD5; display: flex; flex-wrap: wrap">
+<div style="flex: 1 1 280px; min-height: 280px; background: #12161C; color: #F4F5F1; padding: 32px; display: flex; flex-direction: column; justify-content: space-between">
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #A9B4C7">PART 2 OF 2</span>
+<div>
+<div style="font-family: 'Space Grotesk', sans-serif; font-size: 64px; font-weight: 700; line-height: 1; letter-spacing: -1px">APIM</div>
+<div style="margin-top: 10px; height: 6px; width: 72px; background: {{accent}}"></div>
+</div>
+</div>
+<div style="flex: 2 1 340px; padding: 32px; display: flex; flex-direction: column; gap: 16px">
+<p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5260">10 Jul 2026 · Integration</p>
+<h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 30px; line-height: 1.15; font-weight: 700">D365FO Integration Architecture: a real-world approach with REST APIs and Azure API Management</h3>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #343B47">Part 1 was the why: a manufacturing landscape where SQL staging tables had quietly become the integration backbone. Part 2 is the how.</p>
+<a href="https://www.linkedin.com/pulse/d365fo-integration-architecture-real-world-approach-rest-mancassola-1hulf/" style="margin-top: auto; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-weight: 600">Read the article
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></a>
+</div>
+</article>
+<aside aria-label="Series" style="flex: 1 1 300px; border: 1px solid #DADDD5; background: #FFFFFF; padding: 28px; display: flex; flex-direction: column; gap: 18px">
+<p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; color: #4A5260">Series</p>
+<h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 24px; line-height: 1.2">Integration Architecture</h3>
+<ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0">
+<li style="padding: 14px 0; border-top: 1px solid #DADDD5; display: flex; gap: 14px"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #4A5260">01</span><span><a href="https://www.linkedin.com/pulse/d365fo-integration-architecture-real-world-approach-rest-mancassola-gqbzf/" style="color: #12161C; font-weight: 600">Challenges, design decisions, APIM</a><br><span style="font-size: 13px; color: #4A5260">30 Apr 2026</span></span></li>
+<li style="padding: 14px 0; border-top: 1px solid #DADDD5; border-bottom: 1px solid #DADDD5; display: flex; gap: 14px"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #4A5260">02</span><span><a href="https://www.linkedin.com/pulse/d365fo-integration-architecture-real-world-approach-rest-mancassola-1hulf/" style="color: #12161C; font-weight: 600">The implementation</a><br><span style="font-size: 13px; color: #4A5260">10 Jul 2026</span></span></li>
+</ol>
+<p style="margin: 0; font-size: 14px; line-height: 1.55; color: #4A5260">Every article lives here first; LinkedIn gets the summary and the link.</p>
+</aside>
+</div>
+</section>
+
+<section id="writing" aria-labelledby="writing-h" style="background: #FFFFFF; border-top: 1px solid #DADDD5; border-bottom: 1px solid #DADDD5">
+<div style="max-width: 1200px; margin: 0 auto; padding: 72px 24px 80px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px; margin-bottom: 32px">
+<h2 id="writing-h" style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 700; letter-spacing: -0.5px">Writing</h2>
+<div role="group" aria-label="Filter by topic" style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{chips}}" as="c" hint-placeholder-count="5">
+<button type="button" onClick="{{c.pick}}" aria-pressed="{{c.on}}" style="{{c.style}}">{{c.label}}</button>
+</sc-for>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px">
+<sc-for list="{{cards}}" as="a" hint-placeholder-count="6">
+<article style="border: 1px solid #DADDD5; background: #F4F5F1; display: flex; flex-direction: column">
+<div style="{{a.coverStyle}}">
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; opacity: 0.85">{{a.topic}}</span>
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 44px; font-weight: 700; line-height: 1; letter-spacing: -0.5px">{{a.code}}</span>
+</div>
+<div style="padding: 22px 22px 18px; display: flex; flex-direction: column; gap: 10px; flex-grow: 1">
+<p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5260">{{a.date}}</p>
+<h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 21px; line-height: 1.25; font-weight: 600">{{a.title}}</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #343B47">{{a.dek}}</p>
+<a href="{{a.url}}" style="margin-top: auto; display: inline-flex; align-items: center; gap: 6px; min-height: 44px; font-weight: 600; font-size: 15px">Read the article
+<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></a>
+</div>
+</article>
+</sc-for>
+</div>
+</div>
+</section>
+
+<section id="tracks" aria-labelledby="tracks-h" style="max-width: 1200px; margin: 0 auto; padding: 80px 24px">
+<h2 id="tracks-h" style="margin: 0 0 32px; font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 700; letter-spacing: -0.5px">Four tracks, one thread</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0; border-top: 2px solid #12161C">
+<div style="padding: 24px 24px 24px 0; border-bottom: 1px solid #DADDD5">
+<p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5260">01</p>
+<h3 style="margin: 10px 0 8px; font-family: 'Space Grotesk', sans-serif; font-size: 22px">Integrations &amp; data</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #343B47">AIF and DIXF, then OData and data entities, now REST and Azure API Management.</p>
+</div>
+<div style="padding: 24px 24px 24px 0; border-bottom: 1px solid #DADDD5">
+<p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5260">02</p>
+<h3 style="margin: 10px 0 8px; font-family: 'Space Grotesk', sans-serif; font-size: 22px">AI inside the ERP</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #343B47">Copilot Chat extensions, Copilot code review for X++, MCP servers for developers.</p>
+</div>
+<div style="padding: 24px 24px 24px 0; border-bottom: 1px solid #DADDD5">
+<p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5260">03</p>
+<h3 style="margin: 10px 0 8px; font-family: 'Space Grotesk', sans-serif; font-size: 22px">X++ craft</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #343B47">Performance, multithreading, labels, forms and the patterns that survive every version.</p>
+</div>
+<div style="padding: 24px 24px 24px 0; border-bottom: 1px solid #DADDD5">
+<p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5260">04</p>
+<h3 style="margin: 10px 0 8px; font-family: 'Space Grotesk', sans-serif; font-size: 22px">Platform &amp; environments</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #343B47">Cloud-hosted VMs, certificates, TLS, SSRS and the days a machine says INCOMPLETE.</p>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="arch-h" style="background: #12161C; color: #F4F5F1">
+<div style="max-width: 1200px; margin: 0 auto; padding: 80px 24px; display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-end">
+<div style="flex: 999 1 460px; min-width: 0">
+<p style="margin: 0 0 16px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; color: #A9B4C7">The archive</p>
+<h2 id="arch-h" style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 44px; line-height: 1.08; font-weight: 700; letter-spacing: -0.5px">Dynamics AX Notes, 2014–2024. Re-read in 2026.</h2>
+<p style="margin: 20px 0 0; max-width: 560px; font-size: 18px; line-height: 1.6; color: #C9D0DB">64 notes from the Blogger years. Each one now says whether it still holds in D365FO, what replaced it, or why it is history.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 10px 20px; margin-top: 24px; font-size: 14px">
+<span style="display: inline-flex; align-items: center; gap: 8px"><span style="width: 10px; height: 10px; background: #4ADE80"></span>Still valid</span>
+<span style="display: inline-flex; align-items: center; gap: 8px"><span style="width: 10px; height: 10px; background: #FBBF24"></span>Changed in D365FO</span>
+<span style="display: inline-flex; align-items: center; gap: 8px"><span style="width: 10px; height: 10px; background: #8B95A5"></span>Historical</span>
+</div>
+<a href="Archive.dc.html" style="margin-top: 32px; display: inline-flex; align-items: center; min-height: 48px; padding: 0 24px; background: #F4F5F1; color: #12161C; font-weight: 600; text-decoration: none">Open the archive</a>
+</div>
+<figure style="flex: 1 1 380px; margin: 0">
+<figcaption style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #A9B4C7; margin-bottom: 14px">Notes per year</figcaption>
+<div role="img" aria-label="Notes per year: 2014 29, 2015 12, 2016 14, 2017 3, 2018 2, 2021 3, 2024 1" style="display: flex; align-items: flex-end; gap: 10px; height: 200px; border-bottom: 1px solid #4A5260">
+<sc-for list="{{years}}" as="y" hint-placeholder-count="7">
+<div style="flex: 1 1 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 6px; height: 100%">
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #C9D0DB">{{y.n}}</span>
+<div style="{{y.bar}}"></div>
+</div>
+</sc-for>
+</div>
+<div aria-hidden="true" style="display: flex; gap: 10px; margin-top: 8px">
+<sc-for list="{{years}}" as="y" hint-placeholder-count="7">
+<span style="flex: 1 1 0; text-align: center; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #A9B4C7">{{y.label}}</span>
+</sc-for>
+</div>
+</figure>
+</div>
+</section>
+
+<section id="about" aria-labelledby="about-h" style="max-width: 1200px; margin: 0 auto; padding: 88px 24px; display: flex; flex-wrap: wrap; gap: 48px">
+<div style="flex: 0 0 160px; height: 160px; background: #DADDD5; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #4A5260; text-align: center; padding: 12px">[PORTRAIT]</div>
+<div style="flex: 999 1 480px; min-width: 0">
+<h2 id="about-h" style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 700; letter-spacing: -0.5px">About</h2>
+<p style="margin: 18px 0 0; max-width: 720px; font-size: 18px; line-height: 1.65; color: #343B47">Technical Solution Architect at Alveo Group. I work on Microsoft Dynamics 365 Finance &amp; Operations: architecture, integrations with Azure API Management and Azure Functions, functional and technical analysis. Lately I build tools where AI does the reading and the judging, and code does the plumbing.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px">
+<a href="https://www.linkedin.com/in/diego-mancassola-81a9a11b/" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border: 1.5px solid #12161C; color: #12161C; font-weight: 600; text-decoration: none">LinkedIn</a>
+<a href="#" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border: 1.5px solid #12161C; color: #12161C; font-weight: 600; text-decoration: none">GitHub</a>
+<a href="#" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border: 1.5px solid #12161C; color: #12161C; font-weight: 600; text-decoration: none">RSS</a>
+</div>
+</div>
+</section>
+</main>
+
+<footer style="border-top: 1px solid #DADDD5">
+<div style="max-width: 1200px; margin: 0 auto; padding: 28px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 14px; color: #4A5260">
+<span>© 2026 Diego Mancassola</span>
+<span style="font-family: 'IBM Plex Mono', monospace">[domain].dev · formerly dynamicsaxnotes.blogspot.com</span>
+</div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#1D4ED8","options":["#1D4ED8","#0F766E","#C2410C","#12161C"]},"$preview":{"width":1440,"height":3400}}'>
+class Component extends DCLogic {
+  constructor(p) { super(p); this.state = { topic: 'All' }; }
+  renderVals() {
+    const accent = this.props.accent ?? '#1D4ED8';
+    const all = [
+      { code: 'Copilot', topic: 'AI', bg: '#1D2B4F', date: '22 May 2026', title: 'Extending Copilot Chat in D365FO: what worked, what didn’t', dek: 'A hands-on attempt to take a standard feature further, and what it taught me.', url: 'https://www.linkedin.com/pulse/extending-copilot-chat-d365fo-what-worked-didnt-i-diego-mancassola-pmnif/' },
+      { code: 'Review', topic: 'AI', bg: '#1D2B4F', date: '18 Mar 2026', title: 'D365FO Copilot code review', dek: 'Moving X++ code review from after development to while you write it.', url: 'https://www.linkedin.com/pulse/d356fo-copilot-code-review-diego-mancassola-aoynf/' },
+      { code: 'ZPL', topic: 'Tools', bg: '#3B2F1E', date: '17 Feb 2026', title: 'Virtual ZPL printer for D365FO', dek: 'Testing warehouse labels without a Zebra printer on the desk.', url: 'https://www.linkedin.com/pulse/virtual-zpl-printer-d365fo-diego-mancassola-ldw4f/' },
+      { code: 'MCP', topic: 'AI', bg: '#1D2B4F', date: '31 Jan 2026', title: 'Automating label creation in X++', dek: 'My first MCP project on GitHub: standard label management for Visual Studio.', url: 'https://www.linkedin.com/pulse/automating-label-creation-x-d365fo-diego-mancassola-j5d3f/' },
+      { code: 'WinRM', topic: 'Platform', bg: '#23302B', date: '20 Mar 2024', title: 'Fixing INCOMPLETE status on cloud-hosted environments', dek: 'Renew the WinRM SSL certificate instead of throwing the VM away.', url: 'https://www.linkedin.com/pulse/overcoming-incomplete-status-cloud-hosted-dynamics-365-mancassola-2anbf/' },
+      { code: 'TLS', topic: 'Platform', bg: '#23302B', date: '10 Mar 2024', title: 'Resolving the “SSL/TLS secure channel” error in .NET', dek: 'Certificates, stores, permissions and TLS 1.2, step by step.', url: 'https://www.linkedin.com/pulse/resolving-ssltls-secure-channel-error-net-diego-mancassola-awksf/' },
+      { code: 'Threads', topic: 'X++', bg: '#2E2240', date: '29 Feb 2024', title: 'Performance in D365FO with multithreading', dek: 'When and how to split heavy batch work across threads.', url: 'https://www.linkedin.com/pulse/multithreading-d365fo-diego-mancassola-j4s8e/' }
+    ];
+    const topics = ['All', 'AI', 'X++', 'Platform', 'Tools'];
+    const t = this.state.topic;
+    const chips = topics.map((label) => {
+      const on = label === t;
+      return { label, on, pick: () => this.setState({ topic: label }),
+        style: 'min-height: 40px; padding: 0 16px; font: 500 14px \'IBM Plex Sans\', sans-serif; cursor: pointer; border: 1.5px solid #12161C; ' + (on ? 'background: #12161C; color: #F4F5F1' : 'background: transparent; color: #12161C') };
+    });
+    const cards = all.filter((a) => t === 'All' || a.topic === t).map((a) => ({ ...a,
+      coverStyle: 'height: 150px; padding: 20px 22px; display: flex; flex-direction: column; justify-content: space-between; color: #F4F5F1; background: ' + a.bg + '; border-bottom: 6px solid ' + accent }));
+    const counts = [['2014', 29], ['2015', 12], ['2016', 14], ['2017', 3], ['2018', 2], ['2021', 3], ['2024', 1]];
+    const years = counts.map(([label, n]) => ({ label, n, bar: 'width: 100%; background: #F4F5F1; height: ' + Math.round(n / 29 * 160) + 'px' }));
+    return { accent, chips, cards, years };
+  }
+}
+</script>
+</body>
+</html>
