@@ -5,6 +5,11 @@
 - **Repo remoto e hosting**: Diego darà il repo git. Proposta: GitHub Pages o Azure Static Web Apps con dominio proprio (es. dynamicsdreams.dev / .com, da verificare la disponibilità).
 - **About**: il profilo LinkedIn non ha la sezione Informazioni; testo da far confermare a Diego.
 - **Articolo Super User**: bozza da completare da Diego (come ci si è arrivati, numeri, cosa significa).
+- **Nome di persona nell'articolo Copilot Chat** (`extending-copilot-chat-d365fo`): tolto per la regola «niente nomi di persona nelle pagine»; ora la riga ringrazia «a fellow community member». Si può ripristinare se Diego lo chiede.
+- **Errori d'inglese verbatim nello stesso articolo** (es. «give me a couple of true suggestions»): lasciati come su LinkedIn; da correggere se Diego vuole.
+- **Dettagli del caso di supporto nelle bozze**: numeratori continui dopo 10.0.47 (build, correzione, causa) e InventSum mancanti (numero dell'issue, «da 10.0.40») vengono dal caso con Microsoft; Diego conferma che si possono pubblicare.
+- **DynamicsMinds «terza volta»**: l'articolo Super User dice «my third DynamicsMinds»; da confermare.
+- **Data `updated: 2026-10-10`** sulle note riscritte: da allineare alla data vera del go-live.
 
 ## Decisioni prese (09/10/2026)
 
@@ -27,7 +32,6 @@ Scelte prese dall'esecutore, da confermare:
 - **Selettore EN / IT** del mockup tolto finché l'italiano non è pubblicato. Il bottone «Subscribe» porta all'RSS.
 - **Credenziale Super User** in home e in About; il link all'articolo appare solo quando l'articolo non è più bozza.
 - **GitHub** tolto dai link di About: manca l'indirizzo del profilo.
-- **Fixture**: quattro file `zz-fixture-*` (un articolo in serie, tre note: valid, changed, historical); il verdetto `to-review` non ha una fixture. Vanno cancellati all'unione con `content`.
 
 Da fare / da decidere:
 

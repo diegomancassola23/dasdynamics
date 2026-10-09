@@ -35,14 +35,14 @@ title: ${JSON.stringify(title)}
 description: "One sentence for search results and LinkedIn (max 160 characters)."
 date: ${today}
 kind: article
-track: integrations   # integrations | ai | xpp | platform
+track: integrations
 versions: ["D365FO"]
-tags: []
-# cover: "APIM"       # optional short word on the card (max 12 characters)
-# series: "my-series" # optional, with seriesPart: 1
+tags: ["d365fo"]
 pinned: false
 draft: true
 ---
+
+<!-- track: integrations | ai | xpp | platform. Optional fields: cover: "APIM" (max 12 characters); series: "my-series" with seriesPart: 1. See docs/CONTENT-SCHEMA.md. Delete this line. -->
 
 Start here. Images go in public/images/articles/${slug}/ and are linked as
 ![What the image shows](/images/articles/${slug}/picture.png)
@@ -56,7 +56,7 @@ console.log(`Images folder: public/images/articles/${slug}/`);
 console.log('');
 console.log('Next steps:');
 console.log('  1. npm run dev        -> preview at http://localhost:4321/articles/' + slug + '/');
-console.log('  2. write; fill description and track');
+console.log('  2. write; fill description, track and tags');
 console.log('  3. set draft: false, commit and push: the workflow publishes it');
 console.log('  4. npm run linkedin -- ' + slug + '   -> the LinkedIn post to paste');
 console.log(ok ? 'ESITO: fatto' : 'ESITO: non fatto');

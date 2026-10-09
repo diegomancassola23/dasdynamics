@@ -39,8 +39,8 @@ export function slugify(text: string): string {
     .replace(/^-+|-+$/g, '');
 }
 
-const dayFmt = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
-const monthFmt = new Intl.DateTimeFormat('en-GB', { month: 'short', year: 'numeric', timeZone: 'UTC' });
+const dayFmt = new Intl.DateTimeFormat('en-US', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+const monthFmt = new Intl.DateTimeFormat('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' });
 export const formatDay = (d: Date) => dayFmt.format(d);
 export const formatMonth = (d: Date) => monthFmt.format(d);
 export const isoDay = (d: Date) => d.toISOString().slice(0, 10);

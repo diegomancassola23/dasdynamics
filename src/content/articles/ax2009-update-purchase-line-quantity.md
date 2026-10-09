@@ -7,8 +7,8 @@ kind: note
 track: xpp
 versions: ["AX 2009"]
 tags: ["purchasing","purchline","inventory","ax-2009"]
-verdict: historical
-verdictNote: "Uses AX 2009 methods (PurchLine::modifyPurchQty, InventMovement::bufferSetRemainQty) that were not checked on later versions."
+verdict: to-review
+verdictNote: "Written for AX 2009; whether PurchLine::modifyPurchQty and InventMovement::bufferSetRemainQty still exist and behave the same in D365FO is not checked."
 originalUrl: "https://dynamicsaxnotes.blogspot.com/2016/02/howto-update-purchqty-of-purchline.html"
 mergedFrom: []
 draft: false

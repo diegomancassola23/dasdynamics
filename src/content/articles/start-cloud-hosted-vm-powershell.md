@@ -8,7 +8,7 @@ track: platform
 versions: ["D365FO"]
 tags: ["azure","powershell","cloud-hosted","vm"]
 verdict: changed
-verdictNote: "AzureRM was deprecated on 29 February 2024: use Connect-AzAccount and Start-AzVM from the Az module."
+verdictNote: "AzureRM was deprecated on February 29, 2024: use Connect-AzAccount and Start-AzVM from the Az module."
 originalUrl: "https://dynamicsaxnotes.blogspot.com/2021/01/d365ffo-start-virtual-machine-cloud.html"
 mergedFrom: []
 draft: false
@@ -25,7 +25,7 @@ Connect-AzAccount
 Start-AzVM -ResourceGroupName "yourresourcegroupname" -Name "machineName"
 ```
 
-- With the unified experience, "customers no longer deploy all-in-one VMs" ([Overview of unified admin experience for finance and operations apps](https://learn.microsoft.com/en-us/power-platform/admin/unified-experience/finance-operations-apps-overview)). The tip still applies to cloud-hosted VMs you keep.
+- With the unified experience, "customers no longer deploy all-in-one VMs" ([Overview of unified admin experience for finance and operations apps](https://learn.microsoft.com/en-us/power-platform/admin/unified-experience/finance-operations-apps-overview)).
 
 ## The original note
 

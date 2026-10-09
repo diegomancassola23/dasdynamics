@@ -8,7 +8,7 @@ track: platform
 versions: ["AX 2012"]
 tags: ["ssrs","reporting","troubleshooting"]
 verdict: valid
-verdictNote: "Still documented for SSRS native mode, but Learn prefers Management Studio or a script when the server is in use."
+verdictNote: "Still documented for SSRS native mode, only on a development VM or an on-premises SSRS; not possible in Microsoft-managed sandbox or production."
 originalUrl: "https://dynamicsaxnotes.blogspot.com/2015/03/howto-enable-remote-errors-on-ssrs.html"
 mergedFrom: []
 draft: false

@@ -7,8 +7,8 @@ kind: note
 track: xpp
 versions: ["AX 2012"]
 tags: ["ssrs","data-contracts","reporting"]
-verdict: historical
-verdictNote: "Recorded on the AX 2012 SSRS framework; not checked on D365FO."
+verdict: to-review
+verdictNote: "Seen on the AX 2012 SSRS framework; the same precedence of report parameters over contract defaults has not been checked on D365FO."
 originalUrl: "https://dynamicsaxnotes.blogspot.com/2014/09/the-report-parameters-are-overridden-by.html"
 mergedFrom: []
 draft: false

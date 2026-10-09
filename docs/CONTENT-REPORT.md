@@ -1,6 +1,6 @@
 # Content report
 
-The editorial pass that turned the old blog (Dynamics AX Notes, 64 posts, 2014–2024) and the nine LinkedIn articles (2024–2026) into the content collection of Dynamics Dreams. Rewrite date: 2026-10-10. The collection is checked by `node scripts/validate-content.mjs`.
+The editorial pass that turned the old blog (Dynamics AX Notes, 64 posts, 2014–2024) and the nine LinkedIn articles (2024–2026) into the content collection of dasdynamics. Rewrite date: 2026-10-10. The collection is checked by `node scripts/validate-content.mjs`.
 
 ## Counts
 
@@ -10,8 +10,10 @@ The editorial pass that turned the old blog (Dynamics AX Notes, 64 posts, 2014�
 | Blog posts retired | 15 |
 | Blog posts merged into another entry | 3 (the 2024 TLS post into the TLS article; one export post; one caching post) |
 | Notes published | 46 |
-| Articles published | 9 |
-| Entries in `src/content/articles/` | 55 |
+| Articles imported from LinkedIn | 9 |
+| Native articles (drafts) | 5 (four from LinkedIn short posts, plus the Super User article) |
+| Articles in total | 14 (9 published, 5 drafts) |
+| Entries in `src/content/articles/` | 60 (14 articles + 46 notes) |
 
 Check: 64 blog posts = 46 notes + 15 retired + 3 merged.
 
@@ -21,13 +23,13 @@ Check: 64 blog posts = 46 notes + 15 retired + 3 merged.
 |---|---|
 | valid | 6 |
 | changed | 1 |
-| historical | 18 |
-| to-review | 21 |
+| historical | 16 |
+| to-review | 23 |
 
-- **valid**: `caching-display-methods`, `odata-tls12-underlying-connection-closed`, `sp-executesql-output-parameter`, `ssrs-enable-remote-errors`, `ssrs-value-only-on-last-page`, `sys-obsolete-attribute`.
+- **valid**: `caching-display-methods`, `odata-tls12-underlying-connection-closed`, `sp-executesql-output-parameter`, `ssrs-enable-remote-errors`, `ssrs-value-only-on-last-page`, `sys-obsolete-attribute`. "Valid" means it still works within the scope stated in `verdictNote`: the two SQL Server/SSRS notes apply only on a development VM or an on-premises SQL Server/SSRS, not in Microsoft-managed sandbox or production.
 - **changed**: `start-cloud-hosted-vm-powershell` (AzureRM to Az).
 - **historical**: AX 2009/2012 techniques whose platform is gone (AIF, Enterprise Portal, MorphX shared projects, the model store, AX 2012 DIXF, AX 2012 CIL helpers, security keys). Each has a one-line reason in `verdictNote`.
-- **to-review**: X++ snippets that use application classes and methods with no Microsoft Learn page. I could not verify them, so the notes do not claim they still work.
+- **to-review**: X++ snippets that use application classes and methods with no Microsoft Learn page. I could not verify them, so the notes do not claim they still work. After review, `ssrs-parameter-overrides-contract-default` and `ax2009-update-purchase-line-quantity` moved from historical to to-review: their platform is not gone, the behavior was just never checked on D365FO.
 
 ## to-review: what to check
 
@@ -47,15 +49,17 @@ Each of these needs a check on a current D365FO version, ideally a compile and a
 | `create-transfer-order-xpp` | `InventTransferLine.initFromInventTransferTable`, `InventTransferLine::lastLineNum`, quantities set directly on the line. |
 | `query-date-range-sysquery` | `SysQuery::range` with `dateNull()` as an open bound. |
 | `refresh-display-options-clear-display-option` | `FormDataSource.clearDisplayOption`. |
-| `create-counting-journal-xpp` | `InventSumDatePhysicalDim::onHandQty`, `journalSetCounted`, the voucher logic. The original contains an inline "try replacing..." suggestion; kept and labelled. |
+| `create-counting-journal-xpp` | `InventSumDatePhysicalDim::onHandQty`, `journalSetCounted`, the voucher logic. The original contains an inline "try replacing..." suggestion; kept and labeled. |
 | `recalculate-inventsum-item` | `InventSumRecalcItem`, and whether the on-hand consistency check is the supported route today. |
 | `inventsum-closed-and-closedqty` | The meaning of `Closed` and `ClosedQty`, and when inventory close sets them. |
 | `enumerator-not-valid-element-cil` | Map and Set enumerator behavior after a remove in D365FO. |
 | `find-product-variant-by-dimensions` | `EcoResProductVariantDimValue::getDimensionValuesContainer`, `EcoResProductVariantExistMgr::findVariantByMasterAndDimensions`. The original line has an extra closing parenthesis; kept. |
 | `find-product-master-by-number` | `EcoResProduct::findByProductNumber` and its return type (the snippet assigns it to an `EcoResProductMaster`). |
 | `inventory-dimension-active-check` | `InventDimGroupSetup::newInventTable`, `getFieldSetup`, `getStorageDimensionGroup`, and whether `WMSPalletId` is still an inventory dimension. The original line ends with an extra `));`; kept. |
-| `multi-selection-helper` | `MultiSelectionHelper::construct`, `parmDatasource`, `getFirst`/`getNext`. The original loop tests a different variable; kept and labelled. |
-| `save-and-restore-infolog` | `infolog.infologData()`, `infolog.import`, `infolog.view`. The original uses an undeclared `x`; kept and labelled. |
+| `multi-selection-helper` | `MultiSelectionHelper::construct`, `parmDatasource`, `getFirst`/`getNext`. The original loop tests a different variable; kept and labeled. |
+| `ssrs-parameter-overrides-contract-default` | Whether a report parameter stored in the SSRS report still overrides the default of the data contract `parm` method in D365FO. |
+| `ax2009-update-purchase-line-quantity` | `PurchLine::modifyPurchQty` and `InventMovement::bufferSetRemainQty` in D365FO, and the supported way to change `PurchQty` on an existing line. |
+| `save-and-restore-infolog` | `infolog.infologData()`, `infolog.import`, `infolog.view`. The original uses an undeclared `x`; kept and labeled. |
 
 ## Retired posts (15)
 
@@ -75,7 +79,7 @@ The brief expected about 9 retirements. The count is 15 because I also retired t
 
 ## Decisions Diego should know
 
-1. **Person name in an article.** `extending-copilot-chat-d365fo` thanks a named community member, verbatim from LinkedIn. That conflicts with "no person names in pages". I kept it because articles are verbatim; decide whether to drop the name.
+1. **Person name removed from an article.** `extending-copilot-chat-d365fo` thanked a named community member on LinkedIn. The owner's rule is no person names in pages, so the line now reads "A special thanks to a fellow community member", with the rest kept as published. The name can be restored if Diego asks.
 2. **Articles: formatting only, with a few fixes.** I removed emojis and hashtag lines, unwrapped LinkedIn redirect links, turned bold-only lines into headings, added code languages, restored the line breaks lost in the PowerShell and C# code, turned prose that sat inside code blocks (cloud-hosted article) back into prose, and wrote alt text for the images. The TLS article's duplicated section numbers (2, 2, ..., 7, 7) became 1 to 9. LinkedIn cover images were skipped (no schema field).
 3. **Article titles.** "D356FO" became "D365FO" in the code review title; the integration parts read "(Part 1 of 2)" and "(Part 2 of 2)"; "For" became "for" in the multithreading title.
 4. **Article links fixed.** Part 2's "link to part #1" pointed to the Copilot Chat article; it now points to `/articles/integration-architecture-rest-apim-part-1/`. In the code review article, the "inspired by" link showed a GitHub repository but pointed to the Marketplace; the link now matches the text. The GitHub link in Part 2 now uses https.
@@ -97,10 +101,10 @@ Four native articles expand short LinkedIn posts (rows P0, P10, P11, P14 of `sou
 
 | Article | Where Learn changed or did not confirm the post |
 |---|---|
-| `isv-licenses-sha256-10-0-49` | Confirmed: SHA-1 removal in build 7.0.8129.0 (PU73 = 10.0.49), SignatureVersion 2. Learn also has an older deprecation entry (10.0.39/PU63); the article says so. The auto-update hold for affected environments is not on Learn: kept as a field observation. |
+| `isv-licenses-sha256-10-0-49` | Confirmed: SHA-1 removal in build 7.0.8129.0 (PU73 = 10.0.49), SignatureVersion 2. Learn also has an older deprecation entry (10.0.39/PU63); the article says so. The auto-update hold for affected environments is not on Learn: kept as a field observation. The `__License` folder route is narrowed to what the UDE FAQ says (deploy from Visual Studio, then Full DB Sync); "the certificate doesn't have to change" is presented as Diego's inference. |
 | `continuous-number-sequences-10-0-47` | Build 7.0.7858.76, the 7.0.7858.90 fix and its root cause come from the support case. Learn confirms continuity rules (Italian tax books), cleanup, pause policy, and that 10.0.47 PQU-3 (7.0.7858.96) follows the fix build. |
-| `missing-inventsum-records-by-design` | Issue 914302 and "since 10.0.40" come from the support case. Learn confirms the mechanism, the parameter, its location and the affected reports. |
-| `fno-power-platform-admin-center` | Changed per Learn: up to 80 AOS (not 10); USE has JIT write via `db_datawriter` (not read-only); production can also be provisioned directly; admin user management is in public preview and covers admins only. Not confirmed: "ISV via AppSource only", F&O-specific environment group rules, "preview regions" (the article shows Learn's region table instead). |
+| `missing-inventsum-records-by-design` | Issue 914302 and "since 10.0.40" come from the support case. Learn confirms the mechanism, the parameter, its location and the affected reports, and that the cleanup job only deletes records below the Location level (now said and linked). |
+| `fno-power-platform-admin-center` | Changed per Learn: up to 80 AOS (not 10); USE has JIT write via `db_datawriter` (not read-only); production can also be provisioned directly; admin user management is in public preview, and Learn only describes admin scenarios. Not confirmed: "ISV via AppSource only", F&O-specific environment group rules, "preview regions" (the article shows Learn's region table instead). |
 
 ## Source URL table
 

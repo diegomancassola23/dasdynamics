@@ -1,6 +1,6 @@
 // Generates public/og-default.png (1200x630), the default Open Graph image.
 // Renders an HTML card with the self-hosted fonts in headless Chrome, then
-// optimises it with sharp. Run: npm run og
+// optimizes it with sharp. Run: npm run og
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';

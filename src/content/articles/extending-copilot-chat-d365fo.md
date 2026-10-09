@@ -227,4 +227,4 @@ This article was written with the support of AI, but the tests, the mistakes, th
 
 A special thanks to my company for supporting this kind of experimentation and for believing that this AI revolution is not something to watch from the sidelines, but something to explore from the inside.
 
-A special thanks to _André Arnaud de Calavon_, give me a couple of true suggestions.
+A special thanks to a fellow community member, give me a couple of true suggestions.

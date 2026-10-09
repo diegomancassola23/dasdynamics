@@ -36,7 +36,7 @@ Some vocabulary moves with it: a database refresh is now an environment **copy**
 
 *Session:* some regions in preview.
 
-*Learn today:* there is a region table per environment type. Not every Azure region that Dataverse supports is supported for finance and operations apps, and several secondary regions (for example France South, UK West, Switzerland West) support only UDE and trial environments, not UPE or USE. Italy North supports all types. The ERP templates themselves (Finance, Supply Chain Management, Project Operations) are still labelled "(preview)" in the template list. Check the table before you pick a location: installing the provisioning app in an unsupported region fails.
+*Learn today:* there is a region table per environment type. Not every Azure region that Dataverse supports is supported for finance and operations apps, and several secondary regions (for example France South, UK West, Switzerland West) support only UDE and trial environments, not UPE or USE. Italy North supports all types. The ERP templates themselves (Finance, Supply Chain Management, Project Operations) are still labeled "(preview)" in the template list. Check the table before you pick a location: installing the provisioning app in an unsupported region fails.
 
 ### ISV solutions
 
@@ -90,7 +90,7 @@ Some vocabulary moves with it: a database refresh is now an environment **copy**
 
 *Session:* PPAC security, and F&O user management in private preview.
 
-*Learn today:* **unified admin user management** is in **public preview**. It covers System Administrators (directly or through Dataverse *Owner* teams) and the environment admin: once you turn on **(Preview) Unified admin user management** in Feature management, PPAC and Dataverse become the source of truth, changes synchronize to Finance and Operations, and admin roles that exist only on the F&O side are removed. It needs Platform update 72 (7.0.7996.61) or later and the Unified User Management solution 9.3.3445.2 or later. It doesn't cover the business roles of ordinary users. On security in general, Learn lists PPAC compliance features (customer-managed keys, tenant isolation, virtual network support) for Power Platform workloads; I found nothing F&O-specific to add.
+*Learn today:* **unified admin user management** is in **public preview**. It covers System Administrators (directly or through Dataverse *Owner* teams) and the environment admin: once you turn on **(Preview) Unified admin user management** in Feature management, PPAC and Dataverse become the source of truth, changes synchronize to Finance and Operations, and admin roles that exist only on the F&O side are removed. It needs Platform update 72 (7.0.7996.61) or later and the Unified User Management solution 9.3.3445.2 or later. Learn only describes admin scenarios. On security in general, Learn lists PPAC compliance features (customer-managed keys, tenant isolation, virtual network support) for Power Platform workloads; I found nothing F&O-specific to add.
 
 ## What I take from it
 

@@ -81,7 +81,7 @@
   "verdicts": {
     "valid": {
       "label": "Still valid",
-      "meaning": "Works the same way in D365FO."
+      "meaning": "Still works in D365FO, within the scope stated in the note."
     },
     "changed": {
       "label": "Changed in D365FO",
@@ -89,7 +89,7 @@
     },
     "historical": {
       "label": "Historical",
-      "meaning": "AX-only. Kept for anyone still running 2009 or 2012."
+      "meaning": "Tied to a version, API or tool that is gone. Kept for the record."
     },
     "to-review": {
       "label": "To review",

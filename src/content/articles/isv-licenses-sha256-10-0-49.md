@@ -37,11 +37,11 @@ The "Removed or deprecated platform features" article has an older entry that sa
 
 **3. Validate in a sandbox on 10.0.49.** Import the new licenses into a sandbox that already runs 10.0.49, restart, and check that the configuration keys are still on and the ISV features work. That is the only test that proves the license survives a restart on the new build.
 
-**4. Deploy to production before the update.** In Lifecycle Services-managed production you install ISV licenses with a deployable package, starting from the `ImportISVLicense.zip` template in the `bin\CustomDeployablePackage` folder of the packages directory (licenses are installed in alphabetical order, which matters if one depends on another). In unified environments, the developer FAQ explains that a license placed in the model's `__License` folder is applied when the package is deployed, and the Azure DevOps task can add ISV licenses to the package. Either way, the license should be in production before the update window, not after.
+**4. Deploy to production before the update.** In Lifecycle Services-managed production you install ISV licenses with a deployable package, starting from the `ImportISVLicense.zip` template in the `bin\CustomDeployablePackage` folder of the packages directory (licenses are installed in alphabetical order, which matters if one depends on another). In unified environments, the developer FAQ covers two routes: when you deploy directly from Visual Studio, a license placed in the model's `__License` folder is verified and applied with the package, and a **Full DB Sync** is then required for it to take effect; in a pipeline, the Azure DevOps extension can add ISV licenses to the package. Either way, the license should be in production before the update window, not after.
 
 ## If you are the ISV
 
-Regenerate every customer license with SignatureVersion 2 now, and send them out with a short note on how to import them. The certificate itself doesn't have to change: Learn lists 1024 to 4096-bit Authenticode certificates as supported, and the self-signed test certificate recipe for Platform update 35 and later already uses SHA-256. Your customers' update calendar is now your deadline.
+Regenerate every customer license with SignatureVersion 2 now, and send them out with a short note on how to import them. My reading is that the certificate itself doesn't have to change: Learn doesn't say so in those words, but it lists 1024 to 4096-bit Authenticode certificates as supported, and the self-signed test certificate recipe for Platform update 35 and later already uses SHA-256. Your customers' update calendar is now your deadline.
 
 ## References
 
@@ -50,6 +50,6 @@ Regenerate every customer license with SignatureVersion 2 now, and send them out
 - [Platform updates for version 10.0.49](https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/fin-ops/get-started/whats-new-platform-updates-10-0-49) — release schedule and the PU73/10.0.49 pairing.
 - [View independent software vendor license status](https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/sysadmin/view-isv-license-status) — the License codes tab.
 - [Pause service updates through Lifecycle Services](https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/pause-service-updates) — one pause at a time; ISV issues aren't eligible for extra pauses.
-- [Unified developer experience FAQ](https://learn.microsoft.com/en-us/power-platform/developer/unified-experience/finance-operations-faq) — licenses in the `__License` folder and in the Azure DevOps task.
+- [Unified developer experience FAQ](https://learn.microsoft.com/en-us/power-platform/developer/unified-experience/finance-operations-faq) — licenses in the `__License` folder (deploy from Visual Studio, then Full DB Sync) and in the Azure DevOps extension.
 
 First shared as a short post on LinkedIn.

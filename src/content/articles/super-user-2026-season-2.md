@@ -1,6 +1,6 @@
 ---
 title: "Dynamics 365 Community Super User, 2026 Season 2"
-description: "Recognised as a Microsoft Power Platform & Dynamics 365 Community Super User for Season 2, 2026: what the program is, and why it matters to me."
+description: "Recognized as a Microsoft Power Platform & Dynamics 365 Community Super User for Season 2, 2026: what the program is, and why it matters to me."
 date: 2026-10-09
 kind: article
 track: platform
@@ -11,7 +11,7 @@ pinned: true
 draft: true
 ---
 
-I have been recognised as a **Microsoft Power Platform & Dynamics 365 Community Super User for Season 2, 2026**.
+I have been recognized as a **Microsoft Power Platform & Dynamics 365 Community Super User for Season 2, 2026**.
 
 It is a small but meaningful milestone in a journey I started earlier this year: making more of my experience available to the community, and offering active, practical support to the people who ask.
 

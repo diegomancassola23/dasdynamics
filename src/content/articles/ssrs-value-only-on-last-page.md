@@ -4,7 +4,7 @@ description: "Compare Globals!PageNumber with Globals!TotalPages to show a value
 date: 2014-10-02
 updated: 2026-10-10
 kind: note
-track: xpp
+track: platform
 versions: ["AX 2012","D365FO"]
 tags: ["ssrs","reporting","expressions"]
 verdict: valid

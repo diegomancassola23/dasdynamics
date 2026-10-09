@@ -9,7 +9,8 @@ npm run new -- "My title"
 This creates `src/content/articles/<slug>.md` with the frontmatter filled in
 (`kind: article`, today's date, `draft: true`) and an empty images folder.
 Fill `description` (one sentence, max 160 characters: it is what Google and
-LinkedIn show) and `track` (`integrations`, `ai`, `xpp` or `platform`).
+LinkedIn show), `track` (`integrations`, `ai`, `xpp` or `platform`) and
+`tags` (the template puts `["d365fo"]`: at least one tag is required).
 All fields: [CONTENT-SCHEMA.md](CONTENT-SCHEMA.md).
 
 ## 2. Preview

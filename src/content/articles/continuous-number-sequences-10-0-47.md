@@ -1,6 +1,6 @@
 ---
 title: "Continuous number sequences after 10.0.47: an incident timeline"
-description: "Italian localisation, 10.0.47: continuous numbers left behind after failed postings. The timeline, the fix, and how I handle a compliance-critical regression."
+description: "Italian localization, 10.0.47: continuous numbers left behind after failed postings. The timeline, the fix, and how I handle a compliance-critical regression."
 date: 2026-10-10
 kind: article
 track: platform
@@ -14,7 +14,7 @@ In spring 2026 a regression in 10.0.47 hit continuous number sequences on an Ita
 
 ## Why continuity matters here
 
-Microsoft Learn is clear on both sides of the trade-off. A **continuous** number sequence doesn't skip numbers, but numbers may not be used in order: when a transaction is cancelled, the number is recycled. A **noncontinuous** sequence uses numbers in order but may skip some. Learn recommends noncontinuous sequences for performance, *unless there's a regulatory or legal compliance requirement*.
+Microsoft Learn is clear on both sides of the trade-off. A **continuous** number sequence doesn't skip numbers, but numbers may not be used in order: when a transaction is canceled, the number is recycled. A **noncontinuous** sequence uses numbers in order but may skip some. Learn recommends noncontinuous sequences for performance, *unless there's a regulatory or legal compliance requirement*.
 
 Italy is that requirement. The Italian sales tax books article says that all sales tax transactions must be numbered sequentially, without gaps, and ordered by posting date, and that the number sequences behind the tax book sections must be continuous with **Company** scope. A number that is consumed and never used is a hole in the *Protocollo IVA*.
 
@@ -28,7 +28,7 @@ These are the dates and facts as I followed them on the case. The build numbers 
 - **8 May.** A caveat came with the fix: a performance concern with the proactive quality update that carried it. So the fix was not something to push into production blind; it needed a test pass first.
 - **21 May.** The final recommendation: run **10.0.47 PQU-3 or later**, and keep the automated cleanup of number sequences running.
 
-In the same weeks I also cancelled a scheduled 10.0.47 update: there was no reason to bring one more environment onto the build while the case was open.
+In the same weeks I also canceled a scheduled 10.0.47 update: there was no reason to bring one more environment onto the build while the case was open.
 
 Learn's PQU schedule fits the support build numbers: 10.0.47 PQU-1 is platform 7.0.7858.54 and PQU-3 is 7.0.7858.96, so PQU-3 is the first scheduled quality update after the 7.0.7858.90 fix. (PQU-2 is listed as canceled for most stations.) The 10.0.47 base release itself is build 7.0.7858.14.
 

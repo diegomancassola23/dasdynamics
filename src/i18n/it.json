@@ -81,7 +81,7 @@
   "verdicts": {
     "valid": {
       "label": "Ancora valida",
-      "meaning": "Funziona allo stesso modo in D365FO."
+      "meaning": "Funziona ancora in D365FO, nei limiti indicati nella nota."
     },
     "changed": {
       "label": "Cambiata in D365FO",
@@ -89,7 +89,7 @@
     },
     "historical": {
       "label": "Storica",
-      "meaning": "Solo AX. Resta per chi usa ancora la 2009 o la 2012."
+      "meaning": "Legata a una versione, un’API o uno strumento che non ci sono più. Resta come memoria."
     },
     "to-review": {
       "label": "Da rivedere",

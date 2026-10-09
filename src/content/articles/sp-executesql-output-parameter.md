@@ -8,7 +8,7 @@ track: platform
 versions: ["AX 2012"]
 tags: ["sql","t-sql","dynamic-sql"]
 verdict: valid
-verdictNote: "Plain T-SQL: OUTPUT parameters of sp_executesql are still documented and work the same way."
+verdictNote: "Plain T-SQL, still documented; usable only on a development VM or an on-premises SQL Server, not in Microsoft-managed sandbox or production."
 originalUrl: "https://dynamicsaxnotes.blogspot.com/2014/01/sql-taking-result-from-dynamics.html"
 mergedFrom: []
 draft: false
