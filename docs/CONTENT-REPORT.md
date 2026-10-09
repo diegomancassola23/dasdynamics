@@ -91,6 +91,17 @@ The brief expected about 9 retirements. The count is 15 because I also retired t
 14. **`versions` values.** Used "AX 4.0", "AX 2009", "AX 2012" and "D365FO". "AX 4.0" appears once (`find-projects-containing-aot-object`), from the original labels.
 15. **Note titles.** Rewritten as plain descriptive titles; "HOWTO:", "TIP:", "CODE:", "ISSUE:" and "D365FFO:" prefixes were dropped. Where an original title promised more than the note delivers (enums in `query-date-range-sysquery`, "in body" in `ssrs-value-only-on-last-page`), the lead says so.
 
+## New articles from LinkedIn short posts (drafts)
+
+Four native articles expand short LinkedIn posts (rows P0, P10, P11, P14 of `sources/linkedin-posts/posts.md`). They have no `originalUrl` and are `draft: true` until Diego reviews them. Every Learn link was opened and read on 2026-10-09.
+
+| Article | Where Learn changed or did not confirm the post |
+|---|---|
+| `isv-licenses-sha256-10-0-49` | Confirmed: SHA-1 removal in build 7.0.8129.0 (PU73 = 10.0.49), SignatureVersion 2. Learn also has an older deprecation entry (10.0.39/PU63); the article says so. The auto-update hold for affected environments is not on Learn: kept as a field observation. |
+| `continuous-number-sequences-10-0-47` | Build 7.0.7858.76, the 7.0.7858.90 fix and its root cause come from the support case. Learn confirms continuity rules (Italian tax books), cleanup, pause policy, and that 10.0.47 PQU-3 (7.0.7858.96) follows the fix build. |
+| `missing-inventsum-records-by-design` | Issue 914302 and "since 10.0.40" come from the support case. Learn confirms the mechanism, the parameter, its location and the affected reports. |
+| `fno-power-platform-admin-center` | Changed per Learn: up to 80 AOS (not 10); USE has JIT write via `db_datawriter` (not read-only); production can also be provisioned directly; admin user management is in public preview and covers admins only. Not confirmed: "ISV via AppSource only", F&O-specific environment group rules, "preview regions" (the article shows Learn's region table instead). |
+
 ## Source URL table
 
 All 73 sources. L = LinkedIn article (order of `sources/linkedin/index.json`), B = blog post (index in `sources/blogger/posts.json`).
