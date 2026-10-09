@@ -111,6 +111,15 @@ for (const f of ['robots.txt', 'rss.xml', 'sitemap-index.xml', 'favicon.svg', 'o
   if (!fs.existsSync(path.join(dist, f))) problems.push(`missing ${f}`);
 }
 
+// en.json and it.json carry the same keys
+const keysOf = (obj, prefix = '') =>
+  Object.entries(obj).flatMap(([k, v]) => (v && typeof v === 'object' ? keysOf(v, `${prefix}${k}.`) : [`${prefix}${k}`]));
+const dict = (lang) => JSON.parse(fs.readFileSync(path.join(root, 'src/i18n', `${lang}.json`), 'utf8'));
+const en = new Set(keysOf(dict('en')));
+const it = new Set(keysOf(dict('it')));
+for (const k of en) if (!it.has(k)) problems.push(`it.json lacks "${k}"`);
+for (const k of it) if (!en.has(k)) problems.push(`en.json lacks "${k}"`);
+
 console.log(`Checked ${htmlFiles.length} HTML pages in dist/.`);
 if (problems.length) {
   for (const p of problems) console.log(' - ' + p);

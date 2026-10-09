@@ -44,7 +44,8 @@
     "archiveCta": "Open the archive",
     "notesPerYear": "Notes per year",
     "aboutTitle": "About",
-    "aboutMore": "More about me"
+    "aboutMore": "More about me",
+    "numbers": "Zero,One,Two,Three,Four,Five,Six,Seven,Eight,Nine,Ten,Eleven,Twelve,Thirteen,Fourteen,Fifteen,Sixteen,Seventeen,Eighteen,Nineteen,Twenty"
   },
   "credential": {
     "label": "Dynamics 365 Community Super User",
@@ -78,10 +79,22 @@
     }
   },
   "verdicts": {
-    "valid": { "label": "Still valid", "meaning": "Works the same way in D365FO." },
-    "changed": { "label": "Changed in D365FO", "meaning": "The idea holds, the API or the tool moved. The note says where." },
-    "historical": { "label": "Historical", "meaning": "AX-only. Kept for anyone still running 2009 or 2012." },
-    "to-review": { "label": "To review", "meaning": "Not re-tested yet." }
+    "valid": {
+      "label": "Still valid",
+      "meaning": "Works the same way in D365FO."
+    },
+    "changed": {
+      "label": "Changed in D365FO",
+      "meaning": "The idea holds, the API or the tool moved. The note says where."
+    },
+    "historical": {
+      "label": "Historical",
+      "meaning": "AX-only. Kept for anyone still running 2009 or 2012."
+    },
+    "to-review": {
+      "label": "To review",
+      "meaning": "Not re-tested yet."
+    }
   },
   "articles": {
     "title": "Articles",
@@ -134,7 +147,9 @@
     "seriesPart": "Part {part}",
     "tags": "Tags",
     "draftBanner": "Draft — not published. Visible only in development.",
-    "readingTime": "{min} min read"
+    "readingTime": "{min} min read",
+    "breadcrumb": "Breadcrumb",
+    "sources": "Sources"
   },
   "tags": {
     "title": "Tagged “{tag}”",

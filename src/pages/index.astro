@@ -29,7 +29,7 @@ const notes = all.filter(isNote);
 
 const firstYear = all.length ? Math.min(...all.map((e) => e.data.date.getUTCFullYear())) : new Date().getFullYear();
 const years = new Date().getFullYear() - firstYear;
-const numberWords = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen'];
+const numberWords = t('home.numbers').split(',');
 const yearsText = numberWords[years] ?? String(years);
 
 const ordered = pinnedFirst(articles);

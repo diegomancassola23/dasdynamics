@@ -1,4 +1,4 @@
-# Dynamics Dreams
+# dasdynamics (repo folder: dynamicsdreams)
 
 Diego Mancassola's personal site: articles on Dynamics 365 Finance & Operations and AI.
 The site is the home of new articles; LinkedIn only carries a summary and a link.
@@ -13,3 +13,5 @@ The site is the home of new articles; LinkedIn only carries a summary and a link
 - No customer names, no secrets, no e-mail addresses in pages.
 - JSON in UTF-8 without BOM.
 - Scripts that change things re-read and print `ESITO: fatto` or `ESITO: non fatto`.
+- Site: Astro, see `README.md`. Writing guide: `docs/WRITING.md`. UI strings live in `src/i18n/en.json` and `it.json`, never in components.
+- Before committing site changes: `npm run build` then `npm run check` must print `ESITO: fatto`.

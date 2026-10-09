@@ -44,7 +44,8 @@
     "archiveCta": "Apri l’archivio",
     "notesPerYear": "Note per anno",
     "aboutTitle": "Chi sono",
-    "aboutMore": "Di più su di me"
+    "aboutMore": "Di più su di me",
+    "numbers": "Zero,Uno,Due,Tre,Quattro,Cinque,Sei,Sette,Otto,Nove,Dieci,Undici,Dodici,Tredici,Quattordici,Quindici,Sedici,Diciassette,Diciotto,Diciannove,Venti"
   },
   "credential": {
     "label": "Dynamics 365 Community Super User",
@@ -78,10 +79,22 @@
     }
   },
   "verdicts": {
-    "valid": { "label": "Ancora valida", "meaning": "Funziona allo stesso modo in D365FO." },
-    "changed": { "label": "Cambiata in D365FO", "meaning": "L’idea regge, l’API o lo strumento si sono spostati. La nota dice dove." },
-    "historical": { "label": "Storica", "meaning": "Solo AX. Resta per chi usa ancora la 2009 o la 2012." },
-    "to-review": { "label": "Da rivedere", "meaning": "Non ancora riprovata." }
+    "valid": {
+      "label": "Ancora valida",
+      "meaning": "Funziona allo stesso modo in D365FO."
+    },
+    "changed": {
+      "label": "Cambiata in D365FO",
+      "meaning": "L’idea regge, l’API o lo strumento si sono spostati. La nota dice dove."
+    },
+    "historical": {
+      "label": "Storica",
+      "meaning": "Solo AX. Resta per chi usa ancora la 2009 o la 2012."
+    },
+    "to-review": {
+      "label": "Da rivedere",
+      "meaning": "Non ancora riprovata."
+    }
   },
   "articles": {
     "title": "Articoli",
@@ -134,7 +147,9 @@
     "seriesPart": "Parte {part}",
     "tags": "Tag",
     "draftBanner": "Bozza — non pubblicata. Visibile solo in sviluppo.",
-    "readingTime": "{min} min di lettura"
+    "readingTime": "{min} min di lettura",
+    "breadcrumb": "Percorso",
+    "sources": "Fonti"
   },
   "tags": {
     "title": "Con il tag «{tag}»",

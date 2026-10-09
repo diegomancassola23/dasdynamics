@@ -95,7 +95,7 @@ const jsonLd = [
 >
   <article class="wrap-article">
     {d.draft && <p class="draft-banner mono">{t('article.draftBanner')}</p>}
-    <nav aria-label="Breadcrumb" class="crumbs mono">
+    <nav aria-label={t('article.breadcrumb')} class="crumbs mono">
       {isNote ? (
         <>
           <a href="/archive/">{t('article.breadcrumbArchive')}</a><span aria-hidden="true">/</span><span>{t(`tracks.${d.track}.short`)}</span>
@@ -151,7 +151,7 @@ const jsonLd = [
     )}
 
     {(d.originalUrl || d.mergedFrom.length > 0) && (
-      <aside aria-label="Sources" class="sources">
+      <aside aria-label={t('article.sources')} class="sources">
         {isLinkedIn(d.originalUrl) && (
           <p>{t('article.originallyLinkedIn')}: <a href={d.originalUrl}>{d.originalUrl}</a></p>
         )}

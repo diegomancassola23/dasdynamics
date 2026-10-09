@@ -4,7 +4,7 @@ import { t } from '../i18n';
 import { articleUrl, formatDay, type Entry } from '../lib/content';
 const { entry, headingLevel = 3 } = Astro.props as { entry: Entry; headingLevel?: 2 | 3 };
 const d = entry.data;
-const H = `h${headingLevel}`;
+const H = (headingLevel === 2 ? "h2" : "h3") as "h3";
 const code = d.cover ?? t(`tracks.${d.track}.code`);
 ---
 <article class="card">
