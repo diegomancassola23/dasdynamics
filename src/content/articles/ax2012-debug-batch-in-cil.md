@@ -8,7 +8,7 @@ track: xpp
 versions: ["AX 2012"]
 tags: ["batch","debugging","cil","ax-2012"]
 verdict: historical
-verdictNote: "An AX 2012 technique built on runClassMethodIL and the AX 2012 batch framework."
+verdictNote: "Built on runClassMethodIL, which is removed in D365FO now that all X++ compiles to CIL."
 originalUrl: "https://dynamicsaxnotes.blogspot.com/2017/01/howto-run-batch-using-x-helps-for-debug.html"
 mergedFrom: []
 draft: false
@@ -56,4 +56,4 @@ Now you can debug it.
 
 ## References
 
-- No current Microsoft Learn page applies: the technique is specific to AX 2012.
+- [X++ language reference](https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/dev-ref/xpp-language-reference) (Microsoft Learn): X++ compiles to .NET CIL, and "CIL helper methods such as `Global::runClassMethodIL` are removed".

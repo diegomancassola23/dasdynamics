@@ -8,7 +8,7 @@ track: integrations
 versions: ["AX 2012"]
 tags: ["aif","debugging","ax-2012"]
 verdict: historical
-verdictNote: "AIF was removed in Dynamics AX 7.0 and replaced by the data management framework."
+verdictNote: "AIF was removed as of Dynamics AX 7.0 and replaced by the Data Import/Export framework."
 originalUrl: "https://dynamicsaxnotes.blogspot.com/2016/05/howto-debug-aifoutboundprocessingservice.html"
 mergedFrom: []
 draft: false
