@@ -1,0 +1,73 @@
+---
+import Logo from './Logo.astro';
+import Arrow from './Arrow.astro';
+import { t } from '../i18n';
+interface Props {
+  current?: 'home' | 'articles' | 'archive' | 'about';
+}
+const { current } = Astro.props;
+const links = [
+  { key: 'articles', href: '/articles/', label: t('nav.articles') },
+  { key: 'archive', href: '/archive/', label: t('nav.archive') },
+  { key: 'topics', href: '/#tracks', label: t('nav.topics') },
+  { key: 'about', href: '/about/', label: t('nav.about') },
+];
+---
+<header class="site-header">
+  <nav aria-label={t('nav.label')} class="wrap nav">
+    <Logo />
+    <ul class="links">
+      {links.map((l) => (
+        <li><a href={l.href} aria-current={l.key === current ? 'page' : undefined}>{l.label}</a></li>
+      ))}
+    </ul>
+    <a href="/rss.xml" class="btn btn-accent" aria-label={t('nav.subscribeLabel')}>{t('nav.subscribe')}<Arrow /></a>
+  </nav>
+</header>
+
+<style>
+  .site-header {
+    border-bottom: 1px solid var(--line);
+  }
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 32px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 24px;
+    flex-grow: 1;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .links a {
+    display: inline-block;
+    color: var(--ink);
+    padding: 12px 0;
+    border-bottom: 2px solid transparent;
+  }
+  .links a[aria-current='page'] {
+    border-bottom-color: var(--ink);
+  }
+  @media (max-width: 560px) {
+    .nav {
+      gap: 4px 16px;
+    }
+    .links {
+      order: 3;
+      flex-basis: 100%;
+      gap: 0 20px;
+    }
+    .nav > :global(.btn) {
+      margin-left: auto;
+    }
+  }
+</style>

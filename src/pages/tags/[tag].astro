@@ -1,0 +1,60 @@
+---
+import Base from '../../layouts/Base.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import NoteRow from '../../components/NoteRow.astro';
+import { t } from '../../i18n';
+import { getAll, isArticle, isNote, slugify, type Entry } from '../../lib/content';
+import { pageTitle } from '../../lib/site';
+
+export async function getStaticPaths() {
+  const all = await getAll();
+  const byTag = new Map<string, { label: string; entries: Entry[] }>();
+  for (const e of all) {
+    for (const tag of e.data.tags) {
+      const key = slugify(tag);
+      if (!byTag.has(key)) byTag.set(key, { label: tag, entries: [] });
+      byTag.get(key)!.entries.push(e);
+    }
+  }
+  return [...byTag.entries()].map(([tag, v]) => ({ params: { tag }, props: v }));
+}
+const { label, entries } = Astro.props as { label: string; entries: Entry[] };
+const articles = entries.filter(isArticle);
+const notes = entries.filter(isNote);
+const title = t('tags.title', { tag: label });
+---
+<Base title={pageTitle(title)} description={`${title}: ${entries.map((e) => e.data.title).slice(0, 3).join('; ')}`.slice(0, 160)}>
+  <div class="wrap page">
+    <p class="eyebrow">{t('tags.eyebrow')}</p>
+    <h1 class="title"><span class="mono hash">#</span>{label}</h1>
+    {articles.length > 0 && (
+      <section aria-labelledby="a-h">
+        <h2 id="a-h" class="eyebrow sub">{t('nav.articles')}</h2>
+        <div class="grid">{articles.map((a) => <ArticleCard entry={a} />)}</div>
+      </section>
+    )}
+    {notes.length > 0 && (
+      <section aria-labelledby="n-h">
+        <h2 id="n-h" class="eyebrow sub">{t('nav.archive')}</h2>
+        <ul class="rows">{notes.map((n) => <NoteRow entry={n} />)}</ul>
+      </section>
+    )}
+  </div>
+</Base>
+
+<style>
+  .page { padding-top: 72px; padding-bottom: 96px; }
+  .eyebrow { margin-bottom: 18px; }
+  .title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(36px, 5vw, 60px);
+    line-height: 1.05;
+    letter-spacing: -1px;
+  }
+  .hash { color: var(--accent); font-weight: 400; }
+  .sub { margin: 48px 0 16px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); gap: 24px; }
+  .rows { list-style: none; margin: 0; padding: 0; }
+</style>

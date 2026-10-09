@@ -1,0 +1,188 @@
+{
+  "site": {
+    "name": "dasdynamics",
+    "payoff": "D as Dynamics. D as Diego.",
+    "payoffLead": "D as Dynamics.",
+    "payoffTail": "D as Diego.",
+    "author": "Diego Mancassola",
+    "tagline": "Dynamics 365 Finance & Operations e IA",
+    "homeTitle": "Diego Mancassola · dasdynamics — architettura, integrazioni e IA per Dynamics 365 F&O",
+    "homeDescription": "Diego Mancassola scrive di Dynamics 365 Finance & Operations: architettura, integrazioni con Azure API Management, X++ e IA dentro l’ERP.",
+    "titleSuffix": "Diego Mancassola"
+  },
+  "nav": {
+    "label": "Principale",
+    "skip": "Vai al contenuto",
+    "home": "Home di dasdynamics",
+    "articles": "Articoli",
+    "archive": "Archivio",
+    "topics": "Temi",
+    "about": "Chi sono",
+    "subscribe": "Iscriviti",
+    "subscribeLabel": "Iscriviti via RSS"
+  },
+  "home": {
+    "eyebrow": "Dynamics 365 Finance & Operations · Architettura · IA",
+    "title": "Architettura, integrazioni e IA per Dynamics 365 F&O.",
+    "lead": "{years} anni di appunti sul campo di Diego Mancassola: dagli snippet X++ su AX 2009 ad API Management, server MCP e Copilot dentro D365FO.",
+    "ctaLatest": "Leggi l’ultimo",
+    "ctaArchive": "Sfoglia l’archivio",
+    "statPublished": "Pubblicati",
+    "statSince": "Scrivo dal",
+    "statVersions": "Versioni trattate",
+    "pinned": "In evidenza",
+    "latest": "Ultimo",
+    "partOf": "Parte {part} di {total}",
+    "series": "Serie",
+    "seriesFoot": "Ogni articolo nasce qui; LinkedIn riceve il sunto e il link.",
+    "writing": "Scritti",
+    "allArticles": "Tutti gli articoli",
+    "tracksTitle": "Quattro filoni, un solo filo",
+    "archiveEyebrow": "L’archivio",
+    "archiveTitle": "Dynamics AX Notes, {from}–{to}. Riletto nel 2026.",
+    "archiveLead": "{count} note degli anni di Blogger. Ognuna ora dice se vale ancora in D365FO, cosa l’ha sostituita o perché è storia.",
+    "archiveCta": "Apri l’archivio",
+    "notesPerYear": "Note per anno",
+    "aboutTitle": "Chi sono",
+    "aboutMore": "Di più su di me",
+    "numbers": "Zero,Uno,Due,Tre,Quattro,Cinque,Sei,Sette,Otto,Nove,Dieci,Undici,Dodici,Tredici,Quattordici,Quindici,Sedici,Diciassette,Diciotto,Diciannove,Venti"
+  },
+  "credential": {
+    "label": "Dynamics 365 Community Super User",
+    "season": "2026 Season 2",
+    "readMore": "Cosa significa"
+  },
+  "tracks": {
+    "integrations": {
+      "name": "Integrazioni e dati",
+      "short": "Integrazioni",
+      "code": "API",
+      "blurb": "AIF e DIXF, poi OData e data entity, oggi REST e Azure API Management."
+    },
+    "ai": {
+      "name": "IA nell’ERP",
+      "short": "IA",
+      "code": "IA",
+      "blurb": "Estensioni di Copilot Chat, code review di X++ con Copilot, server MCP per sviluppatori."
+    },
+    "xpp": {
+      "name": "Il mestiere di X++",
+      "short": "X++",
+      "code": "X++",
+      "blurb": "Prestazioni, multithreading, etichette, form e i pattern che sopravvivono a ogni versione."
+    },
+    "platform": {
+      "name": "Piattaforma e ambienti",
+      "short": "Piattaforma",
+      "code": "Ops",
+      "blurb": "VM cloud-hosted, certificati, TLS, SSRS e i giorni in cui una macchina dice INCOMPLETE."
+    }
+  },
+  "verdicts": {
+    "valid": {
+      "label": "Ancora valida",
+      "meaning": "Funziona allo stesso modo in D365FO."
+    },
+    "changed": {
+      "label": "Cambiata in D365FO",
+      "meaning": "L’idea regge, l’API o lo strumento si sono spostati. La nota dice dove."
+    },
+    "historical": {
+      "label": "Storica",
+      "meaning": "Solo AX. Resta per chi usa ancora la 2009 o la 2012."
+    },
+    "to-review": {
+      "label": "Da rivedere",
+      "meaning": "Non ancora riprovata."
+    }
+  },
+  "articles": {
+    "title": "Articoli",
+    "eyebrow": "Scritti",
+    "lead": "Articoli lunghi su Dynamics 365 Finance & Operations: architettura, integrazioni, X++ e IA. Escono prima qui; LinkedIn riceve un sunto e un link.",
+    "filterLabel": "Filtra per filone",
+    "all": "Tutti",
+    "empty": "Ancora niente qui.",
+    "readArticle": "Leggi l’articolo",
+    "pinned": "In evidenza",
+    "draft": "Bozza",
+    "trackTitle": "{track} — articoli"
+  },
+  "archive": {
+    "eyebrow": "Archivio · già Dynamics AX Notes",
+    "title": "Dieci anni di note, rilette con gli occhi di oggi.",
+    "lead": "Scritte su Blogger tra il {from} e il {to}, da AX 2009 a D365FO. Ogni nota ha ora un verdetto per il 2026 e, dove è cambiata, un rimando a ciò che l’ha sostituita.",
+    "searchLabel": "Cerca nell’archivio",
+    "searchPlaceholder": "InventSum, SSRS, lookup…",
+    "filterLabel": "Filtra per verdetto 2026",
+    "all": "Tutte",
+    "noMatch": "Nessuna nota corrisponde.",
+    "passTitle": "La revisione editoriale",
+    "passOnBlogger": "Note su Blogger",
+    "passRetired": "Ripubblicazioni e solo link, citate o ritirate",
+    "passMerged": "Doppioni uniti",
+    "passKept": "Note conservate",
+    "bridgeTitle": "Allora → oggi",
+    "bridgeLead": "Dove una vecchia nota è diventata un articolo nuovo.",
+    "verdictsTitle": "Cosa vogliono dire i verdetti",
+    "verdictTitle": "Archivio — {verdict}",
+    "count": "{count} note"
+  },
+  "article": {
+    "breadcrumbArticles": "Articoli",
+    "breadcrumbArchive": "Archivio",
+    "firstWritten": "Scritta il",
+    "published": "Pubblicato",
+    "reread": "Riletta",
+    "updated": "Aggiornato",
+    "versions": "Versioni",
+    "originallyLinkedIn": "Pubblicato in origine su LinkedIn",
+    "originallyBlog": "In origine su Dynamics AX Notes:",
+    "mergedNote": "Unita a:",
+    "previous": "Precedente",
+    "next": "Successiva",
+    "moreFromArchive": "Altro dall’archivio",
+    "moreArticles": "Altri articoli",
+    "seriesNav": "Serie",
+    "seriesPart": "Parte {part}",
+    "tags": "Tag",
+    "draftBanner": "Bozza — non pubblicata. Visibile solo in sviluppo.",
+    "readingTime": "{min} min di lettura",
+    "breadcrumb": "Percorso",
+    "sources": "Fonti"
+  },
+  "tags": {
+    "title": "Con il tag «{tag}»",
+    "eyebrow": "Tag"
+  },
+  "about": {
+    "title": "Chi sono",
+    "metaTitle": "Chi è Diego Mancassola",
+    "description": "Diego Mancassola è Technical Solution Architect in PA Expertise - Alveo group: architettura, integrazioni e IA su Dynamics 365 Finance & Operations.",
+    "bio": "Technical Solution Architect in PA Expertise - Alveo group, a Vicenza. Lavoro su Microsoft Dynamics 365 Finance & Operations: architettura, integrazioni con Azure API Management e Azure Functions, analisi funzionale e tecnica. Di recente costruisco strumenti in cui l’IA legge e giudica, e il codice fa da impianto.",
+    "nameStory": "dasdynamics si legge «D as Dynamics». La D è anche la mia: il monogramma è una D piccola dentro una D grande.",
+    "historyTitle": "Scrivo dal 2014",
+    "history": "Dal 2014 al 2024 ho tenuto Dynamics AX Notes su Blogger. Quelle note ora stanno nell’archivio di questo sito, ognuna con un verdetto per il D365FO di oggi. Gli articoli nuovi escono prima qui.",
+    "portraitAlt": "Ritratto di Diego Mancassola",
+    "linkedin": "LinkedIn",
+    "oldBlog": "Dynamics AX Notes (vecchio blog)",
+    "rss": "RSS"
+  },
+  "footer": {
+    "copyright": "© {year} Diego Mancassola",
+    "formerly": "già dynamicsaxnotes.blogspot.com",
+    "rss": "RSS",
+    "sitemap": "Mappa del sito"
+  },
+  "notFound": {
+    "title": "Pagina non trovata",
+    "code": "404",
+    "lead": "Questa pagina non esiste, oppure si è spostata quando le vecchie note sono state rilette.",
+    "home": "Vai alla home",
+    "archive": "Sfoglia l’archivio"
+  },
+  "rss": {
+    "title": "dasdynamics — Diego Mancassola",
+    "description": "Articoli e note d’archivio su Dynamics 365 Finance & Operations e IA."
+  }
+}

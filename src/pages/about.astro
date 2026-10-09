@@ -1,0 +1,136 @@
+---
+import Base from '../layouts/Base.astro';
+import Credential from '../components/Credential.astro';
+import Monogram from '../components/Monogram.astro';
+import { t } from '../i18n';
+import { getAll } from '../lib/content';
+import { AUTHOR, personJsonLd } from '../lib/site';
+
+const all = await getAll();
+const site = Astro.site!;
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    url: new URL('/about/', site).href,
+    mainEntity: personJsonLd(site),
+  },
+];
+---
+<Base title={t('about.metaTitle')} description={t('about.description')} current="about" ogType="profile" jsonLd={jsonLd}>
+  <div class="wrap page">
+    <div class="intro">
+      <img src={AUTHOR.portrait} alt={t('about.portraitAlt')} width="320" height="303" class="portrait" decoding="async" />
+      <div class="text">
+        <p class="eyebrow">{t('about.title')}</p>
+        <h1 class="title">{AUTHOR.name}</h1>
+        <p class="role mono">{AUTHOR.jobTitle} · {AUTHOR.worksFor} · {AUTHOR.locality}</p>
+        <p class="bio">{t('about.bio')}</p>
+        <Credential all={all} />
+      </div>
+    </div>
+
+    <div class="more">
+      <section aria-labelledby="name-h">
+        <h2 id="name-h" class="h2"><Monogram size={36} /> {t('site.payoff')}</h2>
+        <p>{t('about.nameStory')}</p>
+      </section>
+      <section aria-labelledby="hist-h">
+        <h2 id="hist-h" class="h2">{t('about.historyTitle')}</h2>
+        <p>{t('about.history')}</p>
+      </section>
+    </div>
+
+    <div class="actions">
+      <a href={AUTHOR.linkedin} class="btn btn-solid btn-sm" rel="me">{t('about.linkedin')}</a>
+      <a href={AUTHOR.oldBlog} class="btn btn-line btn-sm" rel="me">{t('about.oldBlog')}</a>
+      <a href="/rss.xml" class="btn btn-line btn-sm">{t('about.rss')}</a>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .page {
+    padding-top: 72px;
+    padding-bottom: 96px;
+  }
+  .intro {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 48px;
+    align-items: flex-start;
+  }
+  .portrait {
+    flex: 0 1 320px;
+    width: 320px;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 800 / 758;
+    object-fit: cover;
+    background: var(--line);
+  }
+  .text {
+    flex: 999 1 420px;
+    min-width: 0;
+  }
+  .eyebrow {
+    margin-bottom: 18px;
+  }
+  .title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(36px, 5vw, 60px);
+    line-height: 1.05;
+    letter-spacing: -1px;
+  }
+  .role {
+    margin: 16px 0 0;
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .bio {
+    margin: 24px 0 0;
+    max-width: 680px;
+    font-size: 19px;
+    line-height: 1.65;
+    color: var(--text-2);
+  }
+  .more {
+    margin-top: 64px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+    gap: 0 48px;
+    border-top: 2px solid var(--ink);
+  }
+  .more section {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .h2 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 700;
+  }
+  .more p {
+    margin: 12px 0 0;
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--text-2);
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 40px;
+  }
+  @media (max-width: 480px) {
+    .page {
+      padding-top: 40px;
+    }
+  }
+</style>

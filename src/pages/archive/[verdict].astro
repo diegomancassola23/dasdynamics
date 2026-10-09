@@ -1,0 +1,9 @@
+---
+import ArchivePage from '../../components/ArchivePage.astro';
+import { VERDICTS, type Verdict } from '../../lib/content';
+export function getStaticPaths() {
+  return VERDICTS.map((verdict) => ({ params: { verdict } }));
+}
+const verdict = Astro.params.verdict as Verdict;
+---
+<ArchivePage verdict={verdict} />

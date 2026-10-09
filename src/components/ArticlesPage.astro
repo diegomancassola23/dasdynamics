@@ -1,0 +1,76 @@
+---
+import Base from '../layouts/Base.astro';
+import ArticleCard from './ArticleCard.astro';
+import { t } from '../i18n';
+import { getAll, isArticle, pinnedFirst, trackUrl, TRACKS, type Track } from '../lib/content';
+import { pageTitle } from '../lib/site';
+
+const { track } = Astro.props as { track?: Track };
+const articles = (await getAll()).filter(isArticle);
+const shown = pinnedFirst(track ? articles.filter((a) => a.data.track === track) : articles);
+const heading = track ? t(`tracks.${track}.name`) : t('articles.title');
+const description = track ? t(`tracks.${track}.blurb`) : t('articles.lead');
+---
+<Base title={pageTitle(track ? t('articles.trackTitle', { track: heading }) : heading)} description={description} current="articles">
+  <div class="wrap page">
+    <p class="eyebrow">{t('articles.eyebrow')}</p>
+    <h1 class="title">{heading}</h1>
+    <p class="lead">{description}</p>
+    <nav aria-label={t('articles.filterLabel')} class="filters">
+      <ul class="chips">
+        <li><a class="chip" href="/articles/" aria-current={track ? undefined : 'page'}>{t('articles.all')}<span class="count">{articles.length}</span></a></li>
+        {TRACKS.map((tr) => {
+          const n = articles.filter((a) => a.data.track === tr).length;
+          return n > 0 && (
+            <li><a class="chip" href={trackUrl(tr)} aria-current={tr === track ? 'page' : undefined}>{t(`tracks.${tr}.short`)}<span class="count">{n}</span></a></li>
+          );
+        })}
+      </ul>
+    </nav>
+    {shown.length > 0 ? (
+      <div class="grid">{shown.map((a) => <ArticleCard entry={a} headingLevel={2} />)}</div>
+    ) : (
+      <p>{t('articles.empty')}</p>
+    )}
+  </div>
+</Base>
+
+<style>
+  .page {
+    padding-top: 72px;
+    padding-bottom: 96px;
+  }
+  .eyebrow {
+    margin-bottom: 18px;
+  }
+  .title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(36px, 5vw, 60px);
+    line-height: 1.05;
+    letter-spacing: -1px;
+  }
+  .lead {
+    margin: 24px 0 0;
+    max-width: 720px;
+    font-size: 19px;
+    line-height: 1.6;
+    color: var(--text-2);
+  }
+  .filters {
+    margin: 48px 0 32px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--ink);
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+    gap: 24px;
+  }
+  @media (max-width: 480px) {
+    .page {
+      padding-top: 48px;
+    }
+  }
+</style>

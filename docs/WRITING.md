@@ -1,0 +1,47 @@
+# Writing an article
+
+## 1. Create
+
+```
+npm run new -- "My title"
+```
+
+This creates `src/content/articles/<slug>.md` with the frontmatter filled in
+(`kind: article`, today's date, `draft: true`) and an empty images folder.
+Fill `description` (one sentence, max 160 characters: it is what Google and
+LinkedIn show) and `track` (`integrations`, `ai`, `xpp` or `platform`).
+All fields: [CONTENT-SCHEMA.md](CONTENT-SCHEMA.md).
+
+## 2. Preview
+
+```
+npm run dev
+```
+
+Open http://localhost:4321/articles/<slug>/. The page reloads as you save.
+Drafts are visible here, with a "Draft" banner.
+
+Code blocks: use ` ```xpp `, ` ```sql `, ` ```csharp `, ` ```powershell `,
+` ```json ` or ` ```yaml `.
+
+## 3. Images
+
+Put them in `public/images/articles/<slug>/` and link them with a description:
+
+```
+![The APIM policy editor with the rate-limit policy](/images/articles/<slug>/policy.png)
+```
+
+The description (alt text) is required: the quality gate fails without it.
+
+## 4. Pinned
+
+`pinned: true` puts the article first on the home page. Keep one or two.
+
+## 5. Publish
+
+1. Set `draft: false`.
+2. `npm run build` and `npm run check` (optional: the workflow runs both).
+3. Commit and push to `main`: the workflow builds and deploys the site.
+4. `npm run linkedin -- <slug>` prints the LinkedIn post: title, summary and the
+   link to the site. Paste it on LinkedIn.

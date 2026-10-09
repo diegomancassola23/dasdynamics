@@ -1,0 +1,54 @@
+---
+import Monogram from './Monogram.astro';
+import { t } from '../i18n';
+import { AUTHOR } from '../lib/site';
+const host = new URL(Astro.site ?? 'https://dasdynamics.dev').host;
+---
+<footer class="site-footer">
+  <div class="wrap row">
+    <span class="who"><Monogram size={24} /> {t('footer.copyright', { year: new Date().getFullYear() })}</span>
+    <span class="payoff">{t('site.payoff')}</span>
+    <span class="mono links">
+      <span>{host}</span> · <a href={AUTHOR.oldBlog}>{t('footer.formerly')}</a> · <a href="/rss.xml">{t('footer.rss')}</a> · <a href="/sitemap-index.xml">{t('footer.sitemap')}</a>
+    </span>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--line);
+  }
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px 24px;
+    padding-top: 28px;
+    padding-bottom: 28px;
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .who {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--ink);
+  }
+  .payoff {
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .links {
+    font-size: 13px;
+  }
+  .links a {
+    color: var(--muted);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .links a:hover {
+    color: var(--ink);
+  }
+</style>

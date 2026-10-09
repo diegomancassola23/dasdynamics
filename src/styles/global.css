@@ -1,0 +1,431 @@
+/* dasdynamics — global styles. Colours are tokens; dark mode redefines them. */
+
+:root {
+  --bg: #f4f5f1;
+  --surface: #ffffff;
+  --ink: #12161c;
+  --text-2: #343b47;
+  --text-body: #232a34;
+  --muted: #4a5260;
+  --line: #daddd5;
+  --line-2: #c4c8bf;
+  --accent: #1d4ed8;
+  --accent-hover: #1e3a8a;
+  --accent-ink: #ffffff;
+  --mark-inner: #1d4ed8;
+  --btn-bg: #12161c;
+  --btn-fg: #f4f5f1;
+  --code-bg: #ffffff;
+  --code-inline: #e5e7e2;
+  --chip-on-bg: #12161c;
+  --chip-on-fg: #f4f5f1;
+
+  /* dark bands (hero cards, archive band, "In D365FO today") */
+  --band: #12161c;
+  --band-ink: #f4f5f1;
+  --band-muted: #a9b4c7;
+  --band-soft: #c9d0db;
+  --band-line: #343b47;
+  --band-code: #1e242e;
+  --band-inline: #2a313c;
+  --band-btn-bg: #f4f5f1;
+  --band-btn-fg: #12161c;
+
+  /* card covers per track */
+  --cover-integrations: #3b2f1e;
+  --cover-ai: #1d2b4f;
+  --cover-xpp: #2e2240;
+  --cover-platform: #23302b;
+
+  /* verdicts */
+  --v-valid-fg: #166534;
+  --v-valid-bg: #dcfce7;
+  --v-valid-dot: #16a34a;
+  --v-changed-fg: #9a3412;
+  --v-changed-bg: #ffedd5;
+  --v-changed-dot: #ea580c;
+  --v-historical-fg: #343b47;
+  --v-historical-bg: #e5e7e2;
+  --v-historical-dot: #8b95a5;
+  --v-review-fg: #1e3a8a;
+  --v-review-bg: #dbeafe;
+  --v-review-dot: #1d4ed8;
+
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-sans: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'Cascadia Mono', Consolas, monospace;
+  --focus: #1d4ed8;
+  --max: 1200px;
+  --gutter: 24px;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0e1116;
+    --surface: #161b22;
+    --ink: #e8ebef;
+    --text-2: #c9d0db;
+    --text-body: #d5dae1;
+    --muted: #a3acba;
+    --line: #2a313c;
+    --line-2: #3a4250;
+    --accent: #7cc4ff;
+    --accent-hover: #b5dcff;
+    --accent-ink: #0e1116;
+    --mark-inner: #7cc4ff;
+    --btn-bg: #e8ebef;
+    --btn-fg: #0e1116;
+    --code-bg: #161b22;
+    --code-inline: #262c35;
+    --chip-on-bg: #e8ebef;
+    --chip-on-fg: #0e1116;
+
+    --band: #07090c;
+    --band-line: #2a313c;
+    --band-code: #161b22;
+    --band-inline: #262c35;
+
+    --cover-integrations: #34291a;
+    --cover-ai: #1a2645;
+    --cover-xpp: #281e38;
+    --cover-platform: #1f2a26;
+
+    --v-valid-fg: #86efac;
+    --v-valid-bg: #12301f;
+    --v-valid-dot: #4ade80;
+    --v-changed-fg: #fdba74;
+    --v-changed-bg: #3a2312;
+    --v-changed-dot: #fb923c;
+    --v-historical-fg: #c9d0db;
+    --v-historical-bg: #262c35;
+    --v-historical-dot: #8b95a5;
+    --v-review-fg: #a9cfff;
+    --v-review-bg: #172544;
+    --v-review-dot: #7cc4ff;
+
+    --focus: #7cc4ff;
+    color-scheme: dark;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: 16px;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  overflow-wrap: break-word;
+}
+
+img,
+svg {
+  max-width: 100%;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+.band :focus-visible {
+  outline-color: #7cc4ff;
+}
+
+code,
+pre,
+kbd {
+  font-family: var(--font-mono);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -100px;
+  z-index: 10;
+  padding: 12px 18px;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-weight: 600;
+}
+.skip-link:focus {
+  top: 12px;
+  color: var(--btn-fg);
+}
+
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+@media (max-width: 480px) {
+  :root {
+    --gutter: 16px;
+  }
+}
+
+/* ---------- type helpers ---------- */
+
+.eyebrow {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.mono {
+  font-family: var(--font-mono);
+}
+.meta {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--muted);
+}
+.h-section {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(30px, 4vw, 40px);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+}
+
+/* ---------- buttons, chips, pills ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 24px;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  border: 1.5px solid var(--btn-bg);
+}
+.btn:hover {
+  text-decoration: none;
+}
+.btn-solid {
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+}
+.btn-solid:hover {
+  color: var(--btn-fg);
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+.btn-line {
+  background: transparent;
+  color: var(--ink);
+}
+.btn-line:hover {
+  color: var(--ink);
+  background: var(--surface);
+}
+.btn-sm {
+  min-height: 44px;
+  padding: 0 20px;
+  font-size: 15px;
+}
+.btn-accent {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+  min-height: 44px;
+  padding: 0 18px;
+  font-size: 14px;
+}
+.btn-accent:hover {
+  color: var(--accent-ink);
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+.band .btn-light {
+  background: var(--band-btn-bg);
+  color: var(--band-btn-fg);
+  border-color: var(--band-btn-bg);
+}
+.band .btn-light:hover {
+  color: var(--band-btn-fg);
+  background: #ffffff;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+  border: 1.5px solid var(--ink);
+  background: transparent;
+  text-decoration: none;
+}
+.chip:hover {
+  color: var(--ink);
+  background: var(--surface);
+  text-decoration: none;
+}
+.chip[aria-current='page'] {
+  background: var(--chip-on-bg);
+  color: var(--chip-on-fg);
+}
+.chip .count {
+  margin-left: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 4px 8px;
+  border: 1px solid var(--line-2);
+  color: var(--text-2);
+  line-height: 1.4;
+}
+a.tag:hover {
+  color: var(--ink);
+  border-color: var(--ink);
+  text-decoration: none;
+}
+
+.verdict {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 4px 10px;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+.verdict::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+  flex: none;
+}
+.verdict-valid {
+  color: var(--v-valid-fg);
+  background: var(--v-valid-bg);
+}
+.verdict-valid::before {
+  background: var(--v-valid-dot);
+}
+.verdict-changed {
+  color: var(--v-changed-fg);
+  background: var(--v-changed-bg);
+}
+.verdict-changed::before {
+  background: var(--v-changed-dot);
+}
+.verdict-historical {
+  color: var(--v-historical-fg);
+  background: var(--v-historical-bg);
+}
+.verdict-historical::before {
+  background: var(--v-historical-dot);
+}
+.verdict-to-review {
+  color: var(--v-review-fg);
+  background: var(--v-review-bg);
+}
+.verdict-to-review::before {
+  background: var(--v-review-dot);
+}
+
+.pin {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.arrow {
+  flex: none;
+}
+
+/* ---------- dark band ---------- */
+
+.band {
+  background: var(--band);
+  color: var(--band-ink);
+  --mark-inner: #7cc4ff;
+}
+.band a:not(.btn) {
+  color: #a9d8ff;
+}
+.band .eyebrow,
+.band .meta {
+  color: var(--band-muted);
+}
+
+/* ---------- code highlighting (Shiki dual theme) ---------- */
+
+.astro-code span {
+  color: var(--shiki-light);
+}
+.band .astro-code span {
+  color: var(--shiki-dark);
+}
+@media (prefers-color-scheme: dark) {
+  .astro-code span {
+    color: var(--shiki-dark);
+  }
+}

@@ -1,0 +1,9 @@
+---
+import ArticlesPage from '../../../components/ArticlesPage.astro';
+import { TRACKS, type Track } from '../../../lib/content';
+export function getStaticPaths() {
+  return TRACKS.map((track) => ({ params: { track } }));
+}
+const track = Astro.params.track as Track;
+---
+<ArticlesPage track={track} />

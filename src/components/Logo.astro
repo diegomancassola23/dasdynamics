@@ -1,0 +1,32 @@
+---
+import Monogram from './Monogram.astro';
+import { t } from '../i18n';
+---
+<a href="/" class="logo" aria-label={t('nav.home')}>
+  <Monogram size={40} />
+  <span class="wordmark">{t('site.name')}</span>
+</a>
+
+<style>
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--ink);
+    text-decoration: none;
+    min-height: 44px;
+  }
+  .logo:hover {
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .logo :global(.monogram) {
+    margin-left: -6px;
+  }
+  .wordmark {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 21px;
+    letter-spacing: -0.4px;
+  }
+</style>

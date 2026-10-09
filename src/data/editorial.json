@@ -1,0 +1,6 @@
+{
+  "_comment": "Filled by the content branch during the editorial pass. retired = Blogger posts that were reposts or link-only (credited or retired); merged = duplicates merged into another note. bridges = old notes that grew into new articles: { \"years\": \"2016 → 2026\", \"from\": \"text of the old note\", \"to\": \"text of the link\", \"slug\": \"article-slug\" }. Placeholder zeros until then.",
+  "retired": 0,
+  "merged": 0,
+  "bridges": []
+}

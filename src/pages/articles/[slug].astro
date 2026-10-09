@@ -1,0 +1,498 @@
+---
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import VerdictPill from '../../components/VerdictPill.astro';
+import { t } from '../../i18n';
+import {
+  getAll,
+  articleUrl,
+  tagUrl,
+  trackUrl,
+  formatDay,
+  formatMonth,
+  isoDay,
+  seriesOf,
+  seriesTitle,
+  readingMinutes,
+  isLinkedIn,
+  type Entry,
+} from '../../lib/content';
+import { AUTHOR, OG_DEFAULT, pageTitle } from '../../lib/site';
+
+export async function getStaticPaths() {
+  const all = await getAll();
+  return all.map((entry) => ({ params: { slug: entry.id }, props: { entry, all } }));
+}
+
+const { entry, all } = Astro.props as { entry: Entry; all: Entry[] };
+const d = entry.data;
+const isNote = d.kind === 'note';
+const { Content } = await render(entry);
+
+const series = seriesOf(entry, all);
+const siblings = series.length > 1 ? series : all.filter((e) => e.data.kind === d.kind);
+const ordered = series.length > 1 ? siblings : [...siblings].sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
+const idx = ordered.findIndex((e) => e.id === entry.id);
+const prev = idx > 0 ? ordered[idx - 1] : undefined;
+const next = idx >= 0 && idx < ordered.length - 1 ? ordered[idx + 1] : undefined;
+const navLabel = series.length > 1 ? t('article.seriesNav') : isNote ? t('article.moreFromArchive') : t('article.moreArticles');
+const navDate = (e: Entry) => (isNote ? formatMonth(e.data.date) : formatDay(e.data.date));
+
+const blogSources = !isLinkedIn(d.originalUrl) ? [d.originalUrl, ...d.mergedFrom].filter(Boolean) as string[] : d.mergedFrom;
+const sourceLabel = (url: string) => {
+  try {
+    const u = new URL(url);
+    const m = u.pathname.match(/^\/(\d{4})\/\d{2}\/(.+?)\.html$/);
+    return m ? `${m[2].replace(/-/g, ' ')} (${m[1]})` : u.host + u.pathname;
+  } catch {
+    return url;
+  }
+};
+
+const site = Astro.site!;
+const url = new URL(articleUrl(entry), site).href;
+const crumbs = isNote
+  ? [{ name: t('article.breadcrumbArchive'), href: '/archive/' }]
+  : [{ name: t('article.breadcrumbArticles'), href: '/articles/' }, { name: t(`tracks.${d.track}.short`), href: trackUrl(d.track) }];
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: d.title,
+    description: d.description,
+    datePublished: d.date.toISOString(),
+    dateModified: (d.updated ?? d.date).toISOString(),
+    inLanguage: 'en',
+    url,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+    image: new URL(OG_DEFAULT, site).href,
+    keywords: d.tags.join(', ') || undefined,
+    author: { '@type': 'Person', '@id': new URL('/#person', site).href, name: AUTHOR.name, url: new URL('/about/', site).href },
+    publisher: { '@type': 'Person', '@id': new URL('/#person', site).href, name: AUTHOR.name },
+    isBasedOn: d.originalUrl,
+    isPartOf: d.series ? { '@type': 'CreativeWorkSeries', name: seriesTitle(d.series) } : undefined,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [...crumbs.map((c) => ({ name: c.name, item: new URL(c.href, site).href })), { name: d.title, item: url }].map((c, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      ...c,
+    })),
+  },
+];
+---
+<Base
+  title={pageTitle(d.title)}
+  description={d.description}
+  current={isNote ? 'archive' : 'articles'}
+  ogType="article"
+  jsonLd={jsonLd}
+  publishedTime={d.date}
+  modifiedTime={d.updated}
+  noindex={d.draft}
+>
+  <article class="wrap-article">
+    {d.draft && <p class="draft-banner mono">{t('article.draftBanner')}</p>}
+    <nav aria-label={t('article.breadcrumb')} class="crumbs mono">
+      {isNote ? (
+        <>
+          <a href="/archive/">{t('article.breadcrumbArchive')}</a><span aria-hidden="true">/</span><span>{t(`tracks.${d.track}.short`)}</span>
+          {d.tags[0] && <><span aria-hidden="true">/</span><a href={tagUrl(d.tags[0])}>{d.tags[0]}</a></>}
+        </>
+      ) : (
+        <>
+          <a href="/articles/">{t('article.breadcrumbArticles')}</a><span aria-hidden="true">/</span><a href={trackUrl(d.track)}>{t(`tracks.${d.track}.short`)}</a>
+        </>
+      )}
+    </nav>
+
+    <div class="pills">
+      {d.verdict && <VerdictPill verdict={d.verdict} />}
+      {d.versions.length > 0 && <span class="tag">{d.versions.join(' · ')}</span>}
+      {d.series && d.seriesPart && <span class="tag">{seriesTitle(d.series)} · {t('article.seriesPart', { part: d.seriesPart })}</span>}
+    </div>
+
+    <h1 class="title">{d.title}</h1>
+    <p class="lead">{d.description}</p>
+    {isNote && d.verdictNote && <p class="verdict-note">{d.verdictNote}</p>}
+
+    <dl class="facts">
+      <div><dt>{isNote ? t('article.firstWritten') : t('article.published')}</dt><dd class="mono"><time datetime={isoDay(d.date)}>{formatDay(d.date)}</time></dd></div>
+      {d.updated && <div><dt>{isNote ? t('article.reread') : t('article.updated')}</dt><dd class="mono"><time datetime={isoDay(d.updated)}>{isNote ? formatMonth(d.updated) : formatDay(d.updated)}</time></dd></div>}
+      <div><dt>{t('article.versions')}</dt><dd class="mono">{d.versions.join(' · ') || '—'}</dd></div>
+      {!isNote && <div><dt>&nbsp;</dt><dd class="mono">{t('article.readingTime', { min: readingMinutes(entry.body) })}</dd></div>}
+    </dl>
+
+    {series.length > 1 && (
+      <nav aria-labelledby="series-h" class="series">
+        <p id="series-h" class="eyebrow">{t('article.seriesNav')} · {seriesTitle(d.series!)}</p>
+        <ol>
+          {series.map((s, i) => (
+            <li>
+              <span class="mono num">{String(s.data.seriesPart ?? i + 1).padStart(2, '0')}</span>
+              {s.id === entry.id ? <span aria-current="page" class="here">{s.data.title}</span> : <a href={articleUrl(s)}>{s.data.title}</a>}
+            </li>
+          ))}
+        </ol>
+      </nav>
+    )}
+
+    <div class="prose">
+      <Content />
+    </div>
+
+    {d.tags.length > 0 && (
+      <div class="tags">
+        <span class="visually-hidden">{t('article.tags')}</span>
+        {d.tags.map((tag) => <a class="tag" href={tagUrl(tag)}>#{tag}</a>)}
+      </div>
+    )}
+
+    {(d.originalUrl || d.mergedFrom.length > 0) && (
+      <aside aria-label={t('article.sources')} class="sources">
+        {isLinkedIn(d.originalUrl) && (
+          <p>{t('article.originallyLinkedIn')}: <a href={d.originalUrl}>{d.originalUrl}</a></p>
+        )}
+        {blogSources.length > 0 && (
+          <>
+            <span>{isLinkedIn(d.originalUrl) ? t('article.mergedNote') : t('article.originallyBlog')}</span>
+            {blogSources.map((u) => <a href={u}>{sourceLabel(u)}</a>)}
+          </>
+        )}
+      </aside>
+    )}
+
+    {(prev || next) && (
+      <nav aria-label={navLabel} class="prevnext">
+        {prev ? (
+          <a href={articleUrl(prev)} class="pn">
+            <span class="mono">{t('article.previous')} · {navDate(prev)}</span>
+            <span class="pn-title">{prev.data.title}</span>
+          </a>
+        ) : <span></span>}
+        {next && (
+          <a href={articleUrl(next)} class="pn">
+            <span class="mono">{t('article.next')} · {navDate(next)}</span>
+            <span class="pn-title">{next.data.title}</span>
+          </a>
+        )}
+      </nav>
+    )}
+  </article>
+</Base>
+
+<style>
+  .wrap-article {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 56px 24px 96px;
+  }
+  @media (max-width: 480px) {
+    .wrap-article {
+      padding: 32px 16px 72px;
+    }
+  }
+  .draft-banner {
+    margin: 0 0 24px;
+    padding: 10px 14px;
+    border: 1.5px dashed var(--v-changed-dot);
+    color: var(--v-changed-fg);
+    font-size: 13px;
+  }
+  .crumbs {
+    font-size: 13px;
+    color: var(--muted);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 28px;
+  }
+  .title {
+    margin: 20px 0 0;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(32px, 5vw, 52px);
+    line-height: 1.08;
+    letter-spacing: -1px;
+  }
+  .lead {
+    margin: 18px 0 0;
+    font-size: 20px;
+    line-height: 1.55;
+    color: var(--text-2);
+  }
+  .verdict-note {
+    margin: 14px 0 0;
+    padding-left: 14px;
+    border-left: 3px solid var(--line-2);
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--muted);
+  }
+  .facts {
+    margin: 32px 0 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    border-top: 2px solid var(--ink);
+    border-bottom: 1px solid var(--line);
+  }
+  .facts > div {
+    padding: 14px 16px 14px 0;
+  }
+  .facts dt {
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .facts dd {
+    margin: 4px 0 0;
+    font-size: 14px;
+  }
+  .series {
+    margin-top: 32px;
+    padding: 20px 24px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+  }
+  .series .eyebrow {
+    margin-bottom: 8px;
+  }
+  .series ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .series li {
+    display: flex;
+    gap: 14px;
+    padding: 10px 0;
+    border-top: 1px solid var(--line);
+    font-weight: 600;
+  }
+  .series li:first-child {
+    border-top: 0;
+  }
+  .series .num {
+    font-weight: 400;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .series a {
+    color: var(--ink);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .here {
+    color: var(--accent);
+  }
+
+  /* ---------- article body ---------- */
+  .prose {
+    margin-top: 40px;
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--text-body);
+  }
+  .prose :global(p),
+  .prose :global(ul),
+  .prose :global(ol),
+  .prose :global(blockquote),
+  .prose :global(table),
+  .prose :global(pre),
+  .prose :global(figure) {
+    margin: 20px 0 0;
+  }
+  .prose :global(blockquote > :first-child),
+  .prose :global(> :first-child) {
+    margin-top: 0;
+  }
+  .prose :global(h2) {
+    margin: 48px 0 0;
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+  .prose :global(h3) {
+    margin: 32px 0 0;
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--ink);
+  }
+  .prose :global(a) {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .prose :global(strong) {
+    color: var(--ink);
+  }
+  .prose :global(li + li) {
+    margin-top: 6px;
+  }
+  .prose :global(ul),
+  .prose :global(ol) {
+    padding-left: 24px;
+  }
+  .prose :global(blockquote) {
+    padding: 4px 0 4px 20px;
+    border-left: 3px solid var(--accent);
+    color: var(--text-2);
+  }
+  .prose :global(img) {
+    height: auto;
+    border: 1px solid var(--line);
+  }
+  .prose :global(hr) {
+    border: 0;
+    border-top: 1px solid var(--line);
+    margin: 40px 0;
+  }
+  .prose :global(:not(pre) > code) {
+    font-size: 0.88em;
+    background: var(--code-inline);
+    padding: 1px 6px;
+  }
+  .prose :global(pre) {
+    padding: 18px 20px;
+    background: var(--code-bg) !important;
+    border: 1px solid var(--line);
+    overflow-x: auto;
+    font-size: 14px;
+    line-height: 1.6;
+    tab-size: 4;
+  }
+  .prose :global(table) {
+    display: block;
+    overflow-x: auto;
+    border-collapse: collapse;
+    font-size: 15px;
+  }
+  .prose :global(th),
+  .prose :global(td) {
+    padding: 8px 14px 8px 0;
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+  }
+  .prose :global(th) {
+    border-bottom: 2px solid var(--ink);
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  /* "In D365FO today": the dark box of the mockup */
+  .prose :global(.md-in-d365fo-today) {
+    margin-top: 40px;
+    padding: 28px 28px 30px;
+    background: var(--band);
+    color: var(--band-ink);
+    --mark-inner: #7cc4ff;
+    font-size: 17px;
+    line-height: 1.65;
+  }
+  .prose :global(.md-in-d365fo-today h2) {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--band-muted);
+  }
+  .prose :global(.md-in-d365fo-today p:first-of-type) {
+    margin-top: 14px;
+  }
+  .prose :global(.md-in-d365fo-today strong) {
+    color: var(--band-ink);
+  }
+  .prose :global(.md-in-d365fo-today a) {
+    color: #a9d8ff;
+  }
+  .prose :global(.md-in-d365fo-today :not(pre) > code) {
+    background: var(--band-inline);
+  }
+  .prose :global(.md-in-d365fo-today pre) {
+    background: var(--band-code) !important;
+    border-color: var(--band-code);
+  }
+  .prose :global(.md-in-d365fo-today .astro-code span) {
+    color: var(--shiki-dark);
+  }
+  .prose :global(.md-the-original-note h2) {
+    margin-top: 48px;
+  }
+  .prose :global(.md-references) {
+    font-size: 15px;
+  }
+  .prose :global(.md-references h2) {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 40px;
+  }
+  .tags .tag {
+    min-height: 32px;
+  }
+  .sources {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .sources p {
+    margin: 0;
+  }
+  .sources a {
+    overflow-wrap: anywhere;
+  }
+  .prevnext {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+  }
+  .pn {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 20px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--ink);
+  }
+  .pn:hover {
+    color: var(--ink);
+    border-color: var(--ink);
+    text-decoration: none;
+  }
+  .pn .mono {
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .pn-title {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 600;
+  }
+</style>
