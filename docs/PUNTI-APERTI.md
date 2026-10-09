@@ -2,7 +2,7 @@
 
 ## Decisioni di Diego
 
-- **Repo remoto e hosting**: Diego darà il repo git. Proposta: GitHub Pages o Azure Static Web Apps con dominio proprio (es. dynamicsdreams.dev / .com, da verificare la disponibilità).
+- **Repo remoto e hosting**: Diego darà il repo git. Consiglio: **GitHub Pages** (workflow già pronto, gratis, nessuna risorsa Azure da curare) con dominio **dasdynamics.dev** (HTTPS obbligatorio, tema da sviluppatore); .it come seconda scelta. Prima verificare di chi è dasdynamics.com: se è libero o acquistabile a poco, prenderlo e reindirizzarlo.
 - **About**: il profilo LinkedIn non ha la sezione Informazioni; testo da far confermare a Diego.
 - **Articolo Super User**: bozza da completare da Diego (come ci si è arrivati, numeri, cosa significa).
 - **Nome di persona nell'articolo Copilot Chat** (`extending-copilot-chat-d365fo`): tolto per la regola «niente nomi di persona nelle pagine»; ora la riga ringrazia «a fellow community member». Si può ripristinare se Diego lo chiede.
@@ -38,7 +38,7 @@ Da fare / da decidere:
 - Dominio (oggi segnaposto `dasdynamics.dev` in `site.config.mjs`) e hosting: GitHub Pages pronto, Azure Static Web Apps descritto nel README.
 - Articolo Super User: completare i segnaposto `[Diego: …]` (forum, numeri, link al thread SHA-1), poi `draft: false`.
 - Testo di About da confermare (oggi una versione del testo del mockup).
-- `src/data/editorial.json`: il ramo `content` riempie ritirate, unite e i ponti «Then → now».
+- ~~`src/data/editorial.json`~~: fatto il 09/10 (15 ritirati, 3 uniti, 3 ponti «Then → now»).
 - Indirizzo del profilo GitHub, se va messo.
 
 ## Idee di Diego
@@ -50,5 +50,7 @@ Da fare / da decidere:
 ## Da fare
 
 - Google: Search Console, sitemap, dati strutturati Person, link dal profilo LinkedIn e dal vecchio blog al sito nuovo.
-- Vecchio blog Blogger: avviso in testa a ogni post con il link alla versione nuova.
+- Vecchio blog Blogger: avviso in testa a ogni post con il link alla versione nuova. Consiglio: non cancellare il blog (ha anni di link in entrata); avviso + link canonico verso la nota nuova, quando il dominio è deciso.
+- 21+2 note «to-review»: compilarle e provarle su una versione attuale (un giro su una dev box) per assegnare il verdetto finale.
+- Prima di andare online: cambiare il dominio in `site.config.mjs`, togliere le bozze non pronte, Search Console con la sitemap, link al sito nel profilo LinkedIn (sezione Informazioni e «sito web»).
 - Post LinkedIn brevi: raccolti il 09/10 in `sources/linkedin-posts/posts.md` (19 post tuoi, 2024–2026). Proposti come articoli nuovi, in bozza: licenze ISV SHA-256 in 10.0.49; numeratori continui dopo 10.0.47 (cronologia dell'incidente); InventSum mancanti «by design»; F&O nel Power Platform admin center. Il post Super User alimenta l'articolo dedicato; DynamicsMinds (tre edizioni) va nell'About.
