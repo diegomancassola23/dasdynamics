@@ -15,7 +15,9 @@ const linkedinPath = path.join(root, 'sources/linkedin/index.json');
 const KINDS = ['article', 'note'];
 const TRACKS = ['integrations', 'ai', 'xpp', 'platform'];
 const VERDICTS = ['valid', 'changed', 'historical', 'to-review'];
-const REQUIRED = ['title', 'description', 'date', 'kind', 'track', 'versions', 'tags', 'originalUrl', 'mergedFrom', 'draft'];
+const REQUIRED = ['title', 'description', 'date', 'kind', 'track', 'versions', 'tags', 'draft'];
+// Imported entries come from the blog or LinkedIn; native articles are written on the site and have no source URL.
+const IMPORT_REQUIRED = ['originalUrl', 'mergedFrom'];
 const DATE = /^\d{4}-\d{2}-\d{2}$/;
 const SLUG = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 
@@ -63,7 +65,8 @@ for (const file of files) {
   const { data: d, body } = parsed;
   entries.push({ slug, d, body, where });
 
-  for (const k of REQUIRED) if (!(k in d)) fail(where, `missing ${k}`);
+  const native = d.kind === 'article' && !('originalUrl' in d);
+  for (const k of native ? REQUIRED : [...REQUIRED, ...IMPORT_REQUIRED]) if (!(k in d)) fail(where, `missing ${k}`);
   if (typeof d.title !== 'string' || !d.title.trim()) fail(where, 'title must be a non-empty string');
   if (typeof d.description !== 'string' || !d.description.trim()) fail(where, 'description must be a non-empty string');
   else if (d.description.length > 160) fail(where, `description is ${d.description.length} characters (max 160)`);
@@ -76,8 +79,8 @@ for (const file of files) {
   }
   if (Array.isArray(d.versions) && d.versions.length === 0) fail(where, 'versions must not be empty');
   if (Array.isArray(d.tags) && d.tags.length === 0) fail(where, 'tags must not be empty');
-  if (typeof d.originalUrl !== 'string' || !/^https:\/\//.test(d.originalUrl)) fail(where, 'originalUrl must be an https URL');
-  if (d.draft !== false) fail(where, 'draft must be false');
+  if (!native && (typeof d.originalUrl !== 'string' || !/^https:\/\//.test(d.originalUrl))) fail(where, 'originalUrl must be an https URL');
+  if (native ? typeof d.draft !== 'boolean' : d.draft !== false) fail(where, native ? 'draft must be true or false' : 'draft must be false for imported entries');
   if (('series' in d) !== ('seriesPart' in d)) fail(where, 'series and seriesPart go together');
   if ('seriesPart' in d && (!Number.isInteger(d.seriesPart) || d.seriesPart < 1)) fail(where, 'seriesPart must be a positive integer');
 

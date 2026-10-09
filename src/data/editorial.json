@@ -1,6 +1,25 @@
 {
   "_comment": "Filled by the content branch during the editorial pass. retired = Blogger posts that were reposts or link-only (credited or retired); merged = duplicates merged into another note. bridges = old notes that grew into new articles: { \"years\": \"2016 → 2026\", \"from\": \"text of the old note\", \"to\": \"text of the link\", \"slug\": \"article-slug\" }. Placeholder zeros until then.",
-  "retired": 0,
-  "merged": 0,
-  "bridges": []
+  "retired": 15,
+  "merged": 3,
+  "bridges": [
+    {
+      "years": "2016 → 2026",
+      "from": "Set label translations from code",
+      "to": "Automating label creation in X++",
+      "slug": "automating-label-creation-xpp"
+    },
+    {
+      "years": "2015 → 2026",
+      "from": "AIF, DIXF and OData integration notes",
+      "to": "D365FO integration architecture with REST and APIM",
+      "slug": "integration-architecture-rest-apim-part-1"
+    },
+    {
+      "years": "2018 → 2024",
+      "from": "OData: the underlying connection was closed",
+      "to": "Resolving the SSL/TLS secure channel error in .NET",
+      "slug": "ssl-tls-secure-channel-error-dotnet"
+    }
+  ]
 }
