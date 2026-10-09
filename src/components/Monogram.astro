@@ -1,0 +1,22 @@
+---
+// The D-inside-D monogram: Diego inside Dynamics.
+// The outline follows currentColor; the inner D uses --mark-inner (blue, light blue on dark grounds).
+interface Props {
+  size?: number;
+  title?: string;
+}
+const { size = 40, title } = Astro.props;
+---
+<svg
+  class="monogram"
+  width={size}
+  height={size}
+  viewBox="0 0 96 96"
+  role={title ? 'img' : undefined}
+  aria-hidden={title ? undefined : 'true'}
+  aria-label={title}
+  focusable="false"
+>
+  <path d="M20 18h22a30 30 0 0 1 0 60H20z" fill="none" stroke="currentColor" stroke-width="7"></path>
+  <path d="M36 32h8a16 16 0 0 1 0 32h-8z" style="fill: var(--mark-inner, #1D4ED8)"></path>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96">
+  <style>
+    .o { stroke: #12161C; }
+    .i { fill: #1D4ED8; }
+    @media (prefers-color-scheme: dark) {
+      .o { stroke: #F4F5F1; }
+      .i { fill: #7CC4FF; }
+    }
+  </style>
+  <path class="o" d="M20 18h22a30 30 0 0 1 0 60H20z" fill="none" stroke-width="7"/>
+  <path class="i" d="M36 32h8a16 16 0 0 1 0 32h-8z"/>
+</svg>

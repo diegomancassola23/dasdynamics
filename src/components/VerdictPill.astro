@@ -1,0 +1,6 @@
+---
+import { t } from '../i18n';
+import type { Verdict } from '../lib/content';
+const { verdict } = Astro.props as { verdict: Verdict };
+---
+<span class={`verdict verdict-${verdict}`}>{t(`verdicts.${verdict}.label`)}</span>

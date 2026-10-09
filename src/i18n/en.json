@@ -1,0 +1,173 @@
+{
+  "site": {
+    "name": "dasdynamics",
+    "payoff": "D as Dynamics. D as Diego.",
+    "payoffLead": "D as Dynamics.",
+    "payoffTail": "D as Diego.",
+    "author": "Diego Mancassola",
+    "tagline": "Dynamics 365 Finance & Operations and AI",
+    "homeTitle": "Diego Mancassola · dasdynamics — Dynamics 365 F&O architecture, integrations and AI",
+    "homeDescription": "Diego Mancassola writes about Dynamics 365 Finance & Operations: architecture, integrations with Azure API Management, X++ and AI inside the ERP.",
+    "titleSuffix": "Diego Mancassola"
+  },
+  "nav": {
+    "label": "Main",
+    "skip": "Skip to content",
+    "home": "dasdynamics home",
+    "articles": "Articles",
+    "archive": "Archive",
+    "topics": "Topics",
+    "about": "About",
+    "subscribe": "Subscribe",
+    "subscribeLabel": "Subscribe via RSS"
+  },
+  "home": {
+    "eyebrow": "Dynamics 365 Finance & Operations · Architecture · AI",
+    "title": "Architecture, integrations and AI for Dynamics 365 F&O.",
+    "lead": "{years} years of field notes by Diego Mancassola: from X++ snippets on AX 2009 to API Management, MCP servers and Copilot inside D365FO.",
+    "ctaLatest": "Read the latest",
+    "ctaArchive": "Browse the archive",
+    "statPublished": "Published",
+    "statSince": "Writing since",
+    "statVersions": "Versions covered",
+    "pinned": "Pinned",
+    "latest": "Latest",
+    "partOf": "Part {part} of {total}",
+    "series": "Series",
+    "seriesFoot": "Every article lives here first; LinkedIn gets the summary and the link.",
+    "writing": "Writing",
+    "allArticles": "All articles",
+    "tracksTitle": "Four tracks, one thread",
+    "archiveEyebrow": "The archive",
+    "archiveTitle": "Dynamics AX Notes, {from}–{to}. Re-read in 2026.",
+    "archiveLead": "{count} notes from the Blogger years. Each one now says whether it still holds in D365FO, what replaced it, or why it is history.",
+    "archiveCta": "Open the archive",
+    "notesPerYear": "Notes per year",
+    "aboutTitle": "About",
+    "aboutMore": "More about me"
+  },
+  "credential": {
+    "label": "Dynamics 365 Community Super User",
+    "season": "2026 Season 2",
+    "readMore": "What it means"
+  },
+  "tracks": {
+    "integrations": {
+      "name": "Integrations & data",
+      "short": "Integrations",
+      "code": "API",
+      "blurb": "AIF and DIXF, then OData and data entities, now REST and Azure API Management."
+    },
+    "ai": {
+      "name": "AI in the ERP",
+      "short": "AI",
+      "code": "AI",
+      "blurb": "Copilot Chat extensions, Copilot code review for X++, MCP servers for developers."
+    },
+    "xpp": {
+      "name": "X++ craft",
+      "short": "X++",
+      "code": "X++",
+      "blurb": "Performance, multithreading, labels, forms and the patterns that survive every version."
+    },
+    "platform": {
+      "name": "Platform & environments",
+      "short": "Platform",
+      "code": "Ops",
+      "blurb": "Cloud-hosted VMs, certificates, TLS, SSRS and the days a machine says INCOMPLETE."
+    }
+  },
+  "verdicts": {
+    "valid": { "label": "Still valid", "meaning": "Works the same way in D365FO." },
+    "changed": { "label": "Changed in D365FO", "meaning": "The idea holds, the API or the tool moved. The note says where." },
+    "historical": { "label": "Historical", "meaning": "AX-only. Kept for anyone still running 2009 or 2012." },
+    "to-review": { "label": "To review", "meaning": "Not re-tested yet." }
+  },
+  "articles": {
+    "title": "Articles",
+    "eyebrow": "Writing",
+    "lead": "Long pieces on Dynamics 365 Finance & Operations: architecture, integrations, X++ and AI. They are published here first; LinkedIn gets a summary and a link.",
+    "filterLabel": "Filter by track",
+    "all": "All",
+    "empty": "Nothing here yet.",
+    "readArticle": "Read the article",
+    "pinned": "Pinned",
+    "draft": "Draft",
+    "trackTitle": "{track} — articles"
+  },
+  "archive": {
+    "eyebrow": "Archive · formerly Dynamics AX Notes",
+    "title": "Ten years of notes, re-read with today’s eyes.",
+    "lead": "Written on Blogger between {from} and {to}, from AX 2009 to D365FO. Each note now carries a verdict for 2026 and, where it changed, a pointer to what replaced it.",
+    "searchLabel": "Search the archive",
+    "searchPlaceholder": "InventSum, SSRS, lookup…",
+    "filterLabel": "Filter by 2026 verdict",
+    "all": "All",
+    "noMatch": "No note matches.",
+    "passTitle": "The editorial pass",
+    "passOnBlogger": "Notes on Blogger",
+    "passRetired": "Reposts and link-only, credited or retired",
+    "passMerged": "Duplicates merged",
+    "passKept": "Notes kept",
+    "bridgeTitle": "Then → now",
+    "bridgeLead": "Where an old note grew into a new article.",
+    "verdictsTitle": "What the verdicts mean",
+    "verdictTitle": "Archive — {verdict}",
+    "count": "{count} notes"
+  },
+  "article": {
+    "breadcrumbArticles": "Articles",
+    "breadcrumbArchive": "Archive",
+    "firstWritten": "First written",
+    "published": "Published",
+    "reread": "Re-read",
+    "updated": "Updated",
+    "versions": "Versions",
+    "originallyLinkedIn": "Originally published on LinkedIn",
+    "originallyBlog": "Originally on Dynamics AX Notes:",
+    "mergedNote": "Merged from:",
+    "previous": "Previous",
+    "next": "Next",
+    "moreFromArchive": "More from the archive",
+    "moreArticles": "More articles",
+    "seriesNav": "Series",
+    "seriesPart": "Part {part}",
+    "tags": "Tags",
+    "draftBanner": "Draft — not published. Visible only in development.",
+    "readingTime": "{min} min read"
+  },
+  "tags": {
+    "title": "Tagged “{tag}”",
+    "eyebrow": "Tag"
+  },
+  "about": {
+    "title": "About",
+    "metaTitle": "About Diego Mancassola",
+    "description": "Diego Mancassola is a Technical Solution Architect at PA Expertise - Alveo group, working on Dynamics 365 Finance & Operations architecture, integrations and AI.",
+    "bio": "Technical Solution Architect at PA Expertise - Alveo group, based in Vicenza, Italy. I work on Microsoft Dynamics 365 Finance & Operations: architecture, integrations with Azure API Management and Azure Functions, functional and technical analysis. Lately I build tools where AI does the reading and the judging, and code does the plumbing.",
+    "nameStory": "dasdynamics reads “D as Dynamics”. The D is also mine: the monogram is a small D inside a larger one.",
+    "historyTitle": "Writing since 2014",
+    "history": "From 2014 to 2024 I kept Dynamics AX Notes on Blogger. Those notes now live in the archive here, each with a verdict for D365FO today. New articles are published on this site first.",
+    "portraitAlt": "Portrait of Diego Mancassola",
+    "linkedin": "LinkedIn",
+    "oldBlog": "Dynamics AX Notes (old blog)",
+    "rss": "RSS"
+  },
+  "footer": {
+    "copyright": "© {year} Diego Mancassola",
+    "formerly": "formerly dynamicsaxnotes.blogspot.com",
+    "rss": "RSS",
+    "sitemap": "Sitemap"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "code": "404",
+    "lead": "This page does not exist, or it moved when the old notes were re-read.",
+    "home": "Go to the home page",
+    "archive": "Browse the archive"
+  },
+  "rss": {
+    "title": "dasdynamics — Diego Mancassola",
+    "description": "Articles and archive notes on Dynamics 365 Finance & Operations and AI."
+  }
+}

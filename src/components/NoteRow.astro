@@ -1,0 +1,68 @@
+---
+import VerdictPill from './VerdictPill.astro';
+import { t } from '../i18n';
+import { articleUrl, formatMonth, type Entry } from '../lib/content';
+const { entry } = Astro.props as { entry: Entry };
+const d = entry.data;
+const search = [d.title, d.description, d.verdictNote ?? '', ...d.tags, ...d.versions].join(' ').toLowerCase();
+---
+<li class="row" data-search={search}>
+  <time class="date mono" datetime={d.date.toISOString().slice(0, 10)}>{formatMonth(d.date)}</time>
+  <div class="main">
+    <a href={articleUrl(entry)} class="title">{d.title}</a>
+    {d.verdictNote && <span class="note">{d.verdictNote}</span>}
+  </div>
+  <div class="pills">
+    {d.versions.length > 0 && <span class="tag">{d.versions.join(' · ')}</span>}
+    <span class="tag">{t(`tracks.${d.track}.short`)}</span>
+    {d.verdict && <VerdictPill verdict={d.verdict} />}
+  </div>
+</li>
+
+<style>
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: baseline;
+  }
+  .date {
+    flex: 0 0 84px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .main {
+    flex: 999 1 340px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .title {
+    color: var(--ink);
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  .note {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--muted);
+  }
+  .pills {
+    flex: 1 1 220px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  @media (max-width: 640px) {
+    .pills {
+      justify-content: flex-start;
+    }
+  }
+</style>

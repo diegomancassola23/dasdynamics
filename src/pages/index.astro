@@ -1,0 +1,535 @@
+---
+import Base from '../layouts/Base.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+import Credential from '../components/Credential.astro';
+import Arrow from '../components/Arrow.astro';
+import Monogram from '../components/Monogram.astro';
+import { t } from '../i18n';
+import {
+  getAll,
+  isArticle,
+  isNote,
+  pinnedFirst,
+  seriesOf,
+  seriesTitle,
+  notesPerYear,
+  versionsCovered,
+  articleUrl,
+  trackUrl,
+  formatDay,
+  TRACKS,
+  VERDICTS,
+} from '../lib/content';
+import { AUTHOR, personJsonLd } from '../lib/site';
+
+const all = await getAll();
+const articles = all.filter(isArticle);
+const notes = all.filter(isNote);
+
+const firstYear = all.length ? Math.min(...all.map((e) => e.data.date.getUTCFullYear())) : new Date().getFullYear();
+const years = new Date().getFullYear() - firstYear;
+const numberWords = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen'];
+const yearsText = numberWords[years] ?? String(years);
+
+const ordered = pinnedFirst(articles);
+const featured = ordered[0];
+const seriesSource = featured?.data.series ? featured : articles.find((a) => a.data.series);
+const series = seriesSource ? seriesOf(seriesSource, all) : [];
+const grid = ordered.filter((a) => a !== featured).slice(0, 6);
+
+const perYear = notesPerYear(notes);
+const maxPerYear = Math.max(1, ...perYear.map((y) => y.count));
+const noteYears = notes.map((n) => n.data.date.getUTCFullYear());
+const fromYear = noteYears.length ? Math.min(...noteYears) : 2014;
+const toYear = noteYears.length ? Math.max(...noteYears) : 2024;
+const chartLabel = `${t('home.notesPerYear')}: ${perYear.map((y) => `${y.year} ${y.count}`).join(', ')}`;
+const legend = VERDICTS.filter((v) => notes.some((n) => n.data.verdict === v));
+
+const site = Astro.site!;
+const jsonLd = [
+  personJsonLd(site),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: t('site.name'),
+    alternateName: t('site.payoff'),
+    url: new URL('/', site).href,
+    inLanguage: 'en',
+    author: { '@id': new URL('/#person', site).href },
+  },
+];
+---
+<Base title={t('site.homeTitle')} description={t('site.homeDescription')} current="home" ogType="profile" jsonLd={jsonLd}>
+  <section class="wrap hero">
+    <div class="hero-main">
+      <p class="eyebrow">{t('home.eyebrow')}</p>
+      <h1 class="hero-title">{t('home.title')}</h1>
+      <p class="payoff">
+        <Monogram size={34} />
+        <span>{t('site.payoffLead')} <em>{t('site.payoffTail')}</em></span>
+      </p>
+      <p class="lead">{t('home.lead', { years: yearsText })}</p>
+      <div class="actions">
+        {featured && <a href={articleUrl(featured)} class="btn btn-solid">{t('home.ctaLatest')}</a>}
+        <a href="/archive/" class="btn btn-line">{t('home.ctaArchive')}</a>
+      </div>
+      <Credential all={all} />
+    </div>
+    <dl class="stats">
+      <div><dt>{t('home.statPublished')}</dt><dd class="big">{all.length}</dd></div>
+      <div><dt>{t('home.statSince')}</dt><dd class="big">{firstYear}</dd></div>
+      <div class="span2"><dt>{t('home.statVersions')}</dt><dd class="mono">{versionsCovered(all).join(' · ')}</dd></div>
+    </dl>
+  </section>
+
+  {featured && (
+    <section id="latest" aria-labelledby="latest-h" class="wrap latest">
+      <h2 id="latest-h" class="eyebrow">{featured.data.pinned ? t('home.pinned') : t('home.latest')}</h2>
+      <div class="latest-row">
+        <FeatureCard entry={featured} total={featured.data.series ? series.length : 0} />
+        {series.length > 0 && (
+          <aside aria-labelledby="series-h" class="series">
+            <p class="eyebrow">{t('home.series')}</p>
+            <h3 id="series-h" class="series-title">{seriesTitle(seriesSource!.data.series!)}</h3>
+            <ol>
+              {series.map((s, i) => (
+                <li>
+                  <span class="mono num">{String(s.data.seriesPart ?? i + 1).padStart(2, '0')}</span>
+                  <span>
+                    <a href={articleUrl(s)}>{s.data.title}</a><br />
+                    <span class="small">{formatDay(s.data.date)}</span>
+                  </span>
+                </li>
+              ))}
+            </ol>
+            <p class="small">{t('home.seriesFoot')}</p>
+          </aside>
+        )}
+      </div>
+    </section>
+  )}
+
+  <section id="writing" aria-labelledby="writing-h" class="writing">
+    <div class="wrap writing-inner">
+      <div class="writing-head">
+        <h2 id="writing-h" class="h-section">{t('home.writing')}</h2>
+        <nav aria-label={t('articles.filterLabel')}>
+          <ul class="chips">
+            <li><a class="chip" href="/articles/" aria-current="page">{t('articles.all')}</a></li>
+            {TRACKS.filter((tr) => articles.some((a) => a.data.track === tr)).map((tr) => (
+              <li><a class="chip" href={trackUrl(tr)}>{t(`tracks.${tr}.short`)}</a></li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+      {grid.length > 0 ? (
+        <div class="grid">{grid.map((a) => <ArticleCard entry={a} />)}</div>
+      ) : (
+        <p class="small">{t('articles.empty')}</p>
+      )}
+      <p class="all-link"><a href="/articles/" class="btn btn-line btn-sm">{t('home.allArticles')}<Arrow /></a></p>
+    </div>
+  </section>
+
+  <section id="tracks" aria-labelledby="tracks-h" class="wrap tracks">
+    <h2 id="tracks-h" class="h-section">{t('home.tracksTitle')}</h2>
+    <ul class="track-list">
+      {TRACKS.map((tr, i) => (
+        <li>
+          <p class="meta">{String(i + 1).padStart(2, '0')}</p>
+          <h3><a href={trackUrl(tr)}>{t(`tracks.${tr}.name`)}</a></h3>
+          <p>{t(`tracks.${tr}.blurb`)}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  {notes.length > 0 && (
+    <section aria-labelledby="arch-h" class="band">
+      <div class="wrap archive">
+        <div class="archive-main">
+          <p class="eyebrow">{t('home.archiveEyebrow')}</p>
+          <h2 id="arch-h" class="archive-title">{t('home.archiveTitle', { from: fromYear, to: toYear })}</h2>
+          <p class="archive-lead">{t('home.archiveLead', { count: notes.length })}</p>
+          <ul class="legend">
+            {legend.map((v) => (
+              <li><span class={`sw sw-${v}`} aria-hidden="true"></span>{t(`verdicts.${v}.label`)}</li>
+            ))}
+          </ul>
+          <a href="/archive/" class="btn btn-light">{t('home.archiveCta')}</a>
+        </div>
+        <figure class="chart">
+          <figcaption class="meta">{t('home.notesPerYear')}</figcaption>
+          <div class="bars" role="img" aria-label={chartLabel}>
+            {perYear.map((y) => (
+              <div class="bar-col">
+                <span class="mono n">{y.count}</span>
+                <div class="bar" style={`height: ${Math.max(4, Math.round((y.count / maxPerYear) * 160))}px`}></div>
+              </div>
+            ))}
+          </div>
+          <div class="years" aria-hidden="true">
+            {perYear.map((y) => <span class="mono">{y.year}</span>)}
+          </div>
+        </figure>
+      </div>
+    </section>
+  )}
+
+  <section id="about" aria-labelledby="about-h" class="wrap about">
+    <img src={AUTHOR.portrait} alt={t('about.portraitAlt')} width="160" height="152" class="portrait" decoding="async" />
+    <div class="about-main">
+      <h2 id="about-h" class="h-section">{t('home.aboutTitle')}</h2>
+      <p class="about-text">{t('about.bio')}</p>
+      <div class="actions">
+        <a href="/about/" class="btn btn-solid btn-sm">{t('home.aboutMore')}</a>
+        <a href={AUTHOR.linkedin} class="btn btn-line btn-sm" rel="me">{t('about.linkedin')}</a>
+        <a href="/rss.xml" class="btn btn-line btn-sm">{t('about.rss')}</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero {
+    padding-top: 88px;
+    padding-bottom: 72px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 56px;
+    align-items: flex-end;
+  }
+  .hero-main {
+    flex: 999 1 560px;
+    min-width: 0;
+  }
+  .hero .eyebrow {
+    margin-bottom: 24px;
+  }
+  .hero-title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(38px, 6vw, 76px);
+    line-height: 1.02;
+    letter-spacing: -1.5px;
+  }
+  .payoff {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 28px 0 0;
+    font-family: var(--font-display);
+    font-size: clamp(20px, 2.4vw, 26px);
+    font-weight: 600;
+    letter-spacing: -0.3px;
+  }
+  .payoff :global(.monogram) {
+    margin-left: -5px;
+    flex: none;
+  }
+  .payoff em {
+    font-style: normal;
+    color: var(--accent);
+  }
+  .lead {
+    margin: 16px 0 0;
+    max-width: 640px;
+    font-size: 20px;
+    line-height: 1.55;
+    color: var(--text-2);
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 32px;
+  }
+  .stats {
+    flex: 1 1 260px;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-top: 2px solid var(--ink);
+  }
+  .stats > div {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .stats .span2 {
+    grid-column: span 2;
+  }
+  .stats dt {
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .stats dd {
+    margin: 6px 0 0;
+    font-size: 14px;
+  }
+  .stats dd.big {
+    margin-top: 4px;
+    font-family: var(--font-display);
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .latest {
+    padding-bottom: 80px;
+  }
+  .latest .eyebrow {
+    margin-bottom: 20px;
+  }
+  .latest-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  .series {
+    flex: 1 1 300px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .series-title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 24px;
+    line-height: 1.2;
+  }
+  .series ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-bottom: 1px solid var(--line);
+  }
+  .series li {
+    padding: 14px 0;
+    border-top: 1px solid var(--line);
+    display: flex;
+    gap: 14px;
+  }
+  .series li a {
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .num {
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .small {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--muted);
+  }
+  .series li .small {
+    font-size: 13px;
+  }
+
+  .writing {
+    background: var(--surface);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .writing-inner {
+    padding-top: 72px;
+    padding-bottom: 80px;
+  }
+  .writing-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+    gap: 24px;
+  }
+  .all-link {
+    margin: 32px 0 0;
+  }
+
+  .tracks {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+  .track-list {
+    margin: 32px 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    border-top: 2px solid var(--ink);
+  }
+  .track-list li {
+    padding: 24px 24px 24px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .track-list h3 {
+    margin: 10px 0 8px;
+    font-family: var(--font-display);
+    font-size: 22px;
+  }
+  .track-list h3 a {
+    color: var(--ink);
+  }
+  .track-list p:not(.meta) {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--text-2);
+  }
+
+  .archive {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 56px;
+    align-items: flex-end;
+  }
+  .archive-main {
+    flex: 999 1 460px;
+    min-width: 0;
+  }
+  .archive-main .eyebrow {
+    margin-bottom: 16px;
+  }
+  .archive-title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(32px, 4vw, 44px);
+    line-height: 1.08;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+  .archive-lead {
+    margin: 20px 0 0;
+    max-width: 560px;
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--band-soft);
+  }
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+    margin: 24px 0 32px;
+    padding: 0;
+    list-style: none;
+    font-size: 14px;
+  }
+  .legend li {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .sw {
+    width: 10px;
+    height: 10px;
+  }
+  .sw-valid { background: #4ade80; }
+  .sw-changed { background: #fbbf24; }
+  .sw-historical { background: #8b95a5; }
+  .sw-to-review { background: #7cc4ff; }
+  .chart {
+    flex: 1 1 380px;
+    margin: 0;
+    min-width: 0;
+  }
+  .chart figcaption {
+    margin-bottom: 14px;
+  }
+  .bars,
+  .years {
+    display: flex;
+    gap: 10px;
+  }
+  .bars {
+    align-items: flex-end;
+    height: 200px;
+    border-bottom: 1px solid var(--band-line);
+  }
+  .bar-col {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+    height: 100%;
+  }
+  .bar {
+    width: 100%;
+    background: var(--band-ink);
+  }
+  .n {
+    font-size: 12px;
+    color: var(--band-soft);
+  }
+  .years {
+    margin-top: 8px;
+  }
+  .years span {
+    flex: 1 1 0;
+    text-align: center;
+    font-size: 12px;
+    color: var(--band-muted);
+  }
+
+  .about {
+    padding-top: 88px;
+    padding-bottom: 88px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 48px;
+  }
+  .portrait {
+    flex: 0 0 160px;
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    background: var(--line);
+  }
+  .about-main {
+    flex: 999 1 480px;
+    min-width: 0;
+  }
+  .about-text {
+    margin: 18px 0 0;
+    max-width: 720px;
+    font-size: 18px;
+    line-height: 1.65;
+    color: var(--text-2);
+  }
+  .about .actions {
+    margin-top: 28px;
+  }
+
+  @media (max-width: 480px) {
+    .hero {
+      padding-top: 48px;
+      padding-bottom: 56px;
+      gap: 40px;
+    }
+    .lead {
+      font-size: 18px;
+    }
+    .writing-inner,
+    .tracks,
+    .archive,
+    .about {
+      padding-top: 56px;
+      padding-bottom: 56px;
+    }
+  }
+</style>

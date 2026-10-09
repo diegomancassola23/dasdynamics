@@ -1,0 +1,25 @@
+---
+import Base from '../layouts/Base.astro';
+import Monogram from '../components/Monogram.astro';
+import { t } from '../i18n';
+import { pageTitle } from '../lib/site';
+---
+<Base title={pageTitle(t('notFound.title'))} description={t('notFound.lead')} noindex>
+  <div class="wrap page">
+    <p class="code mono"><Monogram size={48} /> {t('notFound.code')}</p>
+    <h1 class="title">{t('notFound.title')}</h1>
+    <p class="lead">{t('notFound.lead')}</p>
+    <div class="actions">
+      <a href="/" class="btn btn-solid">{t('notFound.home')}</a>
+      <a href="/archive/" class="btn btn-line">{t('notFound.archive')}</a>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .page { padding-top: 96px; padding-bottom: 120px; }
+  .code { display: flex; align-items: center; gap: 12px; margin: 0; font-size: 15px; color: var(--muted); }
+  .title { margin: 24px 0 0; font-family: var(--font-display); font-weight: 700; font-size: clamp(36px, 5vw, 60px); line-height: 1.05; letter-spacing: -1px; }
+  .lead { margin: 20px 0 0; max-width: 640px; font-size: 19px; line-height: 1.6; color: var(--text-2); }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+</style>

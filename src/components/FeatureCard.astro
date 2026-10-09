@@ -1,0 +1,129 @@
+---
+import Arrow from './Arrow.astro';
+import { t } from '../i18n';
+import { articleUrl, formatDay, type Entry } from '../lib/content';
+const { entry, total = 0 } = Astro.props as { entry: Entry; total?: number };
+const d = entry.data;
+const code = d.cover ?? t(`tracks.${d.track}.code`);
+---
+<article class="feature">
+  <div class="cover" aria-hidden="true">
+    <span class="mono top">
+      {d.series && d.seriesPart && total > 0 ? t('home.partOf', { part: d.seriesPart, total }).toUpperCase() : t(`tracks.${d.track}.name`).toUpperCase()}
+    </span>
+    <div>
+      <div class="code">{code}</div>
+      <div class="rule"></div>
+    </div>
+  </div>
+  <div class="body">
+    <p class="meta">
+      <time datetime={d.date.toISOString().slice(0, 10)}>{formatDay(d.date)}</time> · {t(`tracks.${d.track}.short`)}
+      {d.draft && <> · <strong>{t('articles.draft')}</strong></>}
+    </p>
+    <h3 class="title"><a href={articleUrl(entry)}>{d.title}</a></h3>
+    <p class="dek">{d.description}</p>
+    <a href={articleUrl(entry)} class="more" aria-hidden="true" tabindex="-1">{t('articles.readArticle')}<Arrow /></a>
+  </div>
+</article>
+
+<style>
+  .feature {
+    flex: 999 1 600px;
+    min-width: 0;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+  }
+  .cover {
+    flex: 1 1 280px;
+    min-height: 280px;
+    background: var(--band);
+    color: var(--band-ink);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .top {
+    font-size: 13px;
+    color: var(--band-muted);
+  }
+  .code {
+    font-family: var(--font-display);
+    font-size: clamp(44px, 5vw, 64px);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+  .rule {
+    margin-top: 10px;
+    height: 6px;
+    width: 72px;
+    background: var(--accent);
+  }
+  @media (prefers-color-scheme: dark) {
+    .rule {
+      background: #7cc4ff;
+    }
+  }
+  .body {
+    flex: 2 1 340px;
+    min-width: 0;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(24px, 3vw, 30px);
+    line-height: 1.15;
+    font-weight: 700;
+  }
+  .title a {
+    color: var(--ink);
+  }
+  .title a::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+  .title a:focus-visible {
+    outline: none;
+  }
+  .feature:has(.title a:focus-visible) {
+    outline: 3px solid var(--focus);
+    outline-offset: 3px;
+  }
+  .feature:hover .title a {
+    text-decoration: underline;
+  }
+  .dek {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--text-2);
+  }
+  .more {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    font-weight: 600;
+  }
+  @media (max-width: 480px) {
+    .cover,
+    .body {
+      padding: 24px;
+    }
+    .cover {
+      min-height: 200px;
+    }
+  }
+</style>
