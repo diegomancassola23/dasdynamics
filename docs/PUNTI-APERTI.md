@@ -46,6 +46,8 @@ Da fare / da decidere:
 - Dal 09/10/2026 gli articoli nuovi nascono sul sito, non più su LinkedIn (LinkedIn porta sunto e link).
 - Tema del sito: D365FO e IA, con un carattere unico. Nome: dasdynamics.
 - Scrivere un articolo nuovo deve essere semplice.
+- 10/10/2026: l'anteprima è «troppo professionale». Il tema è Dynamics Dreams: resta professionale, ma deve far intuire il concetto di sogno.
+- 10/10/2026: copertine tutte nello stesso stile, d'ora in poi, come una firma in linea con il sito; uniformare anche quelle esistenti. Proposte nel mockup «dasdynamics · sogni» (tre direzioni + serie di copertine), decide Diego.
 
 ## Da fare
 
@@ -55,3 +57,5 @@ Da fare / da decidere:
 - 21+2 note «to-review»: compilarle e provarle su una versione attuale (un giro su una dev box) per assegnare il verdetto finale.
 - Prima di andare online: cambiare il dominio in `site.config.mjs`, togliere le bozze non pronte, Search Console con la sitemap, link al sito nel profilo LinkedIn (sezione Informazioni e «sito web»).
 - Post LinkedIn brevi: raccolti il 09/10 in `sources/linkedin-posts/posts.md` (19 post tuoi, 2024–2026). Proposti come articoli nuovi, in bozza: licenze ISV SHA-256 in 10.0.49; numeratori continui dopo 10.0.47 (cronologia dell'incidente); InventSum mancanti «by design»; F&O nel Power Platform admin center. Il post Super User alimenta l'articolo dedicato; DynamicsMinds (tre edizioni) va nell'About.
+- Puntamenti (indagine Google del 10/10, dettaglio in `docs/LINKS-INVENTORY.md`): al vecchio blog punta un solo link esterno (forum Dynamics Community, post SSRS→Excel del 2014); agli articoli LinkedIn nessuno. Da aggiornare a dominio deciso: profilo LinkedIn (sito, Informazioni, In primo piano), GitHub `diegomancassola23` e README di `d365fo.MCP`, profilo Dynamics Community. Il vecchio account GitHub `diegomancassola` esce secondo sul nome con dati vecchi: aggiornarlo o archiviarlo (decide Diego). Una riga in coda a ogni articolo LinkedIn con il link al sito.
+- Post di commiato per Blogger e avviso per ogni post: bozza in `docs/blogger-farewell.md`, da pubblicare a dominio deciso.
