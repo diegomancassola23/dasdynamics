@@ -61,7 +61,8 @@ const jsonLd = [
 ];
 ---
 <Base title={t('site.homeTitle')} description={t('site.homeDescription')} current="home" ogType="profile" jsonLd={jsonLd}>
-  <section class="wrap hero">
+  <section class="band hero-band">
+    <div class="wrap hero">
     <div class="hero-main">
       <p class="eyebrow">{t('home.eyebrow')}</p>
       <h1 class="hero-title">{t('home.title')}</h1>
@@ -81,13 +82,14 @@ const jsonLd = [
       <div><dt>{t('home.statSince')}</dt><dd class="big">{firstYear}</dd></div>
       <div class="span2"><dt>{t('home.statVersions')}</dt><dd class="mono">{versionsCovered(all).join(' · ')}</dd></div>
     </dl>
+    </div>
   </section>
 
   {featured && (
     <section id="latest" aria-labelledby="latest-h" class="wrap latest">
       <h2 id="latest-h" class="eyebrow">{featured.data.pinned ? t('home.pinned') : t('home.latest')}</h2>
       <div class="latest-row">
-        <FeatureCard entry={featured} total={featured.data.series ? series.length : 0} />
+        <FeatureCard entry={featured} />
         {series.length > 0 && (
           <aside aria-labelledby="series-h" class="series">
             <p class="eyebrow">{t('home.series')}</p>
@@ -213,7 +215,7 @@ const jsonLd = [
     font-weight: 700;
     font-size: clamp(38px, 6vw, 76px);
     line-height: 1.02;
-    letter-spacing: -1.5px;
+    letter-spacing: -1px;
   }
   .payoff {
     display: flex;
@@ -231,14 +233,14 @@ const jsonLd = [
   }
   .payoff em {
     font-style: normal;
-    color: var(--accent);
+    color: var(--gold);
   }
   .lead {
     margin: 16px 0 0;
     max-width: 640px;
     font-size: 20px;
     line-height: 1.55;
-    color: var(--text-2);
+    color: var(--band-soft);
   }
   .actions {
     display: flex;
@@ -251,18 +253,18 @@ const jsonLd = [
     margin: 0;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    border-top: 2px solid var(--ink);
+    border-top: 2px solid var(--gold);
   }
   .stats > div {
     padding: 18px 0;
-    border-bottom: 1px solid var(--line);
+    border-bottom: 1px solid var(--band-line);
   }
   .stats .span2 {
     grid-column: span 2;
   }
   .stats dt {
     font-size: 13px;
-    color: var(--muted);
+    color: var(--band-muted);
   }
   .stats dd {
     margin: 6px 0 0;
@@ -277,6 +279,7 @@ const jsonLd = [
   }
 
   .latest {
+    padding-top: 56px;
     padding-bottom: 80px;
   }
   .latest .eyebrow {
@@ -440,7 +443,7 @@ const jsonLd = [
   .sw-valid { background: #4ade80; }
   .sw-changed { background: #fbbf24; }
   .sw-historical { background: #8b95a5; }
-  .sw-to-review { background: #7cc4ff; }
+  .sw-to-review { background: #a5b4fc; }
   .chart {
     flex: 1 1 380px;
     margin: 0;

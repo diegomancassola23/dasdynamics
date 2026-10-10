@@ -22,8 +22,8 @@
     "subscribeLabel": "Iscriviti via RSS"
   },
   "home": {
-    "eyebrow": "Dynamics 365 Finance & Operations · Architettura · IA",
-    "title": "Architettura, integrazioni e IA per Dynamics 365 F&O.",
+    "eyebrow": "Dynamics dreams · D365 Finance & Operations · IA",
+    "title": "Costruisco i sistemi che sognavo.",
     "lead": "{years} anni di appunti sul campo di Diego Mancassola: dagli snippet X++ su AX 2009 ad API Management, server MCP e Copilot dentro D365FO.",
     "ctaLatest": "Leggi l’ultimo",
     "ctaArchive": "Sfoglia l’archivio",
@@ -149,7 +149,8 @@
     "draftBanner": "Bozza — non pubblicata. Visibile solo in sviluppo.",
     "readingTime": "{min} min di lettura",
     "breadcrumb": "Percorso",
-    "sources": "Fonti"
+    "sources": "Fonti",
+    "originalCover": "La copertina originale, come pubblicata su LinkedIn."
   },
   "tags": {
     "title": "Con il tag «{tag}»",
@@ -184,5 +185,9 @@
   "rss": {
     "title": "dasdynamics — Diego Mancassola",
     "description": "Articoli e note d’archivio su Dynamics 365 Finance & Operations e IA."
+  },
+  "cover": {
+    "article": "Articolo",
+    "footer": "dasdynamics · Dynamics dreams"
   }
 }

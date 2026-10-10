@@ -2,6 +2,7 @@
 import { render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import VerdictPill from '../../components/VerdictPill.astro';
+import Cover from '../../components/Cover.astro';
 import { t } from '../../i18n';
 import {
   getAll,
@@ -16,6 +17,7 @@ import {
   readingMinutes,
   isLinkedIn,
   coverOf,
+  originalImageOf,
   type Entry,
 } from '../../lib/content';
 import { AUTHOR, OG_DEFAULT, pageTitle } from '../../lib/site';
@@ -29,7 +31,8 @@ const { entry, all } = Astro.props as { entry: Entry; all: Entry[] };
 const d = entry.data;
 const isNote = d.kind === 'note';
 const { Content } = await render(entry);
-const cover = await coverOf(entry);
+const cover = coverOf(entry);
+const original = await originalImageOf(entry);
 
 const series = seriesOf(entry, all);
 const siblings = series.length > 1 ? series : all.filter((e) => e.data.kind === d.kind);
@@ -131,18 +134,7 @@ const jsonLd = [
       {!isNote && <div><dt>&nbsp;</dt><dd class="mono">{t('article.readingTime', { min: readingMinutes(entry.body) })}</dd></div>}
     </dl>
 
-    {cover && (
-      <img
-        class="cover"
-        src={cover.src}
-        alt={cover.alt}
-        width={cover.width}
-        height={cover.height}
-        loading="eager"
-        fetchpriority="high"
-        decoding="async"
-      />
-    )}
+    {cover && <div class="cover"><Cover entry={entry} /></div>}
 
     {series.length > 1 && (
       <nav aria-labelledby="series-h" class="series">
@@ -159,6 +151,12 @@ const jsonLd = [
     )}
 
     <div class="prose">
+      {original && (
+        <figure class="original">
+          <img src={original.src} alt={original.alt} width={original.width} height={original.height} loading="lazy" decoding="async" />
+          <figcaption>{t('article.originalCover')}</figcaption>
+        </figure>
+      )}
       <Content />
     </div>
 
@@ -274,12 +272,22 @@ const jsonLd = [
     font-size: 14px;
   }
   .cover {
+    margin-top: 32px;
+    border-bottom: 4px solid var(--gold);
+  }
+  .original {
+    margin: 0 0 32px;
+  }
+  .original img {
     display: block;
     width: 100%;
     height: auto;
-    margin-top: 32px;
     border: 1px solid var(--line);
-    background: var(--surface);
+  }
+  .original figcaption {
+    margin-top: 8px;
+    font-size: 14px;
+    color: var(--muted);
   }
   .series {
     margin-top: 32px;
@@ -415,13 +423,13 @@ const jsonLd = [
     color: var(--ink);
   }
 
-  /* "In D365FO today": the dark box of the mockup */
+  /* "In D365FO today": a small night sky inside the note */
   .prose :global(.md-in-d365fo-today) {
     margin-top: 40px;
     padding: 28px 28px 30px;
-    background: var(--band);
+    background: url('/images/stars.svg') repeat, linear-gradient(160deg, var(--band), var(--band-2));
     color: var(--band-ink);
-    --mark-inner: #7cc4ff;
+    --mark-inner: var(--gold);
     font-size: 17px;
     line-height: 1.65;
   }
@@ -441,7 +449,7 @@ const jsonLd = [
     color: var(--band-ink);
   }
   .prose :global(.md-in-d365fo-today a) {
-    color: #a9d8ff;
+    color: var(--band-link);
   }
   .prose :global(.md-in-d365fo-today :not(pre) > code) {
     background: var(--band-inline);

@@ -1,0 +1,28 @@
+---
+// The generated "Notturno" cover, inlined so it uses the site's fonts. Decorative: the title is in the page.
+import { coverSvg } from '../lib/cover.mjs';
+import { t } from '../i18n';
+import type { Entry } from '../lib/content';
+const { entry } = Astro.props as { entry: Entry };
+const d = entry.data;
+const svg = coverSvg({
+  slug: entry.id,
+  title: d.title,
+  label: `${t(`tracks.${d.track}.short`)} · ${t('cover.article')}`.toUpperCase(),
+  footer: t('cover.footer'),
+});
+---
+<div class="night-cover" aria-hidden="true" set:html={svg} />
+
+<style>
+  .night-cover {
+    aspect-ratio: 16 / 9;
+    background: #0b1028;
+    overflow: hidden;
+  }
+  .night-cover :global(svg) {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+</style>

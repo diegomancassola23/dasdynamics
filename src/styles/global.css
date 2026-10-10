@@ -1,41 +1,38 @@
-/* dasdynamics — global styles. Colors are tokens; dark mode redefines them. */
+/* dasdynamics — global styles ("Notturno"). Colors are tokens; dark mode redefines them. */
 
 :root {
-  --bg: #f4f5f1;
+  --bg: #f6f4ef;
   --surface: #ffffff;
-  --ink: #12161c;
-  --text-2: #343b47;
-  --text-body: #232a34;
-  --muted: #4a5260;
-  --line: #daddd5;
-  --line-2: #c4c8bf;
-  --accent: #1d4ed8;
-  --accent-hover: #1e3a8a;
+  --ink: #171a33;
+  --text-2: #3a3d5c;
+  --text-body: #24273f;
+  --muted: #565a78;
+  --line: #e1ded6;
+  --line-2: #cbc7bd;
+  --accent: #4338ca;
+  --accent-hover: #312e81;
   --accent-ink: #ffffff;
-  --mark-inner: #1d4ed8;
-  --btn-bg: #12161c;
-  --btn-fg: #f4f5f1;
+  --gold: #f5c66b;
+  --mark-inner: #d99a2b;
+  --btn-bg: #171a33;
+  --btn-fg: #f6f4ef;
   --code-bg: #ffffff;
-  --code-inline: #e5e7e2;
-  --chip-on-bg: #12161c;
-  --chip-on-fg: #f4f5f1;
+  --code-inline: #ebe8f3;
+  --chip-on-bg: #171a33;
+  --chip-on-fg: #f6f4ef;
 
-  /* dark bands (hero cards, archive band, "In D365FO today") */
-  --band: #12161c;
-  --band-ink: #f4f5f1;
-  --band-muted: #a9b4c7;
-  --band-soft: #c9d0db;
-  --band-line: #343b47;
-  --band-code: #1e242e;
-  --band-inline: #2a313c;
-  --band-btn-bg: #f4f5f1;
-  --band-btn-fg: #12161c;
-
-  /* card covers per track */
-  --cover-integrations: #3b2f1e;
-  --cover-ai: #1d2b4f;
-  --cover-xpp: #2e2240;
-  --cover-platform: #23302b;
+  /* night bands: header, home hero, archive band, "In D365FO today", footer */
+  --band: #0f1433;
+  --band-2: #1e2556;
+  --band-ink: #f4efe3;
+  --band-muted: #b9b6d9;
+  --band-soft: #d8d5ec;
+  --band-line: #2e3360;
+  --band-code: #161b42;
+  --band-inline: #232856;
+  --band-link: #fbe3a8;
+  --band-btn-bg: #f5c66b;
+  --band-btn-fg: #171a33;
 
   /* verdicts */
   --v-valid-fg: #166534;
@@ -44,17 +41,17 @@
   --v-changed-fg: #9a3412;
   --v-changed-bg: #ffedd5;
   --v-changed-dot: #ea580c;
-  --v-historical-fg: #343b47;
-  --v-historical-bg: #e5e7e2;
-  --v-historical-dot: #8b95a5;
-  --v-review-fg: #1e3a8a;
-  --v-review-bg: #dbeafe;
-  --v-review-dot: #1d4ed8;
+  --v-historical-fg: #3a3d5c;
+  --v-historical-bg: #e8e6ef;
+  --v-historical-dot: #8b8fa8;
+  --v-review-fg: #312e81;
+  --v-review-bg: #e0e7ff;
+  --v-review-dot: #4338ca;
 
-  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-display: 'Fraunces', Georgia, serif;
   --font-sans: 'IBM Plex Sans', system-ui, sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, 'Cascadia Mono', Consolas, monospace;
-  --focus: #1d4ed8;
+  --focus: #4338ca;
   --max: 1200px;
   --gutter: 24px;
   color-scheme: light;
@@ -62,34 +59,30 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0e1116;
-    --surface: #161b22;
-    --ink: #e8ebef;
-    --text-2: #c9d0db;
-    --text-body: #d5dae1;
-    --muted: #a3acba;
-    --line: #2a313c;
-    --line-2: #3a4250;
-    --accent: #7cc4ff;
-    --accent-hover: #b5dcff;
-    --accent-ink: #0e1116;
-    --mark-inner: #7cc4ff;
-    --btn-bg: #e8ebef;
-    --btn-fg: #0e1116;
-    --code-bg: #161b22;
-    --code-inline: #262c35;
-    --chip-on-bg: #e8ebef;
-    --chip-on-fg: #0e1116;
+    --bg: #0b1028;
+    --surface: #141a3e;
+    --ink: #eceaf6;
+    --text-2: #c9c7e2;
+    --text-body: #d8d6ec;
+    --muted: #a5a3c6;
+    --line: #262c55;
+    --line-2: #353c6e;
+    --accent: #f5c66b;
+    --accent-hover: #fbe3a8;
+    --accent-ink: #0b1028;
+    --mark-inner: #f5c66b;
+    --btn-bg: #eceaf6;
+    --btn-fg: #0b1028;
+    --code-bg: #141a3e;
+    --code-inline: #232856;
+    --chip-on-bg: #eceaf6;
+    --chip-on-fg: #0b1028;
 
-    --band: #07090c;
-    --band-line: #2a313c;
-    --band-code: #161b22;
-    --band-inline: #262c35;
-
-    --cover-integrations: #34291a;
-    --cover-ai: #1a2645;
-    --cover-xpp: #281e38;
-    --cover-platform: #1f2a26;
+    --band: #070a1e;
+    --band-2: #141a3e;
+    --band-line: #262c55;
+    --band-code: #141a3e;
+    --band-inline: #232856;
 
     --v-valid-fg: #86efac;
     --v-valid-bg: #12301f;
@@ -97,14 +90,14 @@
     --v-changed-fg: #fdba74;
     --v-changed-bg: #3a2312;
     --v-changed-dot: #fb923c;
-    --v-historical-fg: #c9d0db;
-    --v-historical-bg: #262c35;
-    --v-historical-dot: #8b95a5;
-    --v-review-fg: #a9cfff;
-    --v-review-bg: #172544;
-    --v-review-dot: #7cc4ff;
+    --v-historical-fg: #c9c7e2;
+    --v-historical-bg: #232856;
+    --v-historical-dot: #8b8fa8;
+    --v-review-fg: #c7d2fe;
+    --v-review-bg: #1e2556;
+    --v-review-dot: #a5b4fc;
 
-    --focus: #7cc4ff;
+    --focus: #f5c66b;
     color-scheme: dark;
   }
 }
@@ -149,7 +142,7 @@ a:hover {
   outline-offset: 3px;
 }
 .band :focus-visible {
-  outline-color: #7cc4ff;
+  outline-color: var(--gold);
 }
 
 code,
@@ -285,7 +278,28 @@ kbd {
 }
 .band .btn-light:hover {
   color: var(--band-btn-fg);
-  background: #ffffff;
+  background: var(--band-link);
+  border-color: var(--band-link);
+}
+.band .btn-solid,
+.band .btn-accent {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--band-btn-fg);
+}
+.band .btn-solid:hover,
+.band .btn-accent:hover {
+  background: var(--band-link);
+  border-color: var(--band-link);
+  color: var(--band-btn-fg);
+}
+.band .btn-line {
+  color: var(--band-ink);
+  border-color: var(--band-ink);
+}
+.band .btn-line:hover {
+  color: var(--band-ink);
+  background: var(--band-inline);
 }
 
 .chips {
@@ -401,15 +415,19 @@ a.tag:hover {
   flex: none;
 }
 
-/* ---------- dark band ---------- */
+/* ---------- night band ---------- */
 
+/* A starry night sky: a tiled star field over a soft gradient. */
 .band {
-  background: var(--band);
+  background:
+    url('/images/stars.svg') repeat,
+    radial-gradient(ellipse at 85% 0%, rgba(245, 198, 107, 0.12), transparent 55%),
+    linear-gradient(160deg, var(--band), var(--band-2));
   color: var(--band-ink);
-  --mark-inner: #7cc4ff;
+  --mark-inner: var(--gold);
 }
 .band a:not(.btn) {
-  color: #a9d8ff;
+  color: var(--band-link);
 }
 .band .eyebrow,
 .band .meta {

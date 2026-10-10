@@ -35,21 +35,26 @@ Put them in `public/images/articles/<slug>/` and link them with a description:
 
 The description (alt text) is required: the quality gate fails without it.
 
-## 4. Cover image
+## 4. Cover
 
-Optional. Save the picture as `public/images/articles/<slug>/cover.png`
-(or `.jpg`, `.webp`), ideally 1280x720 (16:9), and add two lines to the
-frontmatter:
+Every article gets the same night-sky cover, made from its title and track:
+nothing to draw. After creating an article, or changing its title or track, run:
+
+```
+npm run covers
+```
+
+It writes `public/images/covers/<slug>.jpg`, the picture shown when the link is
+shared (LinkedIn, X). On the site the same cover is drawn inline. The validator
+fails if an article has no cover file.
+
+An imported article can keep its original picture (for example the LinkedIn
+cover): it shows at the start of the article, with a caption.
 
 ```
 image: "/images/articles/<slug>/cover.png"
 imageAlt: "What the picture shows, in one short sentence"
 ```
-
-The cover then shows on the cards, at the top of the article and when the link
-is shared (LinkedIn, X). Without it the card shows the typographic cover.
-`node scripts/validate-content.mjs` fails if the file is missing or
-`imageAlt` is empty.
 
 ## 5. Pinned
 

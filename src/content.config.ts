@@ -24,8 +24,7 @@ const articles = defineCollection({
       mergedFrom: z.array(z.url()).default([]),
       series: z.string().optional(),
       seriesPart: z.number().int().positive().optional(),
-      cover: z.string().max(12).optional(),
-      // Cover image under public/: /images/articles/<slug>/cover.<ext>. Needs imageAlt.
+      // Original picture of an imported article, shown inside it: /images/articles/<slug>/cover.<ext>. Needs imageAlt.
       image: z.string().regex(/^\/images\/articles\/[a-z0-9-]+\/[\w.-]+\.(png|jpe?g|webp|gif|avif)$/).optional(),
       imageAlt: z.string().min(1).optional(),
       pinned: z.boolean().default(false),

@@ -6,7 +6,6 @@ kind: article
 track: platform
 versions: ["D365FO"]
 tags: ["community"]
-cover: "Super User"
 pinned: true
 draft: true
 ---

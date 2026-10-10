@@ -1,6 +1,7 @@
 // Validates the content collection against docs/CONTENT-SCHEMA.md and checks that
 // every source URL (Blogger feed + LinkedIn index) is accounted for in docs/CONTENT-REPORT.md,
-// and that each cover image exists under public/ and has alt text.
+// that each original image exists under public/ and has alt text, and that every article has its
+// generated cover (public/images/covers/<slug>.jpg, made by `npm run covers`).
 // Usage: node scripts/validate-content.mjs
 // Prints every problem found, then "ESITO: fatto" or "ESITO: non fatto".
 import fs from 'node:fs';
@@ -104,6 +105,10 @@ for (const file of files) {
     if (typeof d.imageAlt !== 'string' || !d.imageAlt.trim()) fail(where, 'imageAlt is required when image is set');
   } else if ('imageAlt' in d) fail(where, 'imageAlt without image');
 
+  if (d.kind === 'article' && !fs.existsSync(path.join(root, 'public/images/covers', `${slug}.jpg`))) {
+    fail(where, `generated cover missing: run npm run covers (public/images/covers/${slug}.jpg)`);
+  }
+
   if (d.kind === 'note') {
     if (!VERDICTS.includes(d.verdict)) fail(where, `verdict must be one of ${VERDICTS.join(', ')}`);
     if (typeof d.verdictNote !== 'string' || !d.verdictNote.trim()) fail(where, 'verdictNote is required for notes');
@@ -174,7 +179,7 @@ for (const [u, slug] of seenUrls) if (!sourceSet.has(u)) fail(`src/content/artic
 const notes = entries.filter(e => e.d.kind === 'note');
 const counts = Object.fromEntries(VERDICTS.map(v => [v, notes.filter(e => e.d.verdict === v).length]));
 console.log(`Entries: ${entries.length} (articles ${entries.length - notes.length}, notes ${notes.length})`);
-console.log(`Cover images: ${entries.filter(e => 'image' in e.d).length}`);
+console.log(`Original images: ${entries.filter(e => 'image' in e.d).length}, generated covers: ${entries.filter(e => e.d.kind === 'article' && fs.existsSync(path.join(root, 'public/images/covers', `${e.slug}.jpg`))).length}`);
 console.log(`Verdicts: ${VERDICTS.map(v => `${v} ${counts[v]}`).join(', ')}`);
 console.log(`Source URLs accounted for: ${accounted}/${sources.length} (blog ${posts.length}, LinkedIn ${linkedin.length})`);
 for (const p of problems) console.log(`PROBLEM ${p}`);

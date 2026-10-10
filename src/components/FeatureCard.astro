@@ -1,28 +1,13 @@
 ---
 import Arrow from './Arrow.astro';
+import Cover from './Cover.astro';
 import { t } from '../i18n';
-import { articleUrl, coverOf, formatDay, type Entry } from '../lib/content';
-const { entry, total = 0 } = Astro.props as { entry: Entry; total?: number };
+import { articleUrl, formatDay, type Entry } from '../lib/content';
+const { entry } = Astro.props as { entry: Entry };
 const d = entry.data;
-const code = d.cover ?? t(`tracks.${d.track}.code`);
-const image = await coverOf(entry);
 ---
 <article class="feature">
-  {image ? (
-    <div class="cover cover-image">
-      <img src={image.src} alt="" width={image.width} height={image.height} decoding="async" />
-    </div>
-  ) : (
-  <div class="cover" aria-hidden="true">
-    <span class="mono top">
-      {d.series && d.seriesPart && total > 0 ? t('home.partOf', { part: d.seriesPart, total }).toUpperCase() : t(`tracks.${d.track}.name`).toUpperCase()}
-    </span>
-    <div>
-      <div class="code">{code}</div>
-      <div class="rule"></div>
-    </div>
-  </div>
-  )}
+  <div class="cover"><Cover entry={entry} /></div>
   <div class="body">
     <p class="meta">
       <time datetime={d.date.toISOString().slice(0, 10)}>{formatDay(d.date)}</time> · {t(`tracks.${d.track}.short`)}
@@ -45,49 +30,8 @@ const image = await coverOf(entry);
     position: relative;
   }
   .cover {
-    flex: 1 1 280px;
-    min-height: 280px;
-    background: var(--band);
-    color: var(--band-ink);
-    padding: 32px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 24px;
-  }
-  /* The picture spans the card, the text sits below it. */
-  .cover-image {
     flex: 1 1 100%;
-    min-height: 0;
-    padding: 0;
-    justify-content: center;
-  }
-  .cover-image img {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
-  .top {
-    font-size: 13px;
-    color: var(--band-muted);
-  }
-  .code {
-    font-family: var(--font-display);
-    font-size: clamp(44px, 5vw, 64px);
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
-  .rule {
-    margin-top: 10px;
-    height: 6px;
-    width: 72px;
-    background: var(--accent);
-  }
-  @media (prefers-color-scheme: dark) {
-    .rule {
-      background: #7cc4ff;
-    }
+    border-bottom: 4px solid var(--gold);
   }
   .body {
     flex: 2 1 340px;
@@ -137,12 +81,8 @@ const image = await coverOf(entry);
     font-weight: 600;
   }
   @media (max-width: 480px) {
-    .cover:not(.cover-image),
     .body {
       padding: 24px;
-    }
-    .cover:not(.cover-image) {
-      min-height: 200px;
     }
   }
 </style>

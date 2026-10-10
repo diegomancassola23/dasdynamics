@@ -4,7 +4,7 @@ import { t } from '../i18n';
 import { AUTHOR } from '../lib/site';
 const host = new URL(Astro.site ?? 'https://dasdynamics.dev').host;
 ---
-<footer class="site-footer">
+<footer class="site-footer band">
   <div class="wrap row">
     <span class="who"><Monogram size={24} /> {t('footer.copyright', { year: new Date().getFullYear() })}</span>
     <span class="payoff">{t('site.payoff')}</span>
@@ -16,7 +16,7 @@ const host = new URL(Astro.site ?? 'https://dasdynamics.dev').host;
 
 <style>
   .site-footer {
-    border-top: 1px solid var(--line);
+    border-top: 4px solid var(--gold);
   }
   .row {
     display: flex;
@@ -27,28 +27,28 @@ const host = new URL(Astro.site ?? 'https://dasdynamics.dev').host;
     padding-top: 28px;
     padding-bottom: 28px;
     font-size: 14px;
-    color: var(--muted);
+    color: var(--band-muted);
   }
   .who {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    color: var(--ink);
+    color: var(--band-ink);
   }
   .payoff {
     font-family: var(--font-display);
     font-weight: 600;
-    color: var(--ink);
+    color: var(--band-ink);
   }
   .links {
     font-size: 13px;
   }
   .links a {
-    color: var(--muted);
+    color: var(--band-muted);
     text-decoration: underline;
     text-underline-offset: 3px;
   }
   .links a:hover {
-    color: var(--ink);
+    color: var(--band-ink);
   }
 </style>

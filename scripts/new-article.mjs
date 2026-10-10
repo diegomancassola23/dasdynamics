@@ -3,6 +3,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { spawnSync } from 'node:child_process';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const title = process.argv.slice(2).join(' ').trim();
@@ -50,13 +51,17 @@ Start here. Images go in public/images/articles/${slug}/ and are linked as
 fs.writeFileSync(file, text, 'utf8');
 fs.mkdirSync(path.join(root, 'public/images/articles', slug), { recursive: true });
 
-const ok = fs.readFileSync(file, 'utf8') === text;
+// The cover is drawn from the title: make it now, and again with `npm run covers` if the title changes.
+const covers = spawnSync(process.execPath, [path.join(path.dirname(fileURLToPath(import.meta.url)), 'make-covers.mjs')], { encoding: 'utf8' });
+const coverOk = /ESITO: fatto/.test(covers.stdout ?? '');
+if (!coverOk) console.log('Cover not generated: run npm run covers');
+const ok = fs.readFileSync(file, 'utf8') === text && coverOk;
 console.log(`Created ${rel}`);
 console.log(`Images folder: public/images/articles/${slug}/`);
 console.log('');
 console.log('Next steps:');
 console.log('  1. npm run dev        -> preview at http://localhost:4321/articles/' + slug + '/');
-console.log('  2. write; fill description, track and tags');
+console.log('  2. write; fill description, track and tags (changed the title? npm run covers)');
 console.log('  3. set draft: false, commit and push: the workflow publishes it');
 console.log('  4. npm run linkedin -- ' + slug + '   -> the LinkedIn post to paste');
 console.log(ok ? 'ESITO: fatto' : 'ESITO: non fatto');

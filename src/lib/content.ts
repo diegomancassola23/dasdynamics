@@ -93,8 +93,8 @@ export interface Cover {
 
 const coverCache = new Map<string, Promise<Cover | undefined>>();
 
-/** The entry's cover image with its real size (read from public/), or undefined when it has none. */
-export function coverOf(e: Entry): Promise<Cover | undefined> {
+/** The original picture of an imported article (e.g. the LinkedIn cover) with its real size, or undefined. */
+export function originalImageOf(e: Entry): Promise<Cover | undefined> {
   const { image, imageAlt } = e.data;
   if (!image) return Promise.resolve(undefined);
   if (!coverCache.has(image)) {
@@ -106,4 +106,10 @@ export function coverOf(e: Entry): Promise<Cover | undefined> {
     );
   }
   return coverCache.get(image)!;
+}
+
+/** The generated cover (scripts/make-covers.mjs) used for Open Graph: articles only, notes use the default image. */
+export function coverOf(e: Entry): Cover | undefined {
+  if (e.data.kind !== 'article') return undefined;
+  return { src: `/images/covers/${e.id}.jpg`, alt: e.data.title, width: 1280, height: 720 };
 }

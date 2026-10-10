@@ -13,7 +13,7 @@ const links = [
   { key: 'about', href: '/about/', label: t('nav.about') },
 ];
 ---
-<header class="site-header">
+<header class="site-header band">
   <nav aria-label={t('nav.label')} class="wrap nav">
     <Logo />
     <ul class="links">
@@ -27,7 +27,7 @@ const links = [
 
 <style>
   .site-header {
-    border-bottom: 1px solid var(--line);
+    border-bottom: 1px solid var(--band-line);
   }
   .nav {
     display: flex;
@@ -50,12 +50,12 @@ const links = [
   }
   .links a {
     display: inline-block;
-    color: var(--ink);
+    color: var(--band-ink);
     padding: 12px 0;
     border-bottom: 2px solid transparent;
   }
   .links a[aria-current='page'] {
-    border-bottom-color: var(--ink);
+    border-bottom-color: var(--gold);
   }
   @media (max-width: 560px) {
     .nav {
