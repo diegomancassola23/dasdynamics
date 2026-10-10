@@ -43,7 +43,7 @@ pinned: false
 draft: true
 ---
 
-<!-- track: integrations | ai | xpp | platform. Optional fields: cover: "APIM" (max 12 characters); series: "my-series" with seriesPart: 1. See docs/CONTENT-SCHEMA.md. Delete this line. -->
+<!-- track: integrations | ai | xpp | platform. Optional fields: series: "my-series" with seriesPart: 1. See docs/CONTENT-SCHEMA.md. Delete this line. -->
 
 Start here. Images go in public/images/articles/${slug}/ and are linked as
 ![What the image shows](/images/articles/${slug}/picture.png)
@@ -52,9 +52,9 @@ fs.writeFileSync(file, text, 'utf8');
 fs.mkdirSync(path.join(root, 'public/images/articles', slug), { recursive: true });
 
 // The cover is drawn from the title: make it now, and again with `npm run covers` if the title changes.
-const covers = spawnSync(process.execPath, [path.join(path.dirname(fileURLToPath(import.meta.url)), 'make-covers.mjs')], { encoding: 'utf8' });
+const covers = spawnSync(process.execPath, [path.join(path.dirname(fileURLToPath(import.meta.url)), 'make-covers.mjs')], { encoding: 'utf8', timeout: 120000 });
 const coverOk = /ESITO: fatto/.test(covers.stdout ?? '');
-if (!coverOk) console.log('Cover not generated: run npm run covers');
+if (!coverOk) console.log('Cover not generated: run npm run covers', covers.stderr || covers.stdout || '');
 const ok = fs.readFileSync(file, 'utf8') === text && coverOk;
 console.log(`Created ${rel}`);
 console.log(`Images folder: public/images/articles/${slug}/`);

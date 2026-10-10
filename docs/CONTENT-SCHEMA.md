@@ -18,23 +18,26 @@ originalUrl: "https://dynamicsaxnotes.blogspot.com/..."  # where it was first pu
 mergedFrom: []              # other original URLs merged into this one
 series: "integration-architecture"   # optional
 seriesPart: 1                        # optional
-cover: "APIM"               # optional: short word on the card cover (max 12 chars); default is the track code
-image: "/images/articles/<slug>/cover.png"   # optional: cover image, file under public/ (png, jpg, webp, gif, avif)
+image: "/images/articles/<slug>/cover.png"   # optional: original picture of an imported article (png, jpg, webp, gif, avif)
 imageAlt: "What the picture shows"           # required when image is set
 pinned: false               # true = shown first on the home page
 draft: false                # true = only in `npm run dev`, never in the built site
 ---
 ```
 
-## Cover image
+## Covers
 
-`image` is optional. When it is set, the picture replaces the typographic cover
-on the cards (home and `/articles/`), sits under the title on the article page,
-and is the Open Graph, Twitter and JSON-LD image of the page. Without it the card
-keeps the typographic cover (`cover` or the track code) and the page uses the
-generated `og-default.png`. Covers are shown in a 16:9 box: 1280x720 is the
-right size. `node scripts/validate-content.mjs` checks that the file exists
-under `public/images/articles/<slug>/`, is a real image, and has `imageAlt`.
+Every article (`kind: article`) has a generated cover: the same night-sky
+template (`src/lib/cover.mjs`) with its title and track. The site draws it inline
+on the cards and at the top of the article; `npm run covers` renders it to
+`public/images/covers/<slug>.jpg`, the Open Graph, Twitter and JSON-LD image.
+Notes have no cover and use `og-default.png`. The validator fails if an
+article has no cover file.
+
+`image` is optional: the original picture of an imported article (the LinkedIn
+cover), shown at the start of the article with a caption. The validator checks
+that the file exists under `public/images/articles/<slug>/`, is a real image,
+and has `imageAlt`.
 
 The slug (file name) is the URL: `/articles/<slug>/` for both kinds. The schema is
 enforced by `src/content.config.ts`: a note without `verdict` or a `description`

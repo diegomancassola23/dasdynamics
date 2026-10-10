@@ -401,16 +401,6 @@ a.tag:hover {
   background: var(--v-review-dot);
 }
 
-.pin {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
 .arrow {
   flex: none;
 }

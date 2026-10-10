@@ -45,7 +45,7 @@ function fitTitle(title) {
     const lines = wrap(title, Math.floor(740 / (size * 0.56)));
     if (lines.length <= maxLines) return { size, lines };
   }
-  return { size: 44, lines: wrap(title, 34) };
+  return { size: 44, lines: wrap(title, 30) };
 }
 
 /**

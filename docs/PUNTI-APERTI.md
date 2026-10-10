@@ -28,7 +28,7 @@ Scelte prese dall'esecutore, da confermare:
 - **Astro 7** con il processore Markdown `unified` (non Sätteri, il nuovo predefinito) per un piccolo plugin che trasforma `## In D365FO today` nel riquadro scuro del mockup.
 - **X++** evidenziato con la grammatica C# (Shiki non ha X++).
 - **Filtri senza JavaScript**: per filone e per verdetto sono pagine vere (`/articles/track/<filone>/`, `/archive/<verdetto>/`); la ricerca nell'archivio compare solo con JavaScript attivo (script inline piccolo).
-- **Campo `cover`** opzionale nel frontmatter: la parola grande sulla copertina della card (es. «APIM»); senza, il codice del filone.
+- **Copertine generate** (10/10): stesso modello notturno per ogni articolo (`src/lib/cover.mjs`), JPEG per le anteprime social con `npm run covers`; il campo `cover` non esiste più. Le copertine originali di LinkedIn stanno dentro l'articolo con una didascalia: da confermare con Diego se tenerle (il controllore nota che ripetono la copertina in testa).
 - **Selettore EN / IT** del mockup tolto finché l'italiano non è pubblicato. Il bottone «Subscribe» porta all'RSS.
 - **Credenziale Super User** in home e in About; il link all'articolo appare solo quando l'articolo non è più bozza.
 - **GitHub** tolto dai link di About: manca l'indirizzo del profilo.

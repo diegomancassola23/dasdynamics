@@ -32,7 +32,6 @@
     "statVersions": "Versions covered",
     "pinned": "Pinned",
     "latest": "Latest",
-    "partOf": "Part {part} of {total}",
     "series": "Series",
     "seriesFoot": "Every article lives here first; LinkedIn gets the summary and the link.",
     "writing": "Writing",
@@ -56,25 +55,21 @@
     "integrations": {
       "name": "Integrations & data",
       "short": "Integrations",
-      "code": "API",
       "blurb": "AIF and DIXF, then OData and data entities, now REST and Azure API Management."
     },
     "ai": {
       "name": "AI in the ERP",
       "short": "AI",
-      "code": "AI",
       "blurb": "Copilot Chat extensions, Copilot code review for X++, MCP servers for developers."
     },
     "xpp": {
       "name": "X++ craft",
       "short": "X++",
-      "code": "X++",
       "blurb": "Performance, multithreading, labels, forms and the patterns that survive every version."
     },
     "platform": {
       "name": "Platform & environments",
       "short": "Platform",
-      "code": "Ops",
       "blurb": "Cloud-hosted VMs, certificates, TLS, SSRS and the days a machine says INCOMPLETE."
     }
   },

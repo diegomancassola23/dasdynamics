@@ -32,7 +32,6 @@
     "statVersions": "Versioni trattate",
     "pinned": "In evidenza",
     "latest": "Ultimo",
-    "partOf": "Parte {part} di {total}",
     "series": "Serie",
     "seriesFoot": "Ogni articolo nasce qui; LinkedIn riceve il sunto e il link.",
     "writing": "Scritti",
@@ -56,25 +55,21 @@
     "integrations": {
       "name": "Integrazioni e dati",
       "short": "Integrazioni",
-      "code": "API",
       "blurb": "AIF e DIXF, poi OData e data entity, oggi REST e Azure API Management."
     },
     "ai": {
       "name": "IA nell’ERP",
       "short": "IA",
-      "code": "IA",
       "blurb": "Estensioni di Copilot Chat, code review di X++ con Copilot, server MCP per sviluppatori."
     },
     "xpp": {
       "name": "Il mestiere di X++",
       "short": "X++",
-      "code": "X++",
       "blurb": "Prestazioni, multithreading, etichette, form e i pattern che sopravvivono a ogni versione."
     },
     "platform": {
       "name": "Piattaforma e ambienti",
       "short": "Piattaforma",
-      "code": "Ops",
       "blurb": "VM cloud-hosted, certificati, TLS, SSRS e i giorni in cui una macchina dice INCOMPLETE."
     }
   },
