@@ -10,6 +10,8 @@ originalUrl: "https://www.linkedin.com/pulse/d365fo-integration-architecture-rea
 mergedFrom: []
 series: "integration-architecture"
 seriesPart: 2
+image: "/images/articles/integration-architecture-rest-apim-part-2/cover.png"
+imageAlt: "Diagram of D365FO, REST APIs and Azure API Management with a Git-based APIM model, labeled \"Part 2 of 2\""
 draft: false
 ---
 

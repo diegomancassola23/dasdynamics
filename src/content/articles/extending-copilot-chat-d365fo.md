@@ -8,6 +8,8 @@ versions: ["D365FO"]
 tags: ["copilot","copilot-studio","mcp","agents"]
 originalUrl: "https://www.linkedin.com/pulse/extending-copilot-chat-d365fo-what-worked-didnt-i-diego-mancassola-pmnif/"
 mergedFrom: []
+image: "/images/articles/extending-copilot-chat-d365fo/cover.png"
+imageAlt: "The Copilot pane open beside a D365FO form, with the title \"Extending Copilot Chat in D365FO\""
 draft: false
 ---
 

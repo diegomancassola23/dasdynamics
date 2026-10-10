@@ -1,20 +1,27 @@
 ---
 import Arrow from './Arrow.astro';
 import { t } from '../i18n';
-import { articleUrl, formatDay, type Entry } from '../lib/content';
+import { articleUrl, coverOf, formatDay, type Entry } from '../lib/content';
 const { entry, headingLevel = 3 } = Astro.props as { entry: Entry; headingLevel?: 2 | 3 };
 const d = entry.data;
 const H = (headingLevel === 2 ? "h2" : "h3") as "h3";
 const code = d.cover ?? t(`tracks.${d.track}.code`);
+const image = await coverOf(entry);
 ---
 <article class="card">
-  <div class={`cover cover-${d.track}`} aria-hidden="true">
-    <span class="cover-top">
-      <span class="mono">{t(`tracks.${d.track}.short`)}</span>
-      {d.pinned && <span class="pin">{t('articles.pinned')}</span>}
-    </span>
-    <span class="code">{code}</span>
-  </div>
+  {image ? (
+    <div class="cover cover-image">
+      <img src={image.src} alt="" width={image.width} height={image.height} loading="lazy" decoding="async" />
+    </div>
+  ) : (
+    <div class={`cover cover-${d.track}`} aria-hidden="true">
+      <span class="cover-top">
+        <span class="mono">{t(`tracks.${d.track}.short`)}</span>
+        {d.pinned && <span class="pin">{t('articles.pinned')}</span>}
+      </span>
+      <span class="code">{code}</span>
+    </div>
+  )}
   <div class="body">
     <p class="meta">
       <time datetime={d.date.toISOString().slice(0, 10)}>{formatDay(d.date)}</time>
@@ -36,14 +43,26 @@ const code = d.cover ?? t(`tracks.${d.track}.code`);
     position: relative;
     min-width: 0;
   }
+  /* Same 16:9 box for the image and the typographic cover, so the grid stays even. */
   .cover {
-    height: 150px;
+    aspect-ratio: 16 / 9;
     padding: 20px 22px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     color: #f4f5f1;
     border-bottom: 6px solid var(--accent);
+  }
+  .cover-image {
+    padding: 0;
+    background: var(--surface);
+    overflow: hidden;
+  }
+  .cover-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
   .cover-integrations { background: var(--cover-integrations); }
   .cover-ai { background: var(--cover-ai); }

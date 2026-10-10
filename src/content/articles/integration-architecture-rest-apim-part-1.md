@@ -10,6 +10,8 @@ originalUrl: "https://www.linkedin.com/pulse/d365fo-integration-architecture-rea
 mergedFrom: []
 series: "integration-architecture"
 seriesPart: 1
+image: "/images/articles/integration-architecture-rest-apim-part-1/cover.png"
+imageAlt: "Azure API Management cloud connected to production, warehouse, logistics, CRM and planning systems, labeled \"Part 1 of 2\""
 draft: false
 ---
 

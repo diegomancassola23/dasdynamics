@@ -35,11 +35,27 @@ Put them in `public/images/articles/<slug>/` and link them with a description:
 
 The description (alt text) is required: the quality gate fails without it.
 
-## 4. Pinned
+## 4. Cover image
+
+Optional. Save the picture as `public/images/articles/<slug>/cover.png`
+(or `.jpg`, `.webp`), ideally 1280x720 (16:9), and add two lines to the
+frontmatter:
+
+```
+image: "/images/articles/<slug>/cover.png"
+imageAlt: "What the picture shows, in one short sentence"
+```
+
+The cover then shows on the cards, at the top of the article and when the link
+is shared (LinkedIn, X). Without it the card shows the typographic cover.
+`node scripts/validate-content.mjs` fails if the file is missing or
+`imageAlt` is empty.
+
+## 5. Pinned
 
 `pinned: true` puts the article first on the home page. Keep one or two.
 
-## 5. Publish
+## 6. Publish
 
 1. Set `draft: false`.
 2. `npm run build` and `npm run check` (optional: the workflow runs both).

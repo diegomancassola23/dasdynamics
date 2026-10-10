@@ -15,6 +15,7 @@ import {
   seriesTitle,
   readingMinutes,
   isLinkedIn,
+  coverOf,
   type Entry,
 } from '../../lib/content';
 import { AUTHOR, OG_DEFAULT, pageTitle } from '../../lib/site';
@@ -28,6 +29,7 @@ const { entry, all } = Astro.props as { entry: Entry; all: Entry[] };
 const d = entry.data;
 const isNote = d.kind === 'note';
 const { Content } = await render(entry);
+const cover = await coverOf(entry);
 
 const series = seriesOf(entry, all);
 const siblings = series.length > 1 ? series : all.filter((e) => e.data.kind === d.kind);
@@ -65,7 +67,7 @@ const jsonLd = [
     inLanguage: 'en',
     url,
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
-    image: new URL(OG_DEFAULT, site).href,
+    image: new URL(cover?.src ?? OG_DEFAULT, site).href,
     keywords: d.tags.join(', ') || undefined,
     author: { '@type': 'Person', '@id': new URL('/#person', site).href, name: AUTHOR.name, url: new URL('/about/', site).href },
     publisher: { '@type': 'Person', '@id': new URL('/#person', site).href, name: AUTHOR.name },
@@ -88,6 +90,10 @@ const jsonLd = [
   description={d.description}
   current={isNote ? 'archive' : 'articles'}
   ogType="article"
+  ogImage={cover?.src}
+  ogImageWidth={cover?.width}
+  ogImageHeight={cover?.height}
+  ogImageAlt={cover?.alt}
   jsonLd={jsonLd}
   publishedTime={d.date}
   modifiedTime={d.updated}
@@ -124,6 +130,19 @@ const jsonLd = [
       <div><dt>{t('article.versions')}</dt><dd class="mono">{d.versions.join(' · ') || '—'}</dd></div>
       {!isNote && <div><dt>&nbsp;</dt><dd class="mono">{t('article.readingTime', { min: readingMinutes(entry.body) })}</dd></div>}
     </dl>
+
+    {cover && (
+      <img
+        class="cover"
+        src={cover.src}
+        alt={cover.alt}
+        width={cover.width}
+        height={cover.height}
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+    )}
 
     {series.length > 1 && (
       <nav aria-labelledby="series-h" class="series">
@@ -253,6 +272,14 @@ const jsonLd = [
   .facts dd {
     margin: 4px 0 0;
     font-size: 14px;
+  }
+  .cover {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-top: 32px;
+    border: 1px solid var(--line);
+    background: var(--surface);
   }
   .series {
     margin-top: 32px;

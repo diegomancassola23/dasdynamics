@@ -8,6 +8,8 @@ versions: ["D365FO"]
 tags: ["warehouse","zpl","labels","printing"]
 originalUrl: "https://www.linkedin.com/pulse/virtual-zpl-printer-d365fo-diego-mancassola-ldw4f/"
 mergedFrom: []
+image: "/images/articles/virtual-zpl-printer-d365fo/cover.png"
+imageAlt: "A ZPL shipping label shown on a laptop screen, titled \"ZPL labels preview for D365FO\""
 draft: false
 ---
 

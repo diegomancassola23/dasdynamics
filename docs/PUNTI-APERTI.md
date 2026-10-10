@@ -49,6 +49,7 @@ Da fare / da decidere:
 
 ## Da fare
 
+- Copertine degli articoli: tornate il 10/10 (9 PNG originali da LinkedIn, 0,2–1,4 MB l'una, circa 9 MB in tutto). La home ne carica sette: valutare una versione WebP più leggera per le card, tenendo l'originale per l'articolo e l'anteprima social.
 - Google: Search Console, sitemap, dati strutturati Person, link dal profilo LinkedIn e dal vecchio blog al sito nuovo.
 - Vecchio blog Blogger: avviso in testa a ogni post con il link alla versione nuova. Consiglio: non cancellare il blog (ha anni di link in entrata); avviso + link canonico verso la nota nuova, quando il dominio è deciso.
 - 21+2 note «to-review»: compilarle e provarle su una versione attuale (un giro su una dev box) per assegnare il verdetto finale.

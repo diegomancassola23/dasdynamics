@@ -25,12 +25,19 @@ const articles = defineCollection({
       series: z.string().optional(),
       seriesPart: z.number().int().positive().optional(),
       cover: z.string().max(12).optional(),
+      // Cover image under public/: /images/articles/<slug>/cover.<ext>. Needs imageAlt.
+      image: z.string().regex(/^\/images\/articles\/[a-z0-9-]+\/[\w.-]+\.(png|jpe?g|webp|gif|avif)$/).optional(),
+      imageAlt: z.string().min(1).optional(),
       pinned: z.boolean().default(false),
       draft: z.boolean().default(false),
     })
     .refine((d) => d.kind !== 'note' || d.verdict !== undefined, {
       message: 'A note needs a verdict (valid | changed | historical | to-review).',
       path: ['verdict'],
+    })
+    .refine((d) => !d.image || !!d.imageAlt, {
+      message: 'An image needs imageAlt (a short description of the picture).',
+      path: ['imageAlt'],
     }),
 });
 

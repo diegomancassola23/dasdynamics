@@ -1,4 +1,6 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
+import path from 'node:path';
+import sharp from 'sharp';
 import { TRACKS, VERDICTS } from '../content.config';
 
 export type Entry = CollectionEntry<'articles'>;
@@ -81,3 +83,27 @@ export function versionsCovered(entries: Entry[]): string[] {
 export const readingMinutes = (body = '') => Math.max(1, Math.round(body.split(/\s+/).length / 220));
 
 export const isLinkedIn = (url?: string) => !!url && /^https:\/\/([a-z]+\.)?linkedin\.com\//.test(url);
+
+export interface Cover {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+}
+
+const coverCache = new Map<string, Promise<Cover | undefined>>();
+
+/** The entry's cover image with its real size (read from public/), or undefined when it has none. */
+export function coverOf(e: Entry): Promise<Cover | undefined> {
+  const { image, imageAlt } = e.data;
+  if (!image) return Promise.resolve(undefined);
+  if (!coverCache.has(image)) {
+    coverCache.set(
+      image,
+      sharp(path.join(process.cwd(), 'public', image))
+        .metadata()
+        .then((m) => ({ src: image, alt: imageAlt ?? '', width: m.width ?? 1280, height: m.height ?? 720 })),
+    );
+  }
+  return coverCache.get(image)!;
+}
