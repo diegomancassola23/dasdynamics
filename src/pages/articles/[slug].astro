@@ -17,7 +17,6 @@ import {
   readingMinutes,
   isLinkedIn,
   coverOf,
-  originalImageOf,
   type Entry,
 } from '../../lib/content';
 import { AUTHOR, OG_DEFAULT, pageTitle } from '../../lib/site';
@@ -32,7 +31,6 @@ const d = entry.data;
 const isNote = d.kind === 'note';
 const { Content } = await render(entry);
 const cover = coverOf(entry);
-const original = await originalImageOf(entry);
 
 const series = seriesOf(entry, all);
 const siblings = series.length > 1 ? series : all.filter((e) => e.data.kind === d.kind);
@@ -151,12 +149,6 @@ const jsonLd = [
     )}
 
     <div class="prose">
-      {original && (
-        <figure class="original">
-          <img src={original.src} alt={original.alt} width={original.width} height={original.height} loading="lazy" decoding="async" />
-          <figcaption>{t('article.originalCover')}</figcaption>
-        </figure>
-      )}
       <Content />
     </div>
 
@@ -274,20 +266,6 @@ const jsonLd = [
   .cover {
     margin-top: 32px;
     border-bottom: 4px solid var(--gold);
-  }
-  .original {
-    margin: 0 0 32px;
-  }
-  .original img {
-    display: block;
-    width: 100%;
-    height: auto;
-    border: 1px solid var(--line);
-  }
-  .original figcaption {
-    margin-top: 8px;
-    font-size: 14px;
-    color: var(--muted);
   }
   .series {
     margin-top: 32px;

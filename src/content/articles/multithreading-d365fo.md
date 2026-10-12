@@ -8,8 +8,6 @@ versions: ["D365FO"]
 tags: ["performance","multithreading","async","xpp"]
 originalUrl: "https://www.linkedin.com/pulse/multithreading-d365fo-diego-mancassola-j4s8e/"
 mergedFrom: []
-image: "/images/articles/multithreading-d365fo/cover.png"
-imageAlt: "Blurred trading chart in orange and blue with the title \"Multithreading in X++ for D365FO\""
 draft: false
 ---
 

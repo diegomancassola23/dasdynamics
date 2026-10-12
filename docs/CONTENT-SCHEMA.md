@@ -18,8 +18,6 @@ originalUrl: "https://dynamicsaxnotes.blogspot.com/..."  # where it was first pu
 mergedFrom: []              # other original URLs merged into this one
 series: "integration-architecture"   # optional
 seriesPart: 1                        # optional
-image: "/images/articles/<slug>/cover.png"   # optional: original picture of an imported article (png, jpg, webp, gif, avif)
-imageAlt: "What the picture shows"           # required when image is set
 pinned: false               # true = shown first on the home page
 draft: false                # true = only in `npm run dev`, never in the built site
 ---
@@ -34,10 +32,9 @@ on the cards and at the top of the article; `npm run covers` renders it to
 Notes have no cover and use `og-default.png`. The validator fails if an
 article has no cover file.
 
-`image` is optional: the original picture of an imported article (the LinkedIn
-cover), shown at the start of the article with a caption. The validator checks
-that the file exists under `public/images/articles/<slug>/`, is a real image,
-and has `imageAlt`.
+The generated cover is the only cover: there is no `image` field, and the
+validator fails if `image` or `imageAlt` appears (the original LinkedIn covers
+were removed on 2026-10-12; they are in the git history).
 
 The slug (file name) is the URL: `/articles/<slug>/` for both kinds. The schema is
 enforced by `src/content.config.ts`: a note without `verdict` or a `description`

@@ -8,8 +8,6 @@ versions: ["D365FO"]
 tags: ["labels","mcp","copilot","visual-studio","xpp"]
 originalUrl: "https://www.linkedin.com/pulse/automating-label-creation-x-d365fo-diego-mancassola-j5d3f/"
 mergedFrom: []
-image: "/images/articles/automating-label-creation-xpp/cover.png"
-imageAlt: "Flat illustration: an MCP chip wired to a circle with the letters X++"
 draft: false
 ---
 

@@ -8,8 +8,6 @@ versions: ["D365FO"]
 tags: ["code-review","copilot","azure-devops","xpp","best-practices"]
 originalUrl: "https://www.linkedin.com/pulse/d356fo-copilot-code-review-diego-mancassola-aoynf/"
 mergedFrom: []
-image: "/images/articles/d365fo-copilot-code-review/cover.png"
-imageAlt: "Code review icon with a green check over circuit lines, titled \"Automated AI-based X++ code review in Azure DevOps\""
 draft: false
 ---
 

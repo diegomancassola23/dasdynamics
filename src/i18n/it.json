@@ -144,8 +144,7 @@
     "draftBanner": "Bozza — non pubblicata. Visibile solo in sviluppo.",
     "readingTime": "{min} min di lettura",
     "breadcrumb": "Percorso",
-    "sources": "Fonti",
-    "originalCover": "La copertina originale, come pubblicata su LinkedIn."
+    "sources": "Fonti"
   },
   "tags": {
     "title": "Con il tag «{tag}»",

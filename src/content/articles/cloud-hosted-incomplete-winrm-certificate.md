@@ -8,8 +8,6 @@ versions: ["D365FO"]
 tags: ["cloud-hosted","lcs","winrm","certificates","powershell"]
 originalUrl: "https://www.linkedin.com/pulse/overcoming-incomplete-status-cloud-hosted-dynamics-365-mancassola-2anbf/"
 mergedFrom: []
-image: "/images/articles/cloud-hosted-incomplete-winrm-certificate/cover.png"
-imageAlt: "Cables plugged into a cloud under the title \"Overcoming incomplete status in cloud-hosted Dynamics 365 environments\""
 draft: false
 ---
 

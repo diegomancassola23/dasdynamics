@@ -8,8 +8,6 @@ versions: ["AX 2012","D365FO"]
 tags: ["tls","certificates","dotnet","ax-2012"]
 originalUrl: "https://www.linkedin.com/pulse/resolving-ssltls-secure-channel-error-net-diego-mancassola-awksf/"
 mergedFrom: ["https://dynamicsaxnotes.blogspot.com/2024/02/ax-2012-request-was-aborted-could-not.html"]
-image: "/images/articles/ssl-tls-secure-channel-error-dotnet/cover.png"
-imageAlt: "Abstract blue and teal paint texture with the words \"SSL/TLS error: unable to establish secure connection\""
 draft: false
 ---
 

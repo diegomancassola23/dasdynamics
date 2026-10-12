@@ -1,7 +1,6 @@
 // Validates the content collection against docs/CONTENT-SCHEMA.md and checks that
 // every source URL (Blogger feed + LinkedIn index) is accounted for in docs/CONTENT-REPORT.md,
-// that each original image exists under public/ and has alt text, and that every article has its
-// generated cover (public/images/covers/<slug>.jpg, made by `npm run covers`).
+// and that every article has its generated cover (public/images/covers/<slug>.jpg, made by `npm run covers`).
 // Usage: node scripts/validate-content.mjs
 // Prints every problem found, then "ESITO: fatto" or "ESITO: non fatto".
 import fs from 'node:fs';
@@ -22,15 +21,6 @@ const REQUIRED = ['title', 'description', 'date', 'kind', 'track', 'versions', '
 const IMPORT_REQUIRED = ['originalUrl', 'mergedFrom'];
 const DATE = /^\d{4}-\d{2}-\d{2}$/;
 const SLUG = /^[a-z0-9]+(-[a-z0-9]+)*$/;
-
-/** Image format from the file's first bytes, or null when it is not an image. */
-const imageKind = b =>
-  b[0] === 0xff && b[1] === 0xd8 ? 'jpeg'
-  : b.subarray(0, 8).equals(Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a])) ? 'png'
-  : b.toString('latin1', 0, 4) === 'RIFF' && b.toString('latin1', 8, 12) === 'WEBP' ? 'webp'
-  : b.toString('latin1', 0, 3) === 'GIF' ? 'gif'
-  : b.toString('latin1', 4, 12).startsWith('ftypavi') ? 'avif'
-  : null;
 
 const problems = [];
 const fail = (where, msg) => problems.push(`${where}: ${msg}`);
@@ -94,16 +84,7 @@ for (const file of files) {
   if (native ? typeof d.draft !== 'boolean' : d.draft !== false) fail(where, native ? 'draft must be true or false' : 'draft must be false for imported entries');
   if (('series' in d) !== ('seriesPart' in d)) fail(where, 'series and seriesPart go together');
   if ('seriesPart' in d && (!Number.isInteger(d.seriesPart) || d.seriesPart < 1)) fail(where, 'seriesPart must be a positive integer');
-  if ('image' in d) {
-    const prefix = `/images/articles/${slug}/`;
-    if (typeof d.image !== 'string' || !d.image.startsWith(prefix)) fail(where, `image must be a path under ${prefix}`);
-    else {
-      const file = path.join(root, 'public', d.image);
-      if (!fs.existsSync(file)) fail(where, `image file not found: public${d.image}`);
-      else if (!imageKind(fs.readFileSync(file))) fail(where, `image is not a PNG, JPEG, WebP, GIF or AVIF file: public${d.image}`);
-    }
-    if (typeof d.imageAlt !== 'string' || !d.imageAlt.trim()) fail(where, 'imageAlt is required when image is set');
-  } else if ('imageAlt' in d) fail(where, 'imageAlt without image');
+  if ('image' in d || 'imageAlt' in d) fail(where, 'image and imageAlt are no longer used: every article has the generated cover');
 
   if (d.kind === 'article' && !fs.existsSync(path.join(root, 'public/images/covers', `${slug}.jpg`))) {
     fail(where, `generated cover missing: run npm run covers (public/images/covers/${slug}.jpg)`);
@@ -179,7 +160,7 @@ for (const [u, slug] of seenUrls) if (!sourceSet.has(u)) fail(`src/content/artic
 const notes = entries.filter(e => e.d.kind === 'note');
 const counts = Object.fromEntries(VERDICTS.map(v => [v, notes.filter(e => e.d.verdict === v).length]));
 console.log(`Entries: ${entries.length} (articles ${entries.length - notes.length}, notes ${notes.length})`);
-console.log(`Original images: ${entries.filter(e => 'image' in e.d).length}, generated covers: ${entries.filter(e => e.d.kind === 'article' && fs.existsSync(path.join(root, 'public/images/covers', `${e.slug}.jpg`))).length}`);
+console.log(`Generated covers: ${entries.filter(e => e.d.kind === 'article' && fs.existsSync(path.join(root, 'public/images/covers', `${e.slug}.jpg`))).length}`);
 console.log(`Verdicts: ${VERDICTS.map(v => `${v} ${counts[v]}`).join(', ')}`);
 console.log(`Source URLs accounted for: ${accounted}/${sources.length} (blog ${posts.length}, LinkedIn ${linkedin.length})`);
 for (const p of problems) console.log(`PROBLEM ${p}`);

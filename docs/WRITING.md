@@ -48,14 +48,6 @@ It writes `public/images/covers/<slug>.jpg`, the picture shown when the link is
 shared (LinkedIn, X). On the site the same cover is drawn inline. The validator
 fails if an article has no cover file.
 
-An imported article can keep its original picture (for example the LinkedIn
-cover): it shows at the start of the article, with a caption.
-
-```
-image: "/images/articles/<slug>/cover.png"
-imageAlt: "What the picture shows, in one short sentence"
-```
-
 ## 5. Pinned
 
 `pinned: true` puts the article first on the home page. Keep one or two.

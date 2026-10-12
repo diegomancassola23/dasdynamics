@@ -144,8 +144,7 @@
     "draftBanner": "Draft — not published. Visible only in development.",
     "readingTime": "{min} min read",
     "breadcrumb": "Breadcrumb",
-    "sources": "Sources",
-    "originalCover": "The original cover, as published on LinkedIn."
+    "sources": "Sources"
   },
   "tags": {
     "title": "Tagged “{tag}”",

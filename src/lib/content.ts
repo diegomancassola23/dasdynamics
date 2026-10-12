@@ -1,6 +1,4 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
-import path from 'node:path';
-import sharp from 'sharp';
 import { TRACKS, VERDICTS } from '../content.config';
 
 export type Entry = CollectionEntry<'articles'>;
@@ -89,23 +87,6 @@ export interface Cover {
   alt: string;
   width: number;
   height: number;
-}
-
-const coverCache = new Map<string, Promise<Cover | undefined>>();
-
-/** The original picture of an imported article (e.g. the LinkedIn cover) with its real size, or undefined. */
-export function originalImageOf(e: Entry): Promise<Cover | undefined> {
-  const { image, imageAlt } = e.data;
-  if (!image) return Promise.resolve(undefined);
-  if (!coverCache.has(image)) {
-    coverCache.set(
-      image,
-      sharp(path.join(process.cwd(), 'public', image))
-        .metadata()
-        .then((m) => ({ src: image, alt: imageAlt ?? '', width: m.width ?? 1280, height: m.height ?? 720 })),
-    );
-  }
-  return coverCache.get(image)!;
 }
 
 /** The generated cover (scripts/make-covers.mjs) used for Open Graph: articles only, notes use the default image. */
