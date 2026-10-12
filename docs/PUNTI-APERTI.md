@@ -20,7 +20,7 @@
 - Super User Dynamics 365 Community 2026 Season 2: confermato da Diego, va in un articolo dedicato.
 - Articoli in evidenza: campo `pinned: true`.
 - Repo remoto pubblico https://github.com/diegomancassola23/dasdynamics, primo push il 12/10; cartella locale rinominata in `C:\repos\dasdynamics`. Le copie HTML grezze delle pagine LinkedIn (`sources/linkedin/*.html`) restano solo in locale perché contengono identificativi di sessione: tolte dalla storia prima del push, la storia precedente è nel bundle `C:\repos\dasdynamics-backup-20261012.bundle`.
-- GitHub Pages non è ancora attivo: si attiva da Settings → Pages → Source «GitHub Actions», dopo aver scelto il dominio (`SITE_URL` in `site.config.mjs`).
+- GitHub Pages attivo dal 12/10 (Source «GitHub Actions», primo deploy riuscito) con dominio personalizzato `dasdynamics.dev`, scelto da Diego. **Il dominio non è ancora registrato**: va comprato da Diego. Poi, nel DNS del registrar: quattro record A per `dasdynamics.dev` verso 185.199.108.153, 185.199.109.153, 185.199.110.153 e 185.199.111.153; un CNAME `www` verso `diegomancassola23.github.io`. Quando GitHub conferma il DNS si spunta «Enforce HTTPS» (`.dev` funziona solo in HTTPS). Consigliato: verificare il dominio nelle impostazioni Pages dell'account GitHub, così nessun altro può usarlo.
 
 ## Sito costruito (notte 09→10/10/2026, ramo `site`)
 
