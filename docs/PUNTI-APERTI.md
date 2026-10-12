@@ -46,12 +46,12 @@ Da fare / da decidere:
 - Dal 09/10/2026 gli articoli nuovi nascono sul sito, non più su LinkedIn (LinkedIn porta sunto e link).
 - Tema del sito: D365FO e IA, con un carattere unico. Nome: dasdynamics.
 - Scrivere un articolo nuovo deve essere semplice.
-- 10/10/2026: l'anteprima è «troppo professionale». Il tema è Dynamics Dreams: resta professionale, ma deve far intuire il concetto di sogno.
-- 10/10/2026: copertine tutte nello stesso stile, d'ora in poi, come una firma in linea con il sito; uniformare anche quelle esistenti. Proposte nel mockup «dasdynamics · sogni» (tre direzioni + serie di copertine), decide Diego.
+- 10/10/2026: l'anteprima è «troppo professionale». Il tema è Dynamics Dreams: resta professionale, ma deve far intuire il concetto di sogno. Fatto: tema «Notturno», approvato da Diego il 12/10 e unito in `main`; si scrive «Dynamics dreams», in minuscolo.
+- 10/10/2026: copertine tutte nello stesso stile, d'ora in poi, come una firma in linea con il sito; uniformare anche quelle esistenti. Fatto: copertina notturna generata per ogni articolo, con il logo del sito come firma (12/10).
 
 ## Da fare
 
-- Copertine degli articoli: tornate il 10/10 (9 PNG originali da LinkedIn, 0,2–1,4 MB l'una, circa 9 MB in tutto). La home ne carica sette: valutare una versione WebP più leggera per le card, tenendo l'originale per l'articolo e l'anteprima social.
+- ~~Copertine degli articoli più leggere~~: superato il 12/10, le copertine LinkedIn sono tolte e quelle generate pesano circa 600 KB in tutto.
 - Google: Search Console, sitemap, dati strutturati Person, link dal profilo LinkedIn e dal vecchio blog al sito nuovo.
 - Vecchio blog Blogger: avviso in testa a ogni post con il link alla versione nuova. Consiglio: non cancellare il blog (ha anni di link in entrata); avviso + link canonico verso la nota nuova, quando il dominio è deciso.
 - 21+2 note «to-review»: compilarle e provarle su una versione attuale (un giro su una dev box) per assegnare il verdetto finale.
