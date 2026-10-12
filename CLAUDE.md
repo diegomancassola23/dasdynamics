@@ -1,6 +1,6 @@
 # dasdynamics
 
-Local folder `C:eposdasdynamics`; remote https://github.com/diegomancassola23/dasdynamics (public).
+Local folder `C:\repos\dasdynamics`; remote https://github.com/diegomancassola23/dasdynamics (public).
 
 Diego Mancassola's personal site: articles on Dynamics 365 Finance & Operations and AI.
 The site is the home of new articles; LinkedIn only carries a summary and a link.
