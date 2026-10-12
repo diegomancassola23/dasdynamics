@@ -19,7 +19,8 @@
 - Foto: ritratto 800×758 preso dal profilo Blogger (`public/images/portrait.jpg`).
 - Super User Dynamics 365 Community 2026 Season 2: confermato da Diego, va in un articolo dedicato.
 - Articoli in evidenza: campo `pinned: true`.
-- La cartella locale resta `C:\repos\dynamicsdreams` finché Diego non dà il repo remoto.
+- Repo remoto pubblico https://github.com/diegomancassola23/dasdynamics, primo push il 12/10; cartella locale rinominata in `C:\repos\dasdynamics`. Le copie HTML grezze delle pagine LinkedIn (`sources/linkedin/*.html`) restano solo in locale perché contengono identificativi di sessione: tolte dalla storia prima del push, la storia precedente è nel bundle `C:\repos\dasdynamics-backup-20261012.bundle`.
+- GitHub Pages non è ancora attivo: si attiva da Settings → Pages → Source «GitHub Actions», dopo aver scelto il dominio (`SITE_URL` in `site.config.mjs`).
 
 ## Sito costruito (notte 09→10/10/2026, ramo `site`)
 
