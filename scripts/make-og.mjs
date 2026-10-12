@@ -30,7 +30,7 @@ background:url("data:image/svg+xml;base64,${Buffer.from(stars).toString('base64'
 .rule{width:96px;height:6px;background:#F5C66B;margin-bottom:28px}
 .meta{font:400 24px/1.4 PM;color:#B9B6D9;letter-spacing:1px}
 </style></head><body><div class="card">
-<svg class="moon" width="200" height="200" viewBox="0 0 96 96"><path d="M20 18h22a30 30 0 0 1 0 60H20z" fill="#F5C66B"/><path d="M36 32h8a16 16 0 0 1 0 32h-8z" fill="#151B42"/></svg>
+<svg class="moon" width="180" height="180" viewBox="0 0 96 96"><path d="M20 25a7 7 0 0 1 7-7h15a30 30 0 0 1 0 60H27a7 7 0 0 1-7-7z" fill="none" stroke="#F4EFE3" stroke-width="7" stroke-linejoin="round"/><path d="M36 36a4 4 0 0 1 4-4h4a16 16 0 0 1 0 32h-4a4 4 0 0 1-4-4z" fill="#F5C66B"/></svg>
 <div class="word">${en.site.name}</div>
 <div><div class="rule"></div><div class="payoff">${en.site.payoffLead} <em>${en.site.payoffTail}</em></div></div>
 <div class="meta">${en.cover.footer.split(' · ')[1]} · ${en.site.tagline.replace("&", "&amp;")}<br>${en.site.author} · ${new URL(SITE_URL).host}</div>

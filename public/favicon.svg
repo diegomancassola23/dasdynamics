@@ -7,6 +7,6 @@
       .i { fill: #F5C66B; }
     }
   </style>
-  <path class="o" d="M20 18h22a30 30 0 0 1 0 60H20z" fill="none" stroke-width="7"/>
-  <path class="i" d="M36 32h8a16 16 0 0 1 0 32h-8z"/>
+  <path class="o" d="M20 25a7 7 0 0 1 7-7h15a30 30 0 0 1 0 60H27a7 7 0 0 1-7-7z" fill="none" stroke-width="7" stroke-linejoin="round"/>
+  <path class="i" d="M36 36a4 4 0 0 1 4-4h4a16 16 0 0 1 0 32h-4a4 4 0 0 1-4-4z"/>
 </svg>

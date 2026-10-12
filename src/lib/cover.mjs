@@ -3,8 +3,8 @@
 // so each cover is unique and stays the same across builds.
 // Used inline by Cover.astro and rendered to JPEG for Open Graph by scripts/make-covers.mjs.
 
-const D_OUT = 'M20 18h22a30 30 0 0 1 0 60H20z';
-const D_IN = 'M36 32h8a16 16 0 0 1 0 32h-8z';
+const D_OUT = 'M20 25a7 7 0 0 1 7-7h15a30 30 0 0 1 0 60H27a7 7 0 0 1-7-7z';
+const D_IN = 'M36 36a4 4 0 0 1 4-4h4a16 16 0 0 1 0 32h-4a4 4 0 0 1-4-4z';
 export const COVER_W = 1280;
 export const COVER_H = 720;
 
@@ -81,7 +81,7 @@ export function coverSvg({ slug, title, label, footer }) {
     + lines.map((l, i) => `<tspan x="80" y="${top + size + i * lead}">${esc(l)}</tspan>`).join('')
     + `</text>`
     // The logo as in the site header: outlined outer D, gold inner D.
-    + `<g transform="translate(66 606) scale(.8)"><path d="${D_OUT}" fill="none" stroke="#F4EFE3" stroke-width="7"/><path d="${D_IN}" fill="#F5C66B"/></g>`
+    + `<g transform="translate(66 606) scale(.8)"><path d="${D_OUT}" fill="none" stroke="#F4EFE3" stroke-width="7" stroke-linejoin="round"/><path d="${D_IN}" fill="#F5C66B"/></g>`
     + `<text x="148" y="652" font-family="'IBM Plex Sans', sans-serif" font-size="24" fill="#B9B6D9">${esc(footer)}</text>`
     + `</svg>`;
 }
