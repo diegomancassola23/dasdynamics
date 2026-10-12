@@ -48,6 +48,7 @@ Da fare / da decidere:
 - Scrivere un articolo nuovo deve essere semplice.
 - 10/10/2026: l'anteprima è «troppo professionale». Il tema è Dynamics Dreams: resta professionale, ma deve far intuire il concetto di sogno. Fatto: tema «Notturno», approvato da Diego il 12/10 e unito in `main`; si scrive «Dynamics dreams», in minuscolo.
 - 10/10/2026: copertine tutte nello stesso stile, d'ora in poi, come una firma in linea con il sito; uniformare anche quelle esistenti. Fatto: copertina notturna generata per ogni articolo, con il logo del sito come firma (12/10).
+- 12/10/2026: il D dentro la D gli piace, ma chiede di rivedere il logo. Quattro proposte (A Mezzaluna, B Costellazione, C Una linea, D Sigillo notturno) nella pagina «dasdynamics · logo»; consiglio B per testata e copertine, con il logo di oggi sotto i 32 pixel. Decide Diego.
 
 ## Da fare
 
