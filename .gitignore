@@ -1,3 +1,6 @@
 node_modules/
 dist/
 .astro/
+
+# Raw LinkedIn page captures used for the import: local only (they carry session ids).
+sources/linkedin/*.html
