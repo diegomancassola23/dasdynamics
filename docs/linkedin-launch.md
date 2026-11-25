@@ -40,21 +40,39 @@ This article has a new home, where I keep it up to date: https://dasdynamics.dev
 | resolving-ssltls-secure-channel-error-net-…-awksf | `/articles/ssl-tls-secure-channel-error-dotnet/` |
 | virtual-zpl-printer-d365fo-…-ldw4f | `/articles/virtual-zpl-printer-d365fo/` |
 
-## 3. Announcement post (last step)
+## 3. Announcement post (last step, 25/11 evening)
 
 ```text
-dasdynamics.dev is live.
-
-My notes on Dynamics AX and D365FO, started on Blogger in 2014, now have one home, together with the articles I published here on LinkedIn and everything I will write from now on.
-
-I did not want a copy. Every old note was re-read against today's D365FO and carries a verdict: still valid, changed, historical or to review, with a link to Microsoft Learn where things work differently now.
-
-Topics: integrations with Azure API Management, X++, the platform, and AI inside the ERP.
-
-From today new articles are published on the site first; here you will find a summary and the link.
-
 D as Dynamics. D as Diego.
-https://dasdynamics.dev
+
+I have worked on Dynamics since 2009: AX 2009, AX 2012, then D365 Finance & Operations. Today what I learned along the way has its own home: https://dasdynamics.dev
+
+What you find there:
+→ new articles on integrations, X++, the platform and AI inside the ERP
+→ the articles I published here on LinkedIn, kept up to date
+→ my old Dynamics AX notes, each one re-read against today's D365FO, with a verdict: still valid, changed, or history
+
+From today new articles come out on the site first. Here you will find a short summary and the link.
 
 #Dynamics365 #D365FO #MicrosoftDynamics #ERP
+```
+
+## 4. Convergence 2026 post (scheduled: Tuesday 1 December 2026, morning)
+
+Goes out with the site article `convergence-2026-miami` (published the same morning). Facts checked on convergence365.com, Sessionize and Eventbrite on 25/11/2026.
+
+```text
+Next stop: Miami Beach.
+
+From December 8 to 11 I will be at Convergence 2026, at the Fontainebleau Miami Beach: four days with Microsoft product teams and the Dynamics 365 community on roadmap, Power Platform and AI.
+
+From the Finance & Operations side, I will be listening for three things: AI inside the ERP (agents, Copilot, MCP), the platform moving to the Power Platform admin center, and what the roadmap changes for integrations.
+
+What I learn will end up on the site as articles.
+
+Are you going too? Write to me: a coffee between sessions is the best part of these events.
+
+https://dasdynamics.dev/articles/convergence-2026-miami/
+
+#Convergence2026 #Dynamics365 #D365FO #PowerPlatform
 ```
