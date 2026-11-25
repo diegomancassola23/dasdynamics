@@ -1,4 +1,4 @@
-// Renders the LinkedIn profile banner (1584x396) in the site's "Notturno" style to docs/linkedin-banner.png.
+// Renders the LinkedIn profile banner (1584x396 at 2x) in the site's "Notturno" style to docs/linkedin-banner.png.
 // The left third stays quiet: LinkedIn puts the profile photo there.
 // Run: node scripts/make-linkedin-banner.mjs
 import fs from 'node:fs';
@@ -57,7 +57,8 @@ const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'banner-'));
 const page = path.join(tmp, 'banner.html');
 fs.writeFileSync(page, html);
 const browser = await chromium.launch({ executablePath: findChrome() });
-const tab = await browser.newPage({ viewport: { width: W, height: H } });
+// Rendered at 2x (3168x792) so it stays sharp on high-density screens; LinkedIn scales it down.
+const tab = await browser.newPage({ viewport: { width: W, height: H }, deviceScaleFactor: 2 });
 await tab.goto(pathToFileURL(page).href);
 await tab.evaluate(() => document.fonts.ready);
 await tab.screenshot({ path: out, type: 'png' });

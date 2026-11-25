@@ -3,7 +3,7 @@
 ## Decisioni di Diego
 
 - **Repo remoto e hosting**: Diego darà il repo git. Consiglio: **GitHub Pages** (workflow già pronto, gratis, nessuna risorsa Azure da curare) con dominio **dasdynamics.dev** (HTTPS obbligatorio, tema da sviluppatore); .it come seconda scelta. Prima verificare di chi è dasdynamics.com: se è libero o acquistabile a poco, prenderlo e reindirizzarlo.
-- **About**: il profilo LinkedIn non ha la sezione Informazioni; testo da far confermare a Diego.
+- ~~**About**: il profilo LinkedIn non ha la sezione Informazioni~~: scritta il 25/11. Sul sito About ora ha le certificazioni (`src/data/certifications.json`) e la carriera dal 2009 (`CAREER_START`).
 - **Articolo Super User**: bozza da completare da Diego (come ci si è arrivati, numeri, cosa significa).
 - **Nome di persona nell'articolo Copilot Chat** (`extending-copilot-chat-d365fo`): tolto per la regola «niente nomi di persona nelle pagine»; ora la riga ringrazia «a fellow community member». Si può ripristinare se Diego lo chiede.
 - **Errori d'inglese verbatim nello stesso articolo** (es. «give me a couple of true suggestions»): lasciati come su LinkedIn; da correggere se Diego vuole.
@@ -21,7 +21,10 @@
 - Articoli in evidenza: campo `pinned: true`.
 - Repo remoto pubblico https://github.com/diegomancassola23/dasdynamics, primo push il 12/10; cartella locale rinominata in `C:\repos\dasdynamics`. Le copie HTML grezze delle pagine LinkedIn (`sources/linkedin/*.html`) restano solo in locale perché contengono identificativi di sessione: tolte dalla storia prima del push, la storia precedente è nel bundle `C:\repos\dasdynamics-backup-20261012.bundle`.
 - GitHub Pages attivo dal 12/10 (Source «GitHub Actions», primo deploy riuscito) con dominio personalizzato `dasdynamics.dev`, scelto da Diego. **Il dominio non è ancora registrato**: va comprato da Diego. Poi, nel DNS del registrar: quattro record A per `dasdynamics.dev` verso 185.199.108.153, 185.199.109.153, 185.199.110.153 e 185.199.111.153; un CNAME `www` verso `diegomancassola23.github.io`. Quando GitHub conferma il DNS si spunta «Enforce HTTPS» (`.dev` funziona solo in HTTPS). Consigliato: verificare il dominio nelle impostazioni Pages dell'account GitHub, così nessun altro può usarlo.
-- 25/11/2026: **dominio `dasdynamics.dev` comprato** da Diego su Cloudflare Registrar (rinnovo 12,20 $/anno). DNS su Cloudflare: quattro record A verso GitHub Pages e CNAME `www` verso `diegomancassola23.github.io`, tutti «DNS only». Il DNS risolve e il sito risponde in HTTP; dominio verificato nell'account GitHub (record TXT `_github-pages-challenge-…`). In attesa del certificato HTTPS di GitHub, poi «Enforce HTTPS».
+- 25/11/2026: **dominio `dasdynamics.dev` comprato** da Diego su Cloudflare Registrar (rinnovo 12,20 $/anno). DNS su Cloudflare: quattro record A verso GitHub Pages e CNAME `www` verso `diegomancassola23.github.io`, tutti «DNS only». Il DNS risolve e il sito risponde in HTTP; dominio verificato nell'account GitHub (record TXT `_github-pages-challenge-…`). Certificato HTTPS emesso e «Enforce HTTPS» attivo dal 25/11.
+- 25/11/2026: **LinkedIn aggiornato**: copertina notturna (`docs/linkedin-banner.png`), sito web, Informazioni (testo in `docs/linkedin-launch.md`), In primo piano, riga finale con il link al sito sui 9 articoli. Manca l'annuncio di lancio (testo da rifare con Diego).
+- **Blogger**: il vecchio blog è su un altro account Google, non quello aperto nel browser. Avviso (gadget `docs/blogger-notice-gadget.html`), post di commiato e link del profilo restano da fare quando Diego entra con l'account giusto.
+- **Convergence Miami**: post LinkedIn programmato per la settimana prossima e articolo sul sito; servono nome esatto dell'evento, date e ruolo di Diego (partecipa o parla).
 
 ## Sito costruito (notte 09→10/10/2026, ramo `site`)
 
