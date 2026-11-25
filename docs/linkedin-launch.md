@@ -61,20 +61,20 @@ From today new articles come out on the site first. Here you will find a short s
 
 ## 4. Convergence 2026 post (scheduled: Tuesday 1 December 2026, morning)
 
-Goes out with the site article `convergence-2026-miami` (published the same morning). Facts checked on convergence365.com, Sessionize and Eventbrite on 25/11/2026.
+Scheduled on LinkedIn for 08:00 UTC (09:00 Italy) with the article cover attached. The site article `convergence-2026-miami` is published on 25/11. Facts checked on convergence365.com, Sessionize and Eventbrite on 25/11/2026.
 
 ```text
-Next stop: Miami Beach.
+Miami Beach, December 8–11.
 
-From December 8 to 11 I will be at Convergence 2026, at the Fontainebleau Miami Beach: four days with Microsoft product teams and the Dynamics 365 community on roadmap, Power Platform and AI.
+I am going to Convergence 2026, and I can't wait.
 
-From the Finance & Operations side, I will be listening for three things: AI inside the ERP (agents, Copilot, MCP), the platform moving to the Power Platform admin center, and what the roadmap changes for integrations.
+Four days with the Microsoft product teams and the Dynamics 365 community: the roadmap straight from the people who build it, and the chance to ask the questions that come up on real Finance & Operations projects.
 
-What I learn will end up on the site as articles.
+I'll come back with what I find: what is real, what is ready, and what is still only slides.
 
-Are you going too? Write to me: a coffee between sessions is the best part of these events.
+Going too? Let's meet in Miami.
 
 https://dasdynamics.dev/articles/convergence-2026-miami/
 
-#Convergence2026 #Dynamics365 #D365FO #PowerPlatform
+#Convergence2026 #Dynamics365 #D365FO
 ```
