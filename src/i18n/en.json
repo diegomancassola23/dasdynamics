@@ -38,7 +38,7 @@
     "allArticles": "All articles",
     "tracksTitle": "Four tracks, one thread",
     "archiveEyebrow": "The archive",
-    "archiveTitle": "Dynamics AX Notes, {from}–{to}. Re-read in 2026.",
+    "archiveTitle": "Dynamics AX Notes. Re-read in 2026.",
     "archiveLead": "{count} notes from the Blogger years. Each one now says whether it still holds in D365FO, what replaced it, or why it is history.",
     "archiveCta": "Open the archive",
     "aboutTitle": "About",
@@ -105,7 +105,7 @@
   "archive": {
     "eyebrow": "Archive · formerly Dynamics AX Notes",
     "title": "Ten years of notes, re-read with today’s eyes.",
-    "lead": "Written on Blogger between {from} and {to}, from AX 2009 to D365FO. Each note now carries a verdict for 2026 and, where it changed, a pointer to what replaced it.",
+    "lead": "On Dynamics since {since}: the notes I kept along the way, from AX 2009 to D365FO. Each note now carries a verdict for 2026 and, where it changed, a pointer to what replaced it.",
     "searchLabel": "Search the archive",
     "searchPlaceholder": "InventSum, SSRS, lookup…",
     "filterLabel": "Filter by 2026 verdict",

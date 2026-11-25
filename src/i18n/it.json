@@ -38,7 +38,7 @@
     "allArticles": "Tutti gli articoli",
     "tracksTitle": "Quattro filoni, un solo filo",
     "archiveEyebrow": "L’archivio",
-    "archiveTitle": "Dynamics AX Notes, {from}–{to}. Riletto nel 2026.",
+    "archiveTitle": "Dynamics AX Notes. Riletto nel 2026.",
     "archiveLead": "{count} note degli anni di Blogger. Ognuna ora dice se vale ancora in D365FO, cosa l’ha sostituita o perché è storia.",
     "archiveCta": "Apri l’archivio",
     "aboutTitle": "Chi sono",
@@ -105,7 +105,7 @@
   "archive": {
     "eyebrow": "Archivio · già Dynamics AX Notes",
     "title": "Dieci anni di note, rilette con gli occhi di oggi.",
-    "lead": "Scritte su Blogger tra il {from} e il {to}, da AX 2009 a D365FO. Ogni nota ha ora un verdetto per il 2026 e, dove è cambiata, un rimando a ciò che l’ha sostituita.",
+    "lead": "Su Dynamics dal {since}: le note che ho tenuto strada facendo, da AX 2009 a D365FO. Ogni nota ha ora un verdetto per il 2026 e, dove è cambiata, un rimando a ciò che l’ha sostituita.",
     "searchLabel": "Cerca nell’archivio",
     "searchPlaceholder": "InventSum, SSRS, lookup…",
     "filterLabel": "Filtra per verdetto 2026",

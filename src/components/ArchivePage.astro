@@ -5,15 +5,13 @@ import { t } from '../i18n';
 import { getAll, isNote, verdictUrl, articleUrl, VERDICTS, type Verdict } from '../lib/content';
 import { pageTitle } from '../lib/site';
 import editorial from '../data/editorial.json';
+import { CAREER_START } from '../../site.config.mjs';
 
 const { verdict } = Astro.props as { verdict?: Verdict };
 const notes = (await getAll()).filter(isNote);
 const shown = verdict ? notes.filter((n) => n.data.verdict === verdict) : notes;
 
 const years = [...new Set(shown.map((n) => n.data.date.getUTCFullYear()))].sort((a, b) => b - a);
-const allYears = notes.map((n) => n.data.date.getUTCFullYear());
-const from = allYears.length ? Math.min(...allYears) : 2014;
-const to = allYears.length ? Math.max(...allYears) : 2024;
 
 const kept = notes.length;
 const retired = Number(editorial.retired) || 0;
@@ -24,13 +22,13 @@ const bridges = (editorial.bridges ?? []) as { years: string; from: string; to: 
 const title = verdict ? t('archive.verdictTitle', { verdict: t(`verdicts.${verdict}.label`) }) : t('nav.archive');
 const description = verdict
   ? `${t(`verdicts.${verdict}.meaning`)} ${t('archive.count', { count: shown.length })}.`
-  : t('archive.lead', { from, to });
+  : t('archive.lead', { since: CAREER_START });
 ---
 <Base title={pageTitle(title)} description={description} current="archive">
   <div class="wrap page">
     <p class="eyebrow">{t('archive.eyebrow')}</p>
     <h1 class="title">{t('archive.title')}</h1>
-    <p class="lead">{t('archive.lead', { from, to })}</p>
+    <p class="lead">{t('archive.lead', { since: CAREER_START })}</p>
 
     <div class="cols">
       <div class="list-col">

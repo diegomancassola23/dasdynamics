@@ -37,9 +37,6 @@ const seriesSource = featured?.data.series ? featured : articles.find((a) => a.d
 const series = seriesSource ? seriesOf(seriesSource, all) : [];
 const grid = ordered.filter((a) => a !== featured).slice(0, 6);
 
-const noteYears = notes.map((n) => n.data.date.getUTCFullYear());
-const fromYear = noteYears.length ? Math.min(...noteYears) : 2014;
-const toYear = noteYears.length ? Math.max(...noteYears) : 2024;
 const legend = VERDICTS.filter((v) => notes.some((n) => n.data.verdict === v));
 
 const site = Astro.site!;
@@ -148,7 +145,7 @@ const jsonLd = [
       <div class="wrap archive">
         <div class="archive-main">
           <p class="eyebrow">{t('home.archiveEyebrow')}</p>
-          <h2 id="arch-h" class="archive-title">{t('home.archiveTitle', { from: fromYear, to: toYear })}</h2>
+          <h2 id="arch-h" class="archive-title">{t('home.archiveTitle')}</h2>
           <p class="archive-lead">{t('home.archiveLead', { count: notes.length })}</p>
           <ul class="legend">
             {legend.map((v) => (
