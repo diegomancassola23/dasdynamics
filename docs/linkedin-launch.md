@@ -16,6 +16,8 @@ I write about it at https://dasdynamics.dev: new articles, and the notes from my
 D as Dynamics. D as Diego.
 ```
 
+**Banner**: `docs/linkedin-banner.png` (1584×396, `node scripts/make-linkedin-banner.mjs`).
+
 **Featured → Add a link**: `https://dasdynamics.dev` (title and image come from the site's preview). The Super User article replaces it once it is no longer a draft.
 
 ## 2. Closing line on each LinkedIn article
