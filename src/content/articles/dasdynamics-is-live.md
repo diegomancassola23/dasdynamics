@@ -7,7 +7,7 @@ track: platform
 versions: ["D365FO"]
 tags: ["dasdynamics", "d365fo"]
 pinned: false
-draft: true
+draft: false
 ---
 
 Today I open dasdynamics.dev, my site on Dynamics 365 Finance & Operations.
