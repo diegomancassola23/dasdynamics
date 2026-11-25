@@ -40,21 +40,23 @@ This article has a new home, where I keep it up to date: https://dasdynamics.dev
 | resolving-ssltls-secure-channel-error-net-…-awksf | `/articles/ssl-tls-secure-channel-error-dotnet/` |
 | virtual-zpl-printer-d365fo-…-ldw4f | `/articles/virtual-zpl-printer-d365fo/` |
 
-## 3. Announcement post (last step, 25/11 evening)
+## 3. Announcement post (published 25/11/2026, about 19:15 Italy)
 
-Goes out with the site article `dasdynamics-is-live` (published the same evening).
+Published together with the site article `dasdynamics-is-live`.
 
 ```text
 D as Dynamics. D as Diego.
 
-I have worked on Dynamics since 2009: AX 2009, AX 2012, then D365 Finance & Operations. Today what I learned along the way has its own home: https://dasdynamics.dev/articles/dasdynamics-is-live/
+Dynamics has been my job since 2009, and a good part of my life. Today it has a home of its own: not a blog, not a feed, but a site that is mine and built to last.
 
-What you find there:
-→ new articles on integrations, X++, the platform and AI inside the ERP
-→ the articles I published here on LinkedIn, kept up to date
-→ my old Dynamics AX notes, each one re-read against today's D365FO, with a verdict: still valid, changed, or history
+dasdynamics.dev is live.
 
-From today new articles come out on the site first. Here you will find a short summary and the link.
+You will find the articles I published here, kept up to date, my old AX notes re-read against today's D365FO, and everything new, first.
+
+I have published less lately: I am deep into AI projects inside my company, on the project lifecycle rather than the product. I have not disappeared, and in December I will be at Convergence in Miami.
+
+The whole story:
+https://dasdynamics.dev/articles/dasdynamics-is-live/
 
 #Dynamics365 #D365FO #MicrosoftDynamics #ERP
 ```
