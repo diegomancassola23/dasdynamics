@@ -24,7 +24,7 @@
 - 25/11/2026: **dominio `dasdynamics.dev` comprato** da Diego su Cloudflare Registrar (rinnovo 12,20 $/anno). DNS su Cloudflare: quattro record A verso GitHub Pages e CNAME `www` verso `diegomancassola23.github.io`, tutti «DNS only». Il DNS risolve e il sito risponde in HTTP; dominio verificato nell'account GitHub (record TXT `_github-pages-challenge-…`). Certificato HTTPS emesso e «Enforce HTTPS» attivo dal 25/11.
 - 25/11/2026: **LinkedIn aggiornato**: copertina notturna (`docs/linkedin-banner.png`), sito web, Informazioni (testo in `docs/linkedin-launch.md`), In primo piano, riga finale con il link al sito sui 9 articoli. Manca l'annuncio di lancio (testo da rifare con Diego).
 - **Blogger**: il vecchio blog è su un altro account Google, non quello aperto nel browser. Avviso (gadget `docs/blogger-notice-gadget.html`), post di commiato e link del profilo restano da fare quando Diego entra con l'account giusto.
-- **Convergence Miami**: post LinkedIn programmato per la settimana prossima e articolo sul sito; servono nome esatto dell'evento, date e ruolo di Diego (partecipa o parla).
+- **Convergence 2026** (Miami Beach, 8–11/12, Diego partecipa): post LinkedIn programmato per martedì 1/12 alle 9:00 italiane, con la copertina allegata. Quella mattina, prima delle 9, l'articolo `convergence-2026-miami` passa da bozza a pubblicato (push con il sì di Diego).
 
 ## Sito costruito (notte 09→10/10/2026, ramo `site`)
 
