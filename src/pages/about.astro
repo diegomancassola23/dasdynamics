@@ -5,6 +5,8 @@ import Monogram from '../components/Monogram.astro';
 import { t } from '../i18n';
 import { getAll } from '../lib/content';
 import { AUTHOR, personJsonLd } from '../lib/site';
+import { CAREER_START } from '../../site.config.mjs';
+import certifications from '../data/certifications.json';
 
 const all = await getAll();
 const site = Astro.site!;
@@ -36,8 +38,16 @@ const jsonLd = [
         <p>{t('about.nameStory')}</p>
       </section>
       <section aria-labelledby="hist-h">
-        <h2 id="hist-h" class="h2">{t('about.historyTitle')}</h2>
-        <p>{t('about.history')}</p>
+        <h2 id="hist-h" class="h2">{t('about.historyTitle', { since: CAREER_START })}</h2>
+        <p>{t('about.history', { since: CAREER_START })}</p>
+      </section>
+      <section aria-labelledby="cert-h" class="certs">
+        <h2 id="cert-h" class="h2">{t('about.certificationsTitle')}</h2>
+        <ul>
+          {certifications.map((c) => (
+            <li><span class="cert-name">{c.name}</span> <span class="mono cert-meta">{c.issuer} · {c.issued.slice(0, 4)}</span></li>
+          ))}
+        </ul>
       </section>
     </div>
 
@@ -121,6 +131,30 @@ const jsonLd = [
     font-size: 17px;
     line-height: 1.65;
     color: var(--text-2);
+  }
+  .certs {
+    grid-column: 1 / -1;
+  }
+  .certs ul {
+    margin: 12px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .certs li {
+    padding: 10px 0;
+    border-top: 1px solid var(--line);
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--text-2);
+  }
+  .certs li:first-child {
+    border-top: 0;
+  }
+  .cert-meta {
+    display: block;
+    margin-top: 2px;
+    font-size: 13px;
+    color: var(--muted);
   }
   .actions {
     display: flex;

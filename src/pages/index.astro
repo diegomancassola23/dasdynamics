@@ -21,13 +21,13 @@ import {
   VERDICTS,
 } from '../lib/content';
 import { AUTHOR, personJsonLd } from '../lib/site';
+import { CAREER_START } from '../../site.config.mjs';
 
 const all = await getAll();
 const articles = all.filter(isArticle);
 const notes = all.filter(isNote);
 
-const firstYear = all.length ? Math.min(...all.map((e) => e.data.date.getUTCFullYear())) : new Date().getFullYear();
-const years = new Date().getFullYear() - firstYear;
+const years = new Date().getFullYear() - CAREER_START;
 const numberWords = t('home.numbers').split(',');
 const yearsText = numberWords[years] ?? String(years);
 
@@ -75,7 +75,7 @@ const jsonLd = [
     </div>
     <dl class="stats">
       <div><dt>{t('home.statPublished')}</dt><dd class="big">{all.length}</dd></div>
-      <div><dt>{t('home.statSince')}</dt><dd class="big">{firstYear}</dd></div>
+      <div><dt>{t('home.statSince')}</dt><dd class="big">{CAREER_START}</dd></div>
       <div class="span2"><dt>{t('home.statVersions')}</dt><dd class="mono">{versionsCovered(all).join(' · ')}</dd></div>
     </dl>
     </div>
