@@ -42,7 +42,7 @@ This article has a new home, where I keep it up to date: https://dasdynamics.dev
 
 ## 3. Announcement post (last step, 25/11 evening)
 
-Goes out with the site article  (published the same evening).
+Goes out with the site article `dasdynamics-is-live` (published the same evening).
 
 ```text
 D as Dynamics. D as Diego.
