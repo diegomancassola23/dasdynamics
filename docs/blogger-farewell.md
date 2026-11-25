@@ -27,7 +27,7 @@ Title: **Dynamics AX Notes has a new home**
 
 ## Notice for the top of each old post
 
-One line, linking to the new page of that post (the mapping is in `docs/CONTENT-REPORT.md`; retired posts link to the site home).
+Added once, in the Blogger theme, as an HTML/JavaScript gadget: `docs/blogger-notice-gadget.html`, built by `node scripts/make-blogger-notice.mjs` from the `originalUrl`/`mergedFrom` of the published articles (retired posts link to the site home). It renders this line at the top of each post:
 
 ```html
 <p style="padding:10px 14px;border-left:4px solid #1D4ED8;background:#F1F5FF"><b>This note has moved.</b> An updated version, checked against today's D365FO, is on <a href="https://dasdynamics.dev/articles/SLUG/">dasdynamics.dev</a>.</p>
