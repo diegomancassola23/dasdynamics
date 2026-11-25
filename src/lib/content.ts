@@ -60,13 +60,6 @@ export const seriesTitle = (series: string) =>
     .map((w) => (w.length <= 3 && w === w.toUpperCase() ? w : w.charAt(0).toUpperCase() + w.slice(1)))
     .join(' ');
 
-/** Notes per calendar year, oldest first, with empty years left out. */
-export function notesPerYear(notes: Entry[]): { year: number; count: number }[] {
-  const counts = new Map<number, number>();
-  for (const n of notes) counts.set(n.data.date.getUTCFullYear(), (counts.get(n.data.date.getUTCFullYear()) ?? 0) + 1);
-  return [...counts.entries()].sort((a, b) => a[0] - b[0]).map(([year, count]) => ({ year, count }));
-}
-
 /** Versions in a stable, historical order. */
 const VERSION_ORDER = ['AX 4.0', 'AX 2009', 'AX 2012', 'AX7', 'D365FO'];
 export function versionsCovered(entries: Entry[]): string[] {

@@ -13,7 +13,6 @@ import {
   pinnedFirst,
   seriesOf,
   seriesTitle,
-  notesPerYear,
   versionsCovered,
   articleUrl,
   trackUrl,
@@ -38,12 +37,9 @@ const seriesSource = featured?.data.series ? featured : articles.find((a) => a.d
 const series = seriesSource ? seriesOf(seriesSource, all) : [];
 const grid = ordered.filter((a) => a !== featured).slice(0, 6);
 
-const perYear = notesPerYear(notes);
-const maxPerYear = Math.max(1, ...perYear.map((y) => y.count));
 const noteYears = notes.map((n) => n.data.date.getUTCFullYear());
 const fromYear = noteYears.length ? Math.min(...noteYears) : 2014;
 const toYear = noteYears.length ? Math.max(...noteYears) : 2024;
-const chartLabel = `${t('home.notesPerYear')}: ${perYear.map((y) => `${y.year} ${y.count}`).join(', ')}`;
 const legend = VERDICTS.filter((v) => notes.some((n) => n.data.verdict === v));
 
 const site = Astro.site!;
@@ -161,20 +157,6 @@ const jsonLd = [
           </ul>
           <a href="/archive/" class="btn btn-light">{t('home.archiveCta')}</a>
         </div>
-        <figure class="chart">
-          <figcaption class="meta">{t('home.notesPerYear')}</figcaption>
-          <div class="bars" role="img" aria-label={chartLabel}>
-            {perYear.map((y) => (
-              <div class="bar-col">
-                <span class="mono n">{y.count}</span>
-                <div class="bar" style={`height: ${Math.max(4, Math.round((y.count / maxPerYear) * 160))}px`}></div>
-              </div>
-            ))}
-          </div>
-          <div class="years" aria-hidden="true">
-            {perYear.map((y) => <span class="mono">{y.year}</span>)}
-          </div>
-        </figure>
       </div>
     </section>
   )}
@@ -444,50 +426,6 @@ const jsonLd = [
   .sw-changed { background: #fbbf24; }
   .sw-historical { background: #8b95a5; }
   .sw-to-review { background: #a5b4fc; }
-  .chart {
-    flex: 1 1 380px;
-    margin: 0;
-    min-width: 0;
-  }
-  .chart figcaption {
-    margin-bottom: 14px;
-  }
-  .bars,
-  .years {
-    display: flex;
-    gap: 10px;
-  }
-  .bars {
-    align-items: flex-end;
-    height: 200px;
-    border-bottom: 1px solid var(--band-line);
-  }
-  .bar-col {
-    flex: 1 1 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 6px;
-    height: 100%;
-  }
-  .bar {
-    width: 100%;
-    background: var(--band-ink);
-  }
-  .n {
-    font-size: 12px;
-    color: var(--band-soft);
-  }
-  .years {
-    margin-top: 8px;
-  }
-  .years span {
-    flex: 1 1 0;
-    text-align: center;
-    font-size: 12px;
-    color: var(--band-muted);
-  }
 
   .about {
     padding-top: 88px;

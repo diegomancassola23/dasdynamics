@@ -24,7 +24,7 @@
   "home": {
     "eyebrow": "Dynamics dreams · D365 Finance & Operations · IA",
     "title": "Costruisco i sistemi che sognavo.",
-    "lead": "{years} anni di appunti sul campo di Diego Mancassola: dagli snippet X++ su AX 2009 ad API Management, server MCP e Copilot dentro D365FO.",
+    "lead": "{years} anni di progetti Dynamics sul campo, da X++ su AX 2009 ad API Management, server MCP e Copilot dentro D365FO. Quello che ho imparato strada facendo, messo per iscritto.",
     "ctaLatest": "Leggi l’ultimo",
     "ctaArchive": "Sfoglia l’archivio",
     "statPublished": "Pubblicati",
@@ -41,7 +41,6 @@
     "archiveTitle": "Dynamics AX Notes, {from}–{to}. Riletto nel 2026.",
     "archiveLead": "{count} note degli anni di Blogger. Ognuna ora dice se vale ancora in D365FO, cosa l’ha sostituita o perché è storia.",
     "archiveCta": "Apri l’archivio",
-    "notesPerYear": "Note per anno",
     "aboutTitle": "Chi sono",
     "aboutMore": "Di più su di me",
     "numbers": "Zero,Uno,Due,Tre,Quattro,Cinque,Sei,Sette,Otto,Nove,Dieci,Undici,Dodici,Tredici,Quattordici,Quindici,Sedici,Diciassette,Diciotto,Diciannove,Venti"
