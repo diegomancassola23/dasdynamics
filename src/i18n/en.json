@@ -43,7 +43,8 @@
     "archiveCta": "Open the archive",
     "aboutTitle": "About",
     "aboutMore": "More about me",
-    "numbers": "Zero,One,Two,Three,Four,Five,Six,Seven,Eight,Nine,Ten,Eleven,Twelve,Thirteen,Fourteen,Fifteen,Sixteen,Seventeen,Eighteen,Nineteen,Twenty"
+    "numbers": "Zero,One,Two,Three,Four,Five,Six,Seven,Eight,Nine,Ten,Eleven,Twelve,Thirteen,Fourteen,Fifteen,Sixteen,Seventeen,Eighteen,Nineteen,Twenty",
+    "topicsLink": "Explore the universe of concepts"
   },
   "credential": {
     "label": "Dynamics 365 Community Super User",
@@ -183,5 +184,20 @@
   "cover": {
     "article": "Article",
     "footer": "dasdynamics · Dynamics dreams"
+  },
+  "topics": {
+    "eyebrow": "Topics",
+    "title": "A universe of concepts",
+    "lead": "On Dynamics since {since}. Every star is one of the {count} concepts I have written about: the brighter it shines, the more often it comes back.",
+    "description": "The concepts I have written about since {since}, drawn as a night sky: four constellations, one for each track.",
+    "starLabel": "{tag} ({count})",
+    "systems": "Primary systems",
+    "entries": "{count} pieces",
+    "stop": "System {i} of {total}",
+    "next": "Next system: {track}",
+    "back": "Back to the primary systems",
+    "end": "End of the journey, for now.",
+    "mapLabel": "Constellation: {track}",
+    "once": "Mentioned once:"
   }
 }

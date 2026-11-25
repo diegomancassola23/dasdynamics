@@ -43,7 +43,8 @@
     "archiveCta": "Apri l’archivio",
     "aboutTitle": "Chi sono",
     "aboutMore": "Di più su di me",
-    "numbers": "Zero,Uno,Due,Tre,Quattro,Cinque,Sei,Sette,Otto,Nove,Dieci,Undici,Dodici,Tredici,Quattordici,Quindici,Sedici,Diciassette,Diciotto,Diciannove,Venti"
+    "numbers": "Zero,Uno,Due,Tre,Quattro,Cinque,Sei,Sette,Otto,Nove,Dieci,Undici,Dodici,Tredici,Quattordici,Quindici,Sedici,Diciassette,Diciotto,Diciannove,Venti",
+    "topicsLink": "Esplora l'universo dei concetti"
   },
   "credential": {
     "label": "Dynamics 365 Community Super User",
@@ -183,5 +184,20 @@
   "cover": {
     "article": "Articolo",
     "footer": "dasdynamics · Dynamics dreams"
+  },
+  "topics": {
+    "eyebrow": "Argomenti",
+    "title": "Un universo di concetti",
+    "lead": "Su Dynamics dal {since}. Ogni stella è uno dei {count} concetti di cui ho scritto: più brilla, più spesso ritorna.",
+    "description": "I concetti di cui ho scritto dal {since}, disegnati come un cielo notturno: quattro costellazioni, una per filone.",
+    "starLabel": "{tag} ({count})",
+    "systems": "Sistemi primari",
+    "entries": "{count} scritti",
+    "stop": "Sistema {i} di {total}",
+    "next": "Prossimo sistema: {track}",
+    "back": "Torna ai sistemi primari",
+    "end": "Fine del viaggio, per ora.",
+    "mapLabel": "Costellazione: {track}",
+    "once": "Citati una volta:"
   }
 }

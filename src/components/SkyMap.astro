@@ -1,0 +1,452 @@
+---
+import { t } from '../i18n';
+import { trackUrl } from '../lib/content';
+import type { Constellation } from '../lib/sky';
+
+interface Props {
+  constellations: Constellation[];
+}
+const { constellations } = Astro.props;
+const total = constellations.length;
+---
+<nav id="systems" class="systems" aria-labelledby="systems-h">
+  <h2 id="systems-h" class="eyebrow">{t('topics.systems')}</h2>
+  <ol>
+    {constellations.map((c) => (
+      <li>
+        <a href={`#${c.track}`}>
+          <span class="sun" aria-hidden="true" style={`--size:${Math.round(24 + 4 * Math.sqrt(c.n))}px`}></span>
+          <span class="name">{t(`tracks.${c.track}.name`)}</span>
+          <span class="meta">{t('topics.entries', { count: c.n })}</span>
+        </a>
+      </li>
+    ))}
+  </ol>
+</nav>
+
+{constellations.map((c, i) => {
+  const next = constellations[i + 1];
+  return (
+    <section id={c.track} class="constellation" aria-labelledby={`${c.track}-h`}>
+      <p class="eyebrow">{t('topics.stop', { i: i + 1, total })}</p>
+      <h2 id={`${c.track}-h`}>
+        <span class="sun" aria-hidden="true"></span>
+        <a href={trackUrl(c.track)}>{t(`tracks.${c.track}.name`)}</a>
+      </h2>
+      <p class="blurb">{t(`tracks.${c.track}.blurb`)}</p>
+      <svg class="map" viewBox={`0 0 ${c.map.width} ${c.map.height}`} width={Math.round(c.map.width * 1.3)} height={Math.round(c.map.height * 1.3)} role="group" aria-label={t('topics.mapLabel', { track: t(`tracks.${c.track}.name`) })}>
+        <circle class="sun-glow" cx={c.map.sun.x} cy={c.map.sun.y} r="30" /><circle class="sun-glow" cx={c.map.sun.x} cy={c.map.sun.y} r="18" />
+        <circle class="sun-core" cx={c.map.sun.x} cy={c.map.sun.y} r="9" />
+        <g class="lines" aria-hidden="true">
+          {c.map.lines.map((l) => <line x1={l.x1} y1={l.y1} x2={l.x2} y2={l.y2} />)}
+        </g>
+        {c.map.stars.map((s, k) => (
+          <a
+            href={s.url}
+            class={`mstar b${s.brightness}`}
+            aria-label={t('topics.starLabel', { tag: s.tag, count: s.n })}
+            style={`--dx:${Math.round(c.map.sun.x - s.x)}px;--dy:${Math.round(c.map.sun.y - s.y)}px;--k:${k}`}
+          >
+            <circle class="halo" cx={s.x} cy={s.y} r={s.r + 10} />
+            <circle class="core" cx={s.x} cy={s.y} r={s.r} style={`animation-delay:-${s.delay}s`} />
+            <text
+              x={s.anchor === 'start' ? s.x + s.r + 6 : s.x - s.r - 6}
+              y={s.y + (s.size || 13) * 0.35}
+              text-anchor={s.anchor}
+              font-size={s.size || 13}
+            >{s.tag}</text>
+          </a>
+        ))}
+      </svg>
+      <p class="once">{t('topics.once')}</p>
+      <ul>
+        {c.stars.map((s) => (
+          <li class={s.n > 1 ? 'named' : 'dust'}>
+            <a href={s.url} class={`star b${s.brightness}`} title={t('topics.starLabel', { tag: s.tag, count: s.n })}>
+              <span class="dot" aria-hidden="true" style={`animation-delay:-${s.delay}s`}></span>
+              {s.tag}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p class="route">
+        {next
+          ? <a href={`#${next.track}`}>{t('topics.next', { track: t(`tracks.${next.track}.name`) })} →</a>
+          : <span>{t('topics.end')}</span>}
+        <a href="#systems">↑ {t('topics.back')}</a>
+      </p>
+    </section>
+  );
+})}
+
+<style>
+  :global(html) {
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    :global(html) {
+      scroll-behavior: auto;
+    }
+  }
+
+  /* ---------- primary systems: the four suns on one route ---------- */
+
+  .systems {
+    scroll-margin-top: 24px;
+  }
+  .systems ol {
+    position: relative;
+    margin: 24px 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  /* the route between the suns */
+  .systems ol::before {
+    content: '';
+    position: absolute;
+    left: 12.5%;
+    right: 12.5%;
+    top: 36px;
+    border-top: 1px dashed var(--band-muted);
+    opacity: 0.5;
+  }
+  .systems ol a {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 12px 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 12px;
+  }
+  .systems ol a:hover,
+  .systems ol a:focus-visible {
+    background: rgba(245, 198, 107, 0.08);
+  }
+  .systems .sun {
+    width: var(--size);
+    height: var(--size);
+    /* every sun sits in a 48px slot, so all centres stay on the route */
+    margin: calc((48px - var(--size)) / 2) 0;
+    box-shadow: 0 0 28px 10px rgba(245, 198, 107, 0.35);
+  }
+  .systems .name {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--gold);
+    line-height: 1.2;
+  }
+  .systems .meta {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--band-muted);
+  }
+  @media (max-width: 720px) {
+    .systems ol {
+      grid-template-columns: 1fr;
+      gap: 4px;
+    }
+    .systems ol::before {
+      left: 27px;
+      right: auto;
+      top: 30px;
+      bottom: 30px;
+      border-top: 0;
+      border-left: 1px dashed var(--band-muted);
+    }
+    .systems ol a {
+      min-height: 52px;
+      flex-direction: row;
+      text-align: left;
+      gap: 16px;
+      padding: 10px 8px;
+    }
+    .systems .sun {
+      width: calc(var(--size) * 0.6);
+      height: calc(var(--size) * 0.6);
+      margin: 0 calc(20px - var(--size) * 0.3);
+    }
+    .systems .meta {
+      margin-left: auto;
+    }
+  }
+
+  /* ---------- each constellation: one stop of the journey ---------- */
+
+  .constellation {
+    margin-top: 72px;
+    padding-top: 40px;
+    border-top: 1px solid var(--band-line);
+    scroll-margin-top: 24px;
+  }
+  .constellation h2 {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 10px 0 8px;
+    font-family: var(--font-display);
+    font-size: clamp(28px, 4vw, 36px);
+    font-weight: 600;
+  }
+  .constellation h2 a {
+    color: var(--gold);
+    text-decoration: none;
+  }
+  .constellation h2 a:hover {
+    text-decoration: underline;
+  }
+  .sun {
+    flex: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 16px 6px rgba(245, 198, 107, 0.45);
+  }
+  /* arriving at a system: its sun flares */
+  .constellation:target .sun {
+    animation: arrive 1.6s ease-out;
+  }
+  @keyframes arrive {
+    0% {
+      transform: scale(0.2);
+      box-shadow: 0 0 0 0 rgba(245, 198, 107, 0);
+    }
+    40% {
+      transform: scale(1.8);
+      box-shadow: 0 0 60px 26px rgba(245, 198, 107, 0.6);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  .blurb {
+    max-width: 600px;
+    margin: 0 0 28px;
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--band-soft);
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 12px 24px;
+  }
+  .constellation .star {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    color: var(--band-soft);
+    text-decoration: none;
+    line-height: 1.3;
+  }
+  .constellation .star:hover,
+  .constellation .star:focus-visible {
+    color: var(--gold);
+  }
+  .dot {
+    flex: none;
+    border-radius: 50%;
+    background: var(--band-ink);
+    animation: twinkle 6s ease-in-out infinite;
+  }
+  .constellation .b1 {
+    font-size: 14px;
+    color: var(--band-muted);
+  }
+  .constellation .b1 .dot {
+    width: 3px;
+    height: 3px;
+  }
+  .constellation .b2 {
+    font-size: 16px;
+  }
+  .constellation .b2 .dot {
+    width: 5px;
+    height: 5px;
+    background: var(--band-link);
+  }
+  .constellation .b3 {
+    font-size: 19px;
+    color: var(--band-ink);
+  }
+  .constellation .b3 .dot {
+    width: 7px;
+    height: 7px;
+    background: var(--band-link);
+    box-shadow: 0 0 8px 2px rgba(245, 198, 107, 0.4);
+  }
+  .constellation .b4 {
+    font-size: 23px;
+    font-weight: 500;
+    color: var(--band-ink);
+  }
+  .constellation .b4 .dot {
+    width: 9px;
+    height: 9px;
+    background: var(--gold);
+    box-shadow: 0 0 12px 3px rgba(245, 198, 107, 0.5);
+  }
+
+  .route {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px 24px;
+    margin: 36px 0 0;
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: var(--band-muted);
+  }
+
+/* ---------- the drawn constellation (tablet and desktop) ---------- */
+
+  .map {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 8px auto 32px;
+    overflow: visible;
+  }
+  .sun-glow {
+    fill: var(--gold);
+    opacity: 0.1;
+  }
+  .sun-core {
+    fill: var(--gold);
+  }
+  .lines line {
+    stroke: var(--band-muted);
+    stroke-opacity: 0.4;
+    stroke-width: 1;
+  }
+  .mstar .core {
+    fill: var(--band-link);
+    animation: twinkle 6s ease-in-out infinite;
+  }
+  .mstar.b1 .core {
+    fill: var(--band-ink);
+  }
+  .mstar.b4 .core {
+    fill: var(--gold);
+  }
+  .mstar .halo {
+    fill: var(--gold);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .mstar text {
+    fill: var(--band-ink);
+    font-family: var(--font-mono);
+    transition: fill 0.2s, opacity 0.2s;
+  }
+  .mstar.b2 text {
+    fill: var(--band-soft);
+  }
+  .mstar.b1 text {
+    fill: var(--band-link);
+    opacity: 0;
+    pointer-events: none;
+  }
+  .mstar:hover .halo,
+  .mstar:focus-visible .halo {
+    opacity: 0.22;
+  }
+  .mstar:hover text,
+  .mstar:focus-visible text {
+    fill: var(--gold);
+    opacity: 1;
+  }
+  .mstar:focus-visible {
+    outline: none;
+  }
+  .map:hover .lines line {
+    stroke-opacity: 0.6;
+  }
+
+  /* arriving at a system: the stars fly out of the sun to their places */
+  :global(.warp) .constellation:not(.arrived) .mstar,
+  :global(.warp) .constellation:not(.arrived) .lines {
+    opacity: 0;
+  }
+  :global(.warp) .constellation:not(.arrived) .mstar {
+    transform: translate(var(--dx), var(--dy));
+  }
+  :global(.warp) .mstar {
+    transition:
+      transform 1.1s cubic-bezier(0.2, 0.8, 0.2, 1) calc(var(--k) * 18ms),
+      opacity 0.8s ease-out calc(var(--k) * 18ms);
+  }
+  :global(.warp) .lines {
+    transition: opacity 1.2s ease-out 0.7s;
+  }
+
+  .once {
+    margin: 0 0 12px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--band-muted);
+  }
+  @media (min-width: 721px) {
+    li.named {
+      display: none;
+    }
+  }
+  @media (max-width: 720px) {
+    .map,
+    .once {
+      display: none;
+    }
+  }
+
+  @keyframes twinkle {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.4;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .dot,
+    .mstar .core,
+    .constellation:target .sun {
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  // Progressive enhancement: with motion allowed, each constellation's stars
+  // fly out of its sun the first time it scrolls into view.
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+    document.documentElement.classList.add('warp');
+    const seen = new IntersectionObserver(
+      (items) => {
+        for (const item of items) {
+          if (item.isIntersecting) {
+            item.target.classList.add('arrived');
+            seen.unobserve(item.target);
+          }
+        }
+      },
+      { threshold: 0.25 },
+    );
+    document.querySelectorAll('.constellation').forEach((el) => seen.observe(el));
+  }
+</script>

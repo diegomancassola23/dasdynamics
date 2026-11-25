@@ -1,0 +1,53 @@
+---
+import Base from '../layouts/Base.astro';
+import SkyMap from '../components/SkyMap.astro';
+import { t } from '../i18n';
+import { getAll } from '../lib/content';
+import { buildSky } from '../lib/sky';
+import { pageTitle } from '../lib/site';
+import { CAREER_START } from '../../site.config.mjs';
+
+const constellations = buildSky(await getAll());
+const count = constellations.reduce((sum, c) => sum + c.stars.length, 0);
+---
+<Base title={pageTitle(t('topics.title'))} description={t('topics.description', { since: CAREER_START })} current="topics">
+  <div class="band sky-band">
+    <div class="wrap">
+      <header class="head">
+        <p class="eyebrow">{t('topics.eyebrow')}</p>
+        <h1 class="title">{t('topics.title')}</h1>
+        <p class="lead">{t('topics.lead', { since: CAREER_START, count })}</p>
+      </header>
+      <SkyMap constellations={constellations} />
+    </div>
+  </div>
+</Base>
+
+<style>
+  .sky-band {
+    padding: 64px 0 96px;
+  }
+  .head {
+    margin-bottom: 56px;
+  }
+  .title {
+    margin: 12px 0 0;
+    font-family: var(--font-display);
+    font-size: clamp(36px, 6vw, 60px);
+    font-weight: 700;
+    letter-spacing: -1px;
+    line-height: 1.05;
+  }
+  .lead {
+    max-width: 640px;
+    margin: 16px 0 0;
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--band-soft);
+  }
+  @media (max-width: 480px) {
+    .sky-band {
+      padding: 48px 0 64px;
+    }
+  }
+</style>

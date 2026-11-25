@@ -3,13 +3,13 @@ import Logo from './Logo.astro';
 import Arrow from './Arrow.astro';
 import { t } from '../i18n';
 interface Props {
-  current?: 'home' | 'articles' | 'archive' | 'about';
+  current?: 'home' | 'articles' | 'archive' | 'topics' | 'about';
 }
 const { current } = Astro.props;
 const links = [
   { key: 'articles', href: '/articles/', label: t('nav.articles') },
   { key: 'archive', href: '/archive/', label: t('nav.archive') },
-  { key: 'topics', href: '/#tracks', label: t('nav.topics') },
+  { key: 'topics', href: '/topics/', label: t('nav.topics') },
   { key: 'about', href: '/about/', label: t('nav.about') },
 ];
 ---
