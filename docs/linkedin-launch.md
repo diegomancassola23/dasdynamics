@@ -42,10 +42,12 @@ This article has a new home, where I keep it up to date: https://dasdynamics.dev
 
 ## 3. Announcement post (last step, 25/11 evening)
 
+Goes out with the site article  (published the same evening).
+
 ```text
 D as Dynamics. D as Diego.
 
-I have worked on Dynamics since 2009: AX 2009, AX 2012, then D365 Finance & Operations. Today what I learned along the way has its own home: https://dasdynamics.dev
+I have worked on Dynamics since 2009: AX 2009, AX 2012, then D365 Finance & Operations. Today what I learned along the way has its own home: https://dasdynamics.dev/articles/dasdynamics-is-live/
 
 What you find there:
 → new articles on integrations, X++, the platform and AI inside the ERP
