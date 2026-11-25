@@ -71,8 +71,7 @@ const jsonLd = [
       <Credential all={all} />
     </div>
     <dl class="stats">
-      <div><dt>{t('home.statPublished')}</dt><dd class="big">{all.length}</dd></div>
-      <div><dt>{t('home.statSince')}</dt><dd class="big">{CAREER_START}</dd></div>
+      <div class="span2"><dt>{t('home.statSince')}</dt><dd class="big">{CAREER_START}</dd></div>
       <div class="span2"><dt>{t('home.statVersions')}</dt><dd class="mono">{versionsCovered(all).join(' · ')}</dd></div>
     </dl>
     </div>
@@ -147,7 +146,7 @@ const jsonLd = [
         <div class="archive-main">
           <p class="eyebrow">{t('home.archiveEyebrow')}</p>
           <h2 id="arch-h" class="archive-title">{t('home.archiveTitle')}</h2>
-          <p class="archive-lead">{t('home.archiveLead', { count: notes.length })}</p>
+          <p class="archive-lead">{t('home.archiveLead')}</p>
           <ul class="legend">
             {legend.map((v) => (
               <li><span class={`sw sw-${v}`} aria-hidden="true"></span>{t(`verdicts.${v}.label`)}</li>

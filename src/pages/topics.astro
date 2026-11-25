@@ -8,7 +8,6 @@ import { pageTitle } from '../lib/site';
 import { CAREER_START } from '../../site.config.mjs';
 
 const constellations = buildSky(await getAll());
-const count = constellations.reduce((sum, c) => sum + c.stars.length, 0);
 ---
 <Base title={pageTitle(t('topics.title'))} description={t('topics.description', { since: CAREER_START })} current="topics">
   <div class="band sky-band">
@@ -16,7 +15,7 @@ const count = constellations.reduce((sum, c) => sum + c.stars.length, 0);
       <header class="head">
         <p class="eyebrow">{t('topics.eyebrow')}</p>
         <h1 class="title">{t('topics.title')}</h1>
-        <p class="lead">{t('topics.lead', { since: CAREER_START, count })}</p>
+        <p class="lead">{t('topics.lead', { since: CAREER_START })}</p>
       </header>
       <SkyMap constellations={constellations} />
     </div>

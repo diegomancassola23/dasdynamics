@@ -21,7 +21,7 @@ const bridges = (editorial.bridges ?? []) as { years: string; from: string; to: 
 
 const title = verdict ? t('archive.verdictTitle', { verdict: t(`verdicts.${verdict}.label`) }) : t('nav.archive');
 const description = verdict
-  ? `${t(`verdicts.${verdict}.meaning`)} ${t('archive.count', { count: shown.length })}.`
+  ? t(`verdicts.${verdict}.meaning`)
   : t('archive.lead', { since: CAREER_START });
 ---
 <Base title={pageTitle(title)} description={description} current="archive">
@@ -39,11 +39,10 @@ const description = verdict
           </div>
           <nav aria-label={t('archive.filterLabel')}>
             <ul class="chips">
-              <li><a class="chip" href="/archive/" aria-current={verdict ? undefined : 'page'}>{t('archive.all')}<span class="count">{notes.length}</span></a></li>
+              <li><a class="chip" href="/archive/" aria-current={verdict ? undefined : 'page'}>{t('archive.all')}</a></li>
               {VERDICTS.map((v) => {
-                const n = notes.filter((x) => x.data.verdict === v).length;
-                return n > 0 && (
-                  <li><a class="chip" href={verdictUrl(v)} aria-current={v === verdict ? 'page' : undefined}>{t(`verdicts.${v}.label`)}<span class="count">{n}</span></a></li>
+                return notes.some((x) => x.data.verdict === v) && (
+                  <li><a class="chip" href={verdictUrl(v)} aria-current={v === verdict ? 'page' : undefined}>{t(`verdicts.${v}.label`)}</a></li>
                 );
               })}
             </ul>

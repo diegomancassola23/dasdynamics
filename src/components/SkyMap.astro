@@ -17,7 +17,6 @@ const total = constellations.length;
         <a href={`#${c.track}`}>
           <span class="sun" aria-hidden="true" style={`--size:${Math.round(24 + 4 * Math.sqrt(c.n))}px`}></span>
           <span class="name">{t(`tracks.${c.track}.name`)}</span>
-          <span class="meta">{t('topics.entries', { count: c.n })}</span>
         </a>
       </li>
     ))}
@@ -44,7 +43,7 @@ const total = constellations.length;
           <a
             href={s.url}
             class={`mstar b${s.brightness}`}
-            aria-label={t('topics.starLabel', { tag: s.tag, count: s.n })}
+            aria-label={s.tag}
             style={`--dx:${Math.round(c.map.sun.x - s.x)}px;--dy:${Math.round(c.map.sun.y - s.y)}px;--k:${k}`}
           >
             <circle class="halo" cx={s.x} cy={s.y} r={s.r + 10} />
@@ -62,7 +61,7 @@ const total = constellations.length;
       <ul>
         {c.stars.map((s) => (
           <li class={s.n > 1 ? 'named' : 'dust'}>
-            <a href={s.url} class={`star b${s.brightness}`} title={t('topics.starLabel', { tag: s.tag, count: s.n })}>
+            <a href={s.url} class={`star b${s.brightness}`}>
               <span class="dot" aria-hidden="true" style={`animation-delay:-${s.delay}s`}></span>
               {s.tag}
             </a>
@@ -143,11 +142,6 @@ const total = constellations.length;
     color: var(--gold);
     line-height: 1.2;
   }
-  .systems .meta {
-    font-family: var(--font-mono);
-    font-size: 13px;
-    color: var(--band-muted);
-  }
   @media (max-width: 720px) {
     .systems ol {
       grid-template-columns: 1fr;
@@ -172,9 +166,6 @@ const total = constellations.length;
       width: calc(var(--size) * 0.6);
       height: calc(var(--size) * 0.6);
       margin: 0 calc(20px - var(--size) * 0.3);
-    }
-    .systems .meta {
-      margin-left: auto;
     }
   }
 

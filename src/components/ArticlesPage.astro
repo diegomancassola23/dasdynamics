@@ -18,11 +18,10 @@ const description = track ? t(`tracks.${track}.blurb`) : t('articles.lead');
     <p class="lead">{description}</p>
     <nav aria-label={t('articles.filterLabel')} class="filters">
       <ul class="chips">
-        <li><a class="chip" href="/articles/" aria-current={track ? undefined : 'page'}>{t('articles.all')}<span class="count">{articles.length}</span></a></li>
+        <li><a class="chip" href="/articles/" aria-current={track ? undefined : 'page'}>{t('articles.all')}</a></li>
         {TRACKS.map((tr) => {
-          const n = articles.filter((a) => a.data.track === tr).length;
-          return n > 0 && (
-            <li><a class="chip" href={trackUrl(tr)} aria-current={tr === track ? 'page' : undefined}>{t(`tracks.${tr}.short`)}<span class="count">{n}</span></a></li>
+          return articles.some((a) => a.data.track === tr) && (
+            <li><a class="chip" href={trackUrl(tr)} aria-current={tr === track ? 'page' : undefined}>{t(`tracks.${tr}.short`)}</a></li>
           );
         })}
       </ul>

@@ -27,7 +27,6 @@
     "lead": "{years} anni di progetti Dynamics sul campo, da X++ su AX 2009 ad API Management, server MCP e Copilot dentro D365FO. Quello che ho imparato strada facendo, messo per iscritto.",
     "ctaLatest": "Leggi l’ultimo",
     "ctaArchive": "Sfoglia l’archivio",
-    "statPublished": "Pubblicati",
     "statSince": "Su Dynamics dal",
     "statVersions": "Versioni trattate",
     "pinned": "In evidenza",
@@ -39,7 +38,7 @@
     "tracksTitle": "Quattro filoni, un solo filo",
     "archiveEyebrow": "L’archivio",
     "archiveTitle": "Dynamics AX Notes. Riletto nel 2026.",
-    "archiveLead": "{count} note degli anni di Blogger. Ognuna ora dice se vale ancora in D365FO, cosa l’ha sostituita o perché è storia.",
+    "archiveLead": "Le note degli anni di Blogger. Ognuna ora dice se vale ancora in D365FO, cosa l’ha sostituita o perché è storia.",
     "archiveCta": "Apri l’archivio",
     "aboutTitle": "Chi sono",
     "aboutMore": "Di più su di me",
@@ -120,8 +119,7 @@
     "bridgeTitle": "Allora → oggi",
     "bridgeLead": "Dove una vecchia nota è diventata un articolo nuovo.",
     "verdictsTitle": "Cosa vogliono dire i verdetti",
-    "verdictTitle": "Archivio — {verdict}",
-    "count": "{count} note"
+    "verdictTitle": "Archivio — {verdict}"
   },
   "article": {
     "breadcrumbArticles": "Articoli",
@@ -188,11 +186,9 @@
   "topics": {
     "eyebrow": "Argomenti",
     "title": "Un universo di concetti",
-    "lead": "Su Dynamics dal {since}. Ogni stella è uno dei {count} concetti di cui ho scritto: più brilla, più spesso ritorna.",
+    "lead": "Su Dynamics dal {since}. Ogni stella è un concetto di cui ho scritto: più brilla, più spesso ritorna.",
     "description": "I concetti di cui ho scritto dal {since}, disegnati come un cielo notturno: quattro costellazioni, una per filone.",
-    "starLabel": "{tag} ({count})",
     "systems": "Sistemi primari",
-    "entries": "{count} scritti",
     "stop": "Sistema {i} di {total}",
     "next": "Prossimo sistema: {track}",
     "back": "Torna ai sistemi primari",

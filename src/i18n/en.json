@@ -27,7 +27,6 @@
     "lead": "{years} years of hands-on Dynamics projects, from X++ on AX 2009 to API Management, MCP servers and Copilot inside D365FO. What I learned along the way, written down.",
     "ctaLatest": "Read the latest",
     "ctaArchive": "Browse the archive",
-    "statPublished": "Published",
     "statSince": "On Dynamics since",
     "statVersions": "Versions covered",
     "pinned": "Pinned",
@@ -39,7 +38,7 @@
     "tracksTitle": "Four tracks, one thread",
     "archiveEyebrow": "The archive",
     "archiveTitle": "Dynamics AX Notes. Re-read in 2026.",
-    "archiveLead": "{count} notes from the Blogger years. Each one now says whether it still holds in D365FO, what replaced it, or why it is history.",
+    "archiveLead": "The notes from the Blogger years. Each one now says whether it still holds in D365FO, what replaced it, or why it is history.",
     "archiveCta": "Open the archive",
     "aboutTitle": "About",
     "aboutMore": "More about me",
@@ -120,8 +119,7 @@
     "bridgeTitle": "Then → now",
     "bridgeLead": "Where an old note grew into a new article.",
     "verdictsTitle": "What the verdicts mean",
-    "verdictTitle": "Archive — {verdict}",
-    "count": "{count} notes"
+    "verdictTitle": "Archive — {verdict}"
   },
   "article": {
     "breadcrumbArticles": "Articles",
@@ -188,11 +186,9 @@
   "topics": {
     "eyebrow": "Topics",
     "title": "A universe of concepts",
-    "lead": "On Dynamics since {since}. Every star is one of the {count} concepts I have written about: the brighter it shines, the more often it comes back.",
+    "lead": "On Dynamics since {since}. Every star is a concept I have written about: the brighter it shines, the more often it comes back.",
     "description": "The concepts I have written about since {since}, drawn as a night sky: four constellations, one for each track.",
-    "starLabel": "{tag} ({count})",
     "systems": "Primary systems",
-    "entries": "{count} pieces",
     "stop": "System {i} of {total}",
     "next": "Next system: {track}",
     "back": "Back to the primary systems",
