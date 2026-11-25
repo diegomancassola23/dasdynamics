@@ -1,16 +1,16 @@
 ---
 title: "See you at Convergence 2026 in Miami"
 description: "I will be at Convergence 2026, December 8–11 at the Fontainebleau Miami Beach. If you work on D365 Finance & Operations, let's meet."
-date: 2026-12-01
+date: 2026-11-25
 kind: article
 track: platform
 versions: ["D365FO"]
 tags: ["events", "convergence", "d365fo"]
 pinned: false
-draft: true
+draft: false
 ---
 
-Next week I will be in Miami Beach for [Convergence 2026](https://convergence365.com), from Tuesday, December 8 to Friday, December 11, at the Fontainebleau Miami Beach.
+In December I will be in Miami Beach for [Convergence 2026](https://convergence365.com), from Tuesday, December 8 to Friday, December 11, at the Fontainebleau Miami Beach.
 
 Convergence is organized by the Dynamics User Group and sponsored by Microsoft. It brings Microsoft product teams and the Dynamics 365 community together for four days of roadmap and technical sessions across Dynamics 365, the Power Platform and AI.
 
