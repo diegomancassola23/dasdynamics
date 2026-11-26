@@ -20,7 +20,8 @@ const walk = (dir) =>
   fs.readdirSync(dir, { withFileTypes: true }).flatMap((d) => (d.isDirectory() ? walk(path.join(dir, d.name)) : [path.join(dir, d.name)]));
 
 const files = walk(dist);
-const htmlFiles = files.filter((f) => f.endsWith('.html'));
+// Search Console verification files (public/google*.html) are plain text, not pages.
+const htmlFiles = files.filter((f) => f.endsWith('.html') && !/^google[0-9a-f]+\.html$/.test(path.basename(f)));
 const problems = [];
 const rel = (f) => path.relative(dist, f).split(path.sep).join('/');
 
